@@ -1,0 +1,79 @@
+<div class="userallBox">
+	<% if @usermanager.login == true %>
+		<div class="userandAdmin">
+			<h3 class="username"><%= @user.name %></h3>
+			<% if @user.id == @room.user_id %>
+				<h3 class="username roomadmin">ルーム管理者</h3>
+			<% end %>
+		</div>
+		<%= link_to "#{@user.name}のメッセージ表示", "", id: "roomopen" %>
+		<div class="roomshowBox">
+			<% @room.messages.each do |message| %>
+				<% if message.login == true %>
+					<% if message.user_id == @usermanager.user_id %>
+						<%= simple_format message.content, class: "messageText" %>
+					<% end %>
+				<% end %>
+			<% end %>
+		</div>
+	<% end %>
+	<% if @usermanager.login == false %>
+		<h1 class="username">名無し</h1>
+		<%= link_to "名無しのメッセージ表示", "", id: "roomopen" %>
+		<div class="roomshowBox">
+			<% @room.messages.each do |message| %>
+				<% if message.login == false %>
+					<% if message.ip_id == @usermanager.ip_id %>
+						<%= simple_format message.content ,class: "messageText"%>
+					<% end %>
+				<% end %>
+			<% end %>
+		</div>
+	<% end %>
+	<% if user_signed_in? %>
+		<% if @room.user_id == current_user.id %>
+			<h1 class="usershousaiSettingText">ユーザーの詳細設定</h1>
+			<% if @usermanager.user_id != current_user.id %>
+				<%= form_with model: [@room, @usermanager], local: true do |f| %>
+					<%= f.label "メッセージ制限(メッセージの送信を拒否します。)", class: "messagelabelForm" %>
+					<%= f.check_box :message_limit %><br><br>
+					<%= f.label "メッセージ制限(不適切な発言を拒否します。)", class: "messagelabelForm"  %>
+					<%= f.check_box :ng_word %><br><br>
+					<%= f.label "BANする(後に解除できます。)", class: "messagelabelForm"  %>
+					<%= f.check_box :room_ban %><br><br>
+					<%= f.submit "送信", id: "submit_usermanager" %>
+				<% end %>
+			<% end %>
+		<% end %>
+	<% end %>
+	<br>
+
+</div>
+<style>
+	input[type="checkbox"]{
+		width: 20px;
+		height: 20px;
+		cursor: pointer;
+	}
+</style>
+
+<script>
+	var click = false;
+	$('#roomopen').click(function(e){
+		if(click == false){
+			$('.roomshowBox').fadeIn('slow');
+			$('.roomshowBox').css('transform', 'translateY(0px)');
+			$('.roomshowBox').css('transition', '1s');
+			
+			e.preventDefault();
+			click = true
+		}else{
+			$('.roomshowBox').fadeOut('slow');
+			$('.roomshowBox').css('transform', 'translateY(-300px)');
+			$('.roomshowBox').css('transition', '1s');
+			e.preventDefault();
+			click = false
+		}
+	});
+
+</script>

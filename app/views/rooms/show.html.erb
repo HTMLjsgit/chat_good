@@ -1,0 +1,153 @@
+
+<div class="main_sidebar">
+	<div class="yieldBox roomShowBox">
+		<% if @room.public %>
+			<% if user_signed_in? %>
+				<div id="messages" data-room_id="<%= @room.id %>" data-current_user="<%= current_user.id %>">
+					<%= render @messages %>
+				</div>
+			<% else %>
+				<div id="messages" data-room_id="<%= @room.id %>" data-current_user="<%= nil %>">
+					<%= render @messages %>
+				</div>
+			<% end %>
+			<div id="bottomGO"></div>
+		<% else %>
+			<% if user_signed_in? %>
+				<% if current_user.id == @room.user_id %>
+					<%= link_to "パスワードを設定", room_password_path(@room) %>
+				<% end %>
+			<% end %>
+			<div id="messages" data-room_id="<%= @room.id %>">
+				<%= render @messages %>
+			</div>
+			<div id="bottomGO"></div>
+		<% end %>
+	</div>
+	<div class="sidebarBox">
+		<div class="messageitiranBox">
+			<%= link_to "一番最新のメッセージを見る⇃","",id: "messagenewLink" %>
+		</div>
+		<div class="roomuserLinkBox">
+			<%= link_to "ルームに入ってるユーザー 一覧",room_usermanagers_path(@room) %>
+		</div>
+		<button id="kyouyu">共有URL</button>
+		<div class="requestUrl"><%= request.url %></div>
+		<% unless @room.public %>
+			<button id="password">パスワード</button>
+			<div class="passwordhyouzi">パスワード: <%= @room.password %></div>
+		<% end %>
+		<% @room.usermanagers.each do |usermanager| %>
+			<% if user_signed_in? %>
+				<% if @room.user_id != current_user.id %>
+					<% if usermanager.user_id == current_user.id %>
+						<% if usermanager.login == true %>
+							<%= link_to "退会", room_usermanager_path(@room.id, usermanager.id), method: :delete, class: "kyanseruAccount" %>
+						<% end %>
+					<% end %>
+				<% end %>
+			<% else %>
+				<% if usermanager.ip_id == request.ip %>
+					<% if usermanager.login == false %>
+						<%= link_to "退会", room_usermanager_path(@room.id,usermanager.id), method: :delete, class: "kyanseruAccount" %>
+					<% end %>
+				<% end %>
+			<% end %>
+		<% end %>
+		<% if user_signed_in? %>
+			<% if current_user.id == @room.user_id %>
+				<%= link_to "編集", edit_room_path(@room) %>
+			<% end %>
+		<% end %>
+	</div>
+</div>
+<div class="operationBox">
+	<div class="bottomDeleteBox down-right-box">
+		<%= image_tag "矢印アイコン_下4.png" %>
+	</div>
+	<div class="bottomOpenBox down-right-box">
+		<%= image_tag "矢印アイコン_上4.png" %>
+	</div>
+</div>
+<div class="bottomRoomBox">
+	<h3 class="textCount"></h3>
+	<div class="imguploader">
+		<%= form_with model: @message, local: false, url: messages_path do |f| %>
+			<%= f.file_field :image, id: "img" %>
+			<%= f.hidden_field :room_id, value: @room.id %>
+			<%= f.submit "画像をアップロード" %>
+		<% end %>
+	</div>
+
+	<p class="flash_message"></p>
+	<div class="formchat">
+		<% unless request.os == "PlayStation Vita" %>
+			<%= text_area_tag :content, nil, data: {behavior: 'room_speaker'},class: "text_areachat" ,placeholder: "メッセージを送信(Shift + Enter または 送信ボタン)", id: "chat_area"%>
+			<div class="submitBox">
+				<%= submit_tag "送信", id: "submit" %>
+			</div>
+		<% end %>
+		<% if request.os == "PlayStation Vita" %>
+			<div class="submitBox">
+				<%= form_with model: Message.new do |f| %>
+					<%= f.text_area :content ,id: "chat_area", class: "text_areachat"%>
+					<%= f.submit "送信", id: "submit" %>
+				<% end %>
+			</div>
+		<% end %>
+	</div>
+</div>
+<script>
+
+ $("#messagenewLink").click(function(e){
+    var submitscroll = $('#bottomGO').offset().top;
+    $('html, body').animate({scrollTop:submitscroll});
+    return e.preventDefault();
+ });
+ $('#kyouyu').click(function(){
+ 	$('.requestUrl').fadeIn('slow');
+ })
+ $('#password').click(function(){
+ 	$('.passwordhyouzi').fadeIn('slow');
+ });
+  var text_max = 1000; // 最大入力値
+  // $(".textCount").text(text_max - $(".text_chatarea").val().length);
+ $("#chat_area").on("keydown keyup keypress change",function(){
+      var text_length = $(this).val().length;
+      var countdown = text_max - text_length;
+      $(".textCount").text("残り" + String(countdown) + "文字");
+      // CSSは任意で
+      if(countdown < 0){
+          $('.textCount').css({
+              color:'#ff0000',
+              fontWeight:'bold'
+          });
+      } else {
+          $('.textCount').css({
+              color:'#fff',
+              fontWeight:'normal'
+          });
+      }
+  });
+ $('.bottomDeleteBox').click(function(){
+ 	$('.bottomOpenBox').css('display', 'block');
+ 	$('.bottomDeleteBox').css('display', 'none');
+ 	$('.bottomRoomBox').css('transform', 'TranslateY(100%)');
+ 	setTimeout(function(){
+ 		$('.bottomRoomBox').css('display', 'none');
+
+ 	}, 200);
+ });
+ $('.bottomOpenBox').click(function(){
+ 	$('.bottomOpenBox').css('display', 'none');
+ 	$('.bottomDeleteBox').css('display', 'block');
+ 	// $('.bottomRoomBox').animate2({transform: 'TranslateY(100%)'}, 100);
+ 	$('.bottomRoomBox').css('transform', 'TranslateY(100%)')
+ 	setTimeout(function(){
+ 		$('.bottomRoomBox').css('display', 'block');
+ 		$('.bottomRoomBox').animate2({transform: 'TranslateY(0%)'}, 100);
+
+
+ 	}, 200);
+ });
+</script>

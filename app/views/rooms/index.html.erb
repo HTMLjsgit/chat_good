@@ -1,0 +1,25 @@
+<% if @rooms.present? %>
+	<h1 class="publicitiranText">公開Room一覧</h1>
+	<div class="roomsBox">
+		<% @rooms.each do |room| %>
+			<div class="roomAtagBox">
+				<%= link_to room_path(room, :anchor => 'bottomGO') do %>
+					<div class="roomBox">
+						<h1><%= room.title.truncate(30) %></h1>
+						<p class="room_created_at_text">
+							<%= room.created_at.strftime("%Y-%m-%d %H:%M") %>		
+						</p>
+					</div>
+				<% end %>
+			</div>
+		<% end %>
+	</div>
+<% else %>
+	<h1 class="publicitiranText">ルームが見つかりませんでした。</h1>
+<% end %>
+
+<style>
+	a{
+		text-decoration: none; 
+	}
+</style>

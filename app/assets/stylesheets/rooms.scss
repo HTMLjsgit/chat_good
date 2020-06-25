@@ -1,0 +1,439 @@
+// Place all the styles related to the rooms controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+.roomBox{
+	font-size: 18px;
+	line-height: 30px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	padding-left: 20px;
+	border-bottom: 1px solid #cccccc;
+	padding-right: 20px;
+	display: flex;
+	justify-content: space-between;
+}
+.roomBox:hover{
+	background-color: #939393;
+	transition: 0.3s background-color ease;
+}
+.room_created_at_text{
+	font-size: 16px;
+	padding-bottom: 20px;
+}
+.editform{
+	display: none;
+}
+.edit_form{
+	
+}
+.edit_click{
+	margin-top: 7px;
+	margin-left: 1em;
+}
+.roomsBox{
+	border: 3px  solid #fff;
+	margin: 0 auto;
+	max-width: 900px;
+	border-radius: 10px;
+
+}
+
+.kyanseruAccount{
+	color: #fff;
+}
+.text_areachat{
+	border-radius: 10px;
+	/*max-width: 800px;*/
+	margin: 0 auto;
+	color: #fff;
+}
+#chat_area{
+	width: 80%;
+	max-height: 81px;
+	min-height: 81px;
+	min-width: 100%;
+	height: 81px;
+	font-family: 游ゴシック, sans-serif;
+	background-color: #6C6C6C;
+	border: 1px solid #d4d4d4;
+}
+#chat_area::placeholder{
+	color: #D4D4D4;
+}
+#chat_area:focus{
+	outline: none;
+}
+.text_areachat a{
+	color: #00b0f4;
+	text-decoration: none;
+}
+.textCount{
+	color: #dcdcdc;
+	font-size: 15px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	text-align: center;
+}
+.roomShowBox{
+	min-height: 500px;
+}
+.passwordhyouzi{
+	color: #fff;
+	display: none;
+}
+
+.messageText{
+	padding-top: 10px;
+	padding-bottom: 10px;
+	max-width: 100%;
+	word-wrap: break-word;
+	color: #fff;
+}
+
+#img{
+	color: #fff;
+}
+#img:focus{
+	outline-color:#4682b4;
+}
+
+.publicitiranText{
+	color: #ffffff;
+	font-size: 25px;
+	margin: 0 auto;
+	max-width: 1000px;
+	text-align: center;
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+.public_Text{
+	color: #fff;
+	font-size: 20px;
+}
+.roomuser{
+	font-size: 25px;
+}
+.room_text_field{
+	width: 90%;
+	height: 30px;
+	margin-top: 50px;
+	outline: none;
+	border-radius: 5px;
+	background-color: #6C6C6C;
+    color: #EEEEEE;
+}
+.room_text_field::placeholder{
+	color: #D4D4D4;
+
+}
+.publicBox{
+	text-align: right;
+}
+.privateBox{
+	text-align: left;
+}
+.new_rooms_form_box{
+	margin: 0 auto;
+	max-width: 800px;
+	padding-left: 50px;
+
+}
+.room_submit{
+	width: 100px;
+	height: 35px;
+	font-size: 18px;
+	border-radius: 10px;
+	outline: none;
+	border-style: none;
+	font-weight: bold;
+    background-color: #0989CF;
+    color: #fff;
+    border: 1px solid #ccc;
+    font-family: "游ゴシック", sans-serif;
+}
+.submit_area_box{
+	margin-top: 50px;
+	display: flex;
+	justify-content: center;
+}
+.room_submit:hover{
+	transition: 0.3s background-color ease;
+    background-color: #009BEF;
+
+}
+.radioBox{
+	margin-top: 50px;
+	margin-bottom: 30px;
+	display: flex;
+	justify-content: space-around;
+}
+.room_user_a{
+	font-size: 20px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	text-decoration: none;
+}
+.room_user_a:hover{
+	text-decoration: underline;
+}
+.message_content{
+	font-size: 13px;
+	color: #ffffff;
+	padding-left: 10px;
+    overflow-wrap:break-word;
+	padding-bottom: 20px;
+	
+}
+.youtube-container{
+	width: 700px;
+	height: 400px;
+	text-align: center;
+}
+.message_content a{
+	color: #87ceeb;
+	text-decoration: none;
+}
+.message_content a:hover{
+	text-decoration: underline;
+}
+.usernameAndTimeBox{
+	margin-bottom: 10px;
+}
+.username{
+	color: #fff;
+	font-size: 20px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+.agomessage{
+	margin-top: 10px;
+	margin-left: 10px;
+	font-size: 13px;
+	color: #d3d3d3;
+}
+.message_username{
+	padding-top: 10px;
+	color: #32cd32;
+	font-size: 15px;
+}
+.message a{
+	text-decoration: none;
+}
+.message a:hover{
+	text-decoration: underline;
+}
+.bottomRoomBox{
+	background-color: #808080;
+	border-radius: 15px;
+	position: -webkit-sticky;
+	position: sticky;
+	bottom: 0;
+	width: 100%;
+	padding-bottom: 20px;
+	transition: transform 0.3s ease;
+}
+.bottomOpenBox{
+	display: none;
+}
+.down-right-box{
+ 	border-radius: 50%;
+ 	background-color: #eee;
+}
+.down-right-box:hover{
+	cursor: pointer;
+}
+.operationBox{
+	position: fixed;
+	bottom: 1em;
+	z-index: 3;
+	left: 3em;
+}
+
+.roomsBox a{
+	color: #ffffff; 
+
+}
+.messageitiranBox{
+	line-height: 50px;
+
+}
+#messagenewLink{
+	color: #fff;
+	text-decoration: none;
+	border-radius: 15px;
+	border: 1px solid #fff;
+}
+.roomuserLinkBox{
+	line-height: 50px;
+}
+.roomuserLinkBox a{
+	color: #fff;
+}
+.roomshowBox{
+	transform: translateY(-300px);
+    display: none;
+
+}
+.requestUrl{
+	display: none;
+	color: #fff;
+}
+.message{
+	padding-bottom: 20px;
+	padding-left: 20px;
+}
+
+.main_sidebar{
+	display: flex;
+	margin: 0 auto;
+	max-width: 1200px;
+	margin-top: 30px;
+}
+#content{
+	background-color: var(--background-primary);
+}
+.formchat{
+	width: 100%;
+	margin: 0 auto;
+	max-width: 1000px;
+	color: #fff;
+	display: flex;
+	justify-content: space-around;
+}
+.sidebarBox{
+	position: -webkit-sticky;
+	position: fixed;
+	right: 0;
+}
+
+#content{
+	width: 100%;
+	color: #f5f5f5;
+	font-size: 12px;
+	font-family: -apple-system, BlinkMacSystemFont, Roboto, "Segoe UI semibold", "Helvetica Neue", HelveticaNeue, YuGothic, "Yu Gothic", "Segoe UI", Verdana, Meiryo, sans-serif;
+}
+#content::placeholder{
+	color: #cccccc;
+}
+.roomusermanager_all_box{
+	margin: 0 auto;
+	max-width: 1000px;
+	color: #fff;
+}
+.roomusermanager_all_box a{
+	color: #fff;
+}
+.imguploader{
+	margin-top: 10px;
+	padding-bottom: 10px;
+	margin: 0 auto;
+	max-width: 600px;
+	display: flex;
+}
+#submit{
+	width: 100px;
+	height: 40px;
+	font-size: 18px;
+	border-radius: 10px;
+	margin-top: 25px;
+	margin-left: 50px;
+	margin-bottom: 10px;
+	outline: none;
+	border-style: none;
+	font-weight: bold;
+    background-color: #0989CF;
+    color: #fff;
+    border: 1px solid #ccc;
+    font-family: "游ゴシック", sans-serif;
+}
+.error_box{
+	background-color: #eeeeee;
+	margin-top: 100px;
+	width: 90%;
+	border-radius: 10px;
+}
+.errorText{
+	font-size: 20px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	text-align: center;
+	color: #F53A3A;
+}
+.error_messages{
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 30px;
+}
+#submit:focus{
+	outline: none;
+}
+#submit:hover{
+	transition: 0.3s background-color ease;
+    background-color: #009BEF;
+}
+.submitBox{
+	display: flex;
+	justify-content: center;
+}
+.editBox{
+}
+
+.message img{
+	width: 100%;
+	text-align: center;
+	max-width: 100%;
+}
+#imageSubmit{
+	
+}
+@media screen and (max-width: 1200px){
+	.formchat{
+		max-width: 100%;
+		display: block;
+		margin: 0;
+	}
+	#chat_area{
+		height: 60px;
+		padding: 0;
+		margin-left: 20px;
+		min-height: 61px;
+		margin: 0;
+	}
+	#submit{
+		width: 100px;
+	}
+	.bottomRoomBox{
+		padding: 0;
+	}
+}
+@media screen and (max-width: 480px){
+	#content{
+		width: 100%;
+	}
+	.message_content{
+		padding-left: 20px;
+	}
+	.message_username{
+		padding-left: 10px;
+	}
+	.message{
+		padding: 0;
+	}
+	.roomShowBox{
+		width: 100%;
+	}
+	#chat_area{
+		margin-left: 20px;
+		min-width: 50%;
+		width: 90%;
+	}
+	.sidebarBox{
+		display: none;
+	}
+	.youtube-container{
+		width: 100%;
+		max-width: 100%;
+		height: 300px;
+	}
+}

@@ -1,0 +1,35 @@
+<div class="roomusermanager_all_box">
+	<h1 class="roomuser">Roomに入ってるユーザー一覧</h1>
+	<div class="usermanager_list_all_box">
+		<% @users.each do |user| %>
+			<% @managers.each do |manager| %>
+					<% if user.id == manager.user_id %>
+						<% if @room.id == manager.room_id %>
+							<%= link_to room_usermanager_path(@room, manager.id), class: "room_user_a" do %>
+								<div class="roomBox">
+									<h3 class="link_name_usermanager"><%= user.name %></h3>
+								</div>
+							<% end %>
+						<% end %>
+					<% end %>
+			<% end %>
+		<% end %>
+		<% @managers.each do |manager| %>
+			<% unless manager.login %>
+				<% if request.ip == manager.ip_id %>
+					<% if @room.id == manager.room_id %>
+						<%= link_to room_usermanager_path(@room, manager.id), class: "room_user_a" do %>
+							<div class="roomBox">
+								<h3 class="link_name_usermanager">名無し</h3>
+							</div>
+						<% end %>
+					<% end %>
+				<% end %>
+			<% end %>
+		<% end %>
+	</div>
+</div>
+
+<style>
+
+</style>

@@ -1,0 +1,48 @@
+<div class="new_rooms_form_box">
+	<%= form_with model: @room, local: true do |f| %>
+		<%= render 'layouts/error', model: f.object %>
+		<%= f.text_field :title, class: "room_text_field", placeholder: "タイトルを入力" %><br>
+		<div class="radioBox">
+			<div class="privateBox">
+				<%= f.label :public, value: "非公開", class: "public_Text"%>
+				<%= f.radio_button :public, false , class: "radio_public_button"%>
+			</div>
+			<div class="publicBox">
+				<%= f.label :public, value: "公開", class: "public_Text" %>
+				<%= f.radio_button :public, true, class: "radio_public_button" %><br>
+			</div>
+		</div>
+		<!-- 非公開ルームだった場合はルームパスワード打てるようにする -->
+		<div class="submit_area_box">
+			<%= f.submit "送信",  class: "room_submit" %>
+		</div>
+	<% end %>
+</div>
+
+<style>
+	input[type="radio"]{
+		width: 20px;
+	    height: 20px;
+	    cursor: pointer;
+	    margin-bottom: 10px;
+	}
+	.public_Text:hover{
+		cursor: pointer;
+	}
+	.privateBox:hover{
+		cursor: pointer;
+	}
+	.publicBox:hover{
+		cursor: pointer;
+	}
+</style>
+
+<script>
+	$('.privateBox').click(function(){
+		// $("input[type='radio']").click();
+		document.getElementsByClassName("radio_public_button")[0].click();
+	});
+	$('.publicBox').click(function(){
+		document.getElementsByClassName("radio_public_button")[1].click();
+	});
+</script>

@@ -1,0 +1,118 @@
+// Place all the styles related to the users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+.editUserText{
+	padding-top: 20px;
+	padding-bottom: 20px;
+	color: #fff;
+	font-size: 30px;
+}
+.editUserBox{
+	margin: 0 auto;
+	max-width: 900px;
+	padding-left: 30px;
+}
+.roomBox h1{
+	color: #fff;
+}
+.user_name{
+	font-size: 25px;
+	color: #fff;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+.publicText{
+	color: #fff;
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+.mypageBox{
+	margin: 0 auto;
+	padding-left: 20px;
+	max-width: 900px;
+	margin-top: 50px;
+}
+.profileBox{
+	border-radius: 5px;
+	border: 1px solid #fff;
+	margin-right: 20px;
+
+}
+.profileBox p{
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 10px;
+	color: #fff;
+	word-break: break-word;
+}
+
+#profileLink{
+	text-decoration: none;
+
+}
+#accountnullButton{
+	margin-top: 10px;
+}
+.edit_box_user{
+	border-radius: 4px;
+	margin-top: 30px;
+	margin-bottom: 30px;
+	display: flex;
+	justify-content: space-around;
+}
+.form_area_current{
+	margin: 0 auto;
+	max-width: 1000px;
+	margin-top: 5%;
+	padding-left: 30px;
+}
+#user_profile_form{
+	resize: none;
+	width: 90%;
+	outline: none;
+	height: 20em;
+	font-family: "游ゴシック", sans-serif; 
+	border-radius: 10px;
+	color: #EEEEEE;
+	border: 1px solid #ddd;
+	background-color: #6C6C6C;
+}
+#submit_user{
+	font-size: 18px;
+	background-color: #0989CF;
+	color: #fff;
+	font-family: "游ゴシック", sans-serif;
+	font-weight: bold;
+	border: 1px solid #505050;
+	
+	border-radius: 10px;
+	width: 100px;
+	height: 40px;
+}
+#submit_user:hover{
+	transition: 0.3s background-color ease;
+	background-color: #009BEF;
+}
+.submit_area{
+	text-align: center;
+	margin-top: 20px;
+	margin-right: 30px;
+}
+#user_name_form{
+	width: 40%;
+	height: 30px;
+	outline: none;
+	border-radius: 5px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	font-family: "游ゴシック", sans-serif; 
+	background-color: #6C6C6C;
+	color: #EEEEEE;
+	border: 1px solid #ddd;
+}
+.profileText{
+	margin-top: 30px;
+	margin-bottom: 10px;
+	color: #fff;
+}

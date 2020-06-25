@@ -1,0 +1,94 @@
+// Place all the styles related to the usermanagers controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+.messagelabelForm{
+	color: #fff;
+}
+#submit_usermanager{
+	width: 80px;
+	height: 35px;
+	font-size: 15px;
+	border-radius: 10px;
+	outline: none;
+	border-style: none;
+	font-weight: bold;
+    background-color: #0989CF;
+    color: #fff;
+    border: 1px solid #ccc;
+    font-family: "游ゴシック", sans-serif;
+
+}
+#submit_usermanager:hover{
+	transition: 0.3s background-color ease;
+    background-color: #009BEF;
+}
+.userallBox{
+	margin: 0 auto;
+	max-width: 1200px;
+	padding-left: 30px;
+}
+.room_user_a{
+	text-decoration: none;
+}
+.room_user_a:hover{
+	text-decoration: none;
+}
+.messageText{
+	max-width: 100%;
+	word-break: break-word;
+}
+.usershousaiSettingText{
+	font-size: 23px;
+	font-family: 游ゴシック, sans-serif;
+	color: #fff;
+	padding-top: 50px;
+	padding-bottom: 50px;
+}
+.usermanager_list_all_box{
+	border: 3px solid #fff;
+	border-radius: 10px;
+}
+
+.roomusermanager_all_box{
+	margin: 0 auto;
+	max-width: 1200px;
+}
+.roomuser{
+	margin-top: 40px;
+	margin-bottom: 40px;
+	padding-left: 20px;
+}
+.link_name_usermanager{
+	padding-top: 20px;
+	padding-bottom: 20px;
+	font-size: 17px;
+	padding-left: 20px;
+}
+.username{
+	color: #fff;
+	font-size: 20px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+#roomopen{
+	color: #fff;
+	text-decoration: none;
+}
+.roomadmin{
+	border-left: 1px solid #fff;
+}
+.userandAdmin{
+	display: flex;
+	margin-bottom: 30px;
+	margin-top: 30px;
+}
+#roomopen:hover{
+	text-decoration: underline;
+}
+@media screen and (max-width: 480px){
+	.messagelabelForm{
+		font-size: 13px;
+	}
+}

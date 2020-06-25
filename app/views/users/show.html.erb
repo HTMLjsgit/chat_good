@@ -1,0 +1,60 @@
+<div class="mypageBox">
+	<h1 class="user_name"><%= @user.name %></h1>
+	<% if @user.profile.present? %>
+		<p class="profileText">プロフィール</p>
+		<div class="profileBox">
+			<p><%= simple_format h(@user.profile) %></p>
+		</div>
+	<% end %>
+	<div class="edit_box_user">
+		<% if user_signed_in? %>
+			<% if current_user.id == @user.id %>
+				<%= link_to edit_user_path(current_user),  id: "profileLink" do %>
+					<button>プロフィール編集</button>
+				<% end %>
+				<p><%= button_to "アカウント退会", registration_path(current_user), data: { confirm: "本当に#{current_user.name}をアカウントを退会させますか？" }, method: :delete %></p>
+			<% end %>
+		<% end %>
+	</div>
+	<% if @rooms_public.present? %>
+		<h1 class="publicText">作った公開ルーム一覧</h1>
+	<% end %>
+	<% @rooms.each do |room| %>
+		<%= render 'public', room: room %>
+	<% end %>
+	<% if user_signed_in? %>
+		<% if current_user.id == @user.id %>
+			<% if @rooms_private.present? %>
+				<h1 class="publicText">作った非公開ルーム一覧</h1>
+			<% end %>
+		<% end %>
+    <% end %>
+
+	<% @rooms.each do |room| %>
+		<% if room.public == false %>
+			<% if user_signed_in? %>
+				<% if current_user.id == room.user_id %>
+					<%= render 'private' ,room: room %>
+				<% end %>
+			<% end %>
+		<% end %>
+	<% end %>
+</div>
+<script>
+	var click = false;
+	$('#profileLink').click(function(){
+		if(click == false){
+			$('.form_area_current').fadeIn('slow')
+			click = true
+		}else{
+			$('.form_area_current').fadeOut('slow')
+			click = false
+		}
+	})
+</script>
+
+<style>
+	a{
+		text-decoration: none;
+	}
+</style>

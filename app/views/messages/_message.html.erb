@@ -1,0 +1,76 @@
+<div class="message-support" id="message-support-<%= message.id %>">
+	<div class="message" id="message-<%= message.id %>">
+		<div class="usernameAndTimeBox">
+			<% unless message.user_id.nil? %>
+				<%= link_to message.username, user_path(message.user_id),class: "message_username" %>
+			<% else %>
+				<p class="message_username"><%= message.username %></p>
+			<% end %>
+			<div class="usettimeAndDeleteBox">
+				<p class="agomessage"><%= time_ago_in_words(message.created_at) + "前" %></p>
+				<% if user_signed_in? %>
+					<% if message.user_id == current_user.id %>
+						<button id="<%= message.id %>" class="delete_btn">
+							<%= image_tag "ゴミ箱のアイコン素材.png", class: "deleteBtnImage", id: "#{message.id}" %>
+						</button>
+						<button id="edit_click-<%= message.id %>" class="edit_click">
+							<%= image_tag "鉛筆のアイコン素材.png"%>
+						</button>
+					<% end %>
+				<% end %>
+			</div>
+		</div>
+		<div id="message-<%= message.id %>-box">
+			<%= raw Rinku.auto_link simple_format h(message.content), class: "message_content", id: "message-link-#{message.id}" %>
+			<% if user_signed_in? %>
+				<% if current_user.id == message.user_id %>
+					<div id="edit_form_box_<%= message.id %>" class="editform">
+						<div class="imguploader">
+							<%= form_with model: Message.find(message.id), local: false do |f| %>
+								<%= f.file_field :image %>
+								<%= f.hidden_field :room_id, value: message.room_id %>
+								<%= f.submit "画像をアップロード" %>
+							<% end %>
+						</div>
+						<%= text_area_tag :content,nil,data: {behavior: "edit_speaker"},id: "message-#{message.id} form-message-#{message.id}", class: "edit_form" %>
+						<%= submit_tag "このボタンはまた聞きません", class: "edit_submit" %>
+					</div>
+				<% end %>
+			<% end %>
+		</div>
+		<% unless message.youtube_id.nil? %>
+			<% iframe = content_tag(
+				:iframe,
+				'',
+				width: 560,
+				height: 315,
+				src: "https://www.YouTube.com/embed/#{message.youtube_id}",
+				frameborder: 0,
+				allowfullscreen: true,
+				class: "youtube-container"
+			) %>
+			<%= content_tag(:div, iframe, class: "youtube-container2") %>
+		<% end %>
+		<% if message.image? %>
+			<%= image_tag message.image.url %>
+		<% end %>
+
+	</div>
+</div>
+
+<script>
+
+	var click = true
+
+	$("#edit_click-<%= message.id %>").click(function(){
+
+		if(click == true){
+
+			$('#edit_form_box_<%= message.id %>').fadeIn('slow');
+			click = false
+		}else{
+			$('#edit_form_box_<%= message.id %>').fadeOut('slow');
+			click = true
+		}
+	});
+</script>
