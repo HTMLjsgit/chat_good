@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: {
-    omniauth_callbacks: "users/omniauth_callbacks"
+    omniauth_callbacks: "users/omniauth_callbacks",
+  
   }
   root 'tops#index'
   get 'rooms/:id/password' => 'rooms#password_edit', as: "room_password"

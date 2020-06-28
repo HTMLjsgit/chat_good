@@ -24,12 +24,30 @@
 .editform{
 	display: none;
 }
+.room_settings{
+	display: flex;
+	justify-content: space-around;
+}
+#message_image{
+	color: #fff;
+}
 .edit_form{
-	
+	width: 50em;
+	height: 5em;
+	background-color: #6C6C6C;
+    border: 1px solid #d4d4d4;
+    color: #fff;
+	font-family: -apple-system, BlinkMacSystemFont, Roboto, "Segoe UI semibold", "Helvetica Neue", HelveticaNeue, YuGothic, "Yu Gothic", "Segoe UI", Verdana, Meiryo, sans-serif;
+	font-weight: bold;
+	resize: none;
+	border-radius: 5px;
+
 }
 .edit_click{
 	margin-top: 7px;
 	margin-left: 1em;
+	border-radius: 5px;
+	border-style: none;
 }
 .roomsBox{
 	border: 3px  solid #fff;
@@ -231,7 +249,7 @@
 	bottom: 0;
 	width: 100%;
 	padding-bottom: 20px;
-	transition: transform 0.3s ease;
+	transition: 0.3s;
 }
 .bottomOpenBox{
 	display: none;
@@ -239,6 +257,7 @@
 .down-right-box{
  	border-radius: 50%;
  	background-color: #eee;
+ 	opacity: 0.8;
 }
 .down-right-box:hover{
 	cursor: pointer;
@@ -246,7 +265,7 @@
 .operationBox{
 	position: fixed;
 	bottom: 1em;
-	z-index: 3;
+	z-index: 1;
 	left: 3em;
 }
 
@@ -408,8 +427,19 @@
 	}
 }
 @media screen and (max-width: 480px){
+	.imguploader{
+		margin-left: 10px;
+	}
+	.edit_submit{
+		text-align: center;
+		margin-bottom: 30px;
+	}
 	#content{
 		width: 100%;
+	}
+	.edit_form{
+		width: 90%;
+		margin-left: 14px;
 	}
 	.message_content{
 		padding-left: 20px;

@@ -2,6 +2,7 @@ class Message < ApplicationRecord
 	belongs_to :user, optional: true
 	belongs_to :room
 	belongs_to :usermanager, optional: true
+
 	after_update_commit { EditBroadcastJob.perform_later self }
 	after_update_commit { EditAdminBroadcastJob.perform_later self }
 	# after_create_commit { MessageAdminBroadcastJob.perform_later self}

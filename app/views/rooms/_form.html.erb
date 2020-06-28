@@ -3,13 +3,24 @@
 		<%= render 'layouts/error', model: f.object %>
 		<%= f.text_field :title, class: "room_text_field", placeholder: "タイトルを入力" %><br>
 		<div class="radioBox">
-			<div class="privateBox">
+			<div class="privateBox" id="private-box-1">
 				<%= f.label :public, value: "非公開", class: "public_Text"%>
-				<%= f.radio_button :public, false , class: "radio_public_button"%>
+				<%= f.radio_button :public, false ,id: "public-radio-button-1", class: "radio_public_button"%>
 			</div>
-			<div class="publicBox">
+			<div class="publicBox" id="public-box-1">
 				<%= f.label :public, value: "公開", class: "public_Text" %>
-				<%= f.radio_button :public, true, class: "radio_public_button" %><br>
+				<%= f.radio_button :public, true, id: "public-radio-button-2",class: "radio_public_button" %><br>
+			</div>
+		</div>
+		<div class="room_settings">
+			<div class="privateBox" id="reading-box-1">
+				<%= f.label :reading, value: "既読機能オフ", class: "public_Text" %>
+				<%= f.radio_button :reading, false,id: "public-radio-button-3", class: "radio_public_button" %>
+			</div>
+
+			<div class="publicBox" id="reading-box-2">
+				<%= f.label :reding, value: "既読機能オン", class: "public_Text" %>
+				<%= f.radio_button :reading, true, id: "public-radio-button-4",class: "radio_public_button" %>
 			</div>
 		</div>
 		<!-- 非公開ルームだった場合はルームパスワード打てるようにする -->
@@ -38,11 +49,16 @@
 </style>
 
 <script>
-	$('.privateBox').click(function(){
-		// $("input[type='radio']").click();
-		document.getElementsByClassName("radio_public_button")[0].click();
+	$('#private-box-1').click(function(){
+		document.getElementById('public-radio-button-1').click();
 	});
-	$('.publicBox').click(function(){
-		document.getElementsByClassName("radio_public_button")[1].click();
+	$('#public-box-1').click(function(){
+		document.getElementById('public-radio-button-2').click();
+	});
+	$('#reading-box-1').click(function(){
+		document.getElementById("public-radio-button-3").click();
+	});
+	$('#reading-box-2').click(function(){
+		document.getElementById("public-radio-button-4").click();
 	});
 </script>

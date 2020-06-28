@@ -3,8 +3,8 @@ class UsermanagersController < ApplicationController
 	before_action :usermanager_find, only: [:update, :show]
 	before_action :usermanager_room_ban
 	def update
-		@usermanager.update(update_params)
-		redirect_back(fallback_location: rooms_path)
+		@usermanager.update!(update_params)
+		redirect_to room_usermanager_path(@usermanager.room_id, @usermanager.id)
 	end
 
   	def index

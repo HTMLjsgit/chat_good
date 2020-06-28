@@ -142,12 +142,14 @@
  	$('.bottomOpenBox').css('display', 'none');
  	$('.bottomDeleteBox').css('display', 'block');
  	// $('.bottomRoomBox').animate2({transform: 'TranslateY(100%)'}, 100);
- 	$('.bottomRoomBox').css('transform', 'TranslateY(100%)')
+ 	setTimeout(function(){
+ 		$('.bottomRoomBox').css('transform', 'TranslateY(100%)');
+ 	}, 1);
  	setTimeout(function(){
  		$('.bottomRoomBox').css('display', 'block');
  		$('.bottomRoomBox').animate2({transform: 'TranslateY(0%)'}, 100);
 
 
- 	}, 200);
+ 	}, 100);
  });
 </script>

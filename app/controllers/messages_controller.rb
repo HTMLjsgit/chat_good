@@ -64,6 +64,7 @@ class MessagesController < ApplicationController
 			end
 			@message = Message.find_by(id: params[:id], room_id: room_id)
 			@message.image = image
+			@message.edit_right = true
 			if @message.save
 				 flash = "画像のアップロードに成功しました。"
 			else
@@ -82,6 +83,7 @@ class MessagesController < ApplicationController
 			end
 			@message = Message.find_by(id: params[:id], room_id: room_id)
 			@message.image = image
+			@message.edit_right = true
 			if @message.save	 
 				flash =  "画像のアップロードに成功しました。 "
 			else

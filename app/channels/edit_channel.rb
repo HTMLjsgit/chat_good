@@ -18,6 +18,9 @@ class EditChannel < ApplicationCable::Channel
     ip = self.connection.ip_addr
     # puts "==========================" + current_user.name
     # user_signed_in? = self.connection.signed_in
+    if data['message'].nil?
+      return false
+    end
     now = Time.now
     secondsAgo = now - 10
     if current_user.present?
@@ -54,7 +57,7 @@ class EditChannel < ApplicationCable::Channel
           return false
         end
         if messagesCount <= 5
-          message.update!(content: data['message'], youtube_id: url)
+          message.update(content: data['message'], youtube_id: url, edit_right: true)
         end
   	else
       return false

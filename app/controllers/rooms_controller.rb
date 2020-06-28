@@ -16,7 +16,7 @@ class RoomsController < ApplicationController
   def create
   	@room = Room.new(create_params)
     @room.user_id = current_user.id
-  	if @room.save
+  	if @room.save!
   	  redirect_to rooms_path
     else
       render 'new'
@@ -173,7 +173,7 @@ class RoomsController < ApplicationController
   	@room = Room.find params[:id]
   end
   def create_params
-  	params.require(:room).permit(:title, :public, :password)
+  	params.require(:room).permit(:title, :public, :password, :reading)
   end
 
   def is_mine

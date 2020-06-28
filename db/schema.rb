@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_04_074105) do
+ActiveRecord::Schema.define(version: 2020_06_28_042654) do
 
   create_table "action_text_rich_texts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
@@ -56,6 +56,20 @@ ActiveRecord::Schema.define(version: 2020_06_04_074105) do
     t.string "image"
     t.string "url"
     t.integer "usermanager_id"
+    t.boolean "edit_right", default: false, null: false
+  end
+
+  create_table "notifications", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.integer "recipient_id"
+    t.string "action"
+    t.string "notifiable_type"
+    t.integer "notifiable_id"
+    t.integer "message_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.boolean "checked", default: false, null: false
+    t.index ["user_id"], name: "index_notifications_on_user_id"
   end
 
   create_table "passwordmanagers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -74,6 +88,7 @@ ActiveRecord::Schema.define(version: 2020_06_04_074105) do
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "public", default: false
     t.string "password"
+    t.boolean "reading", default: false
   end
 
   create_table "usermanagers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -112,4 +127,5 @@ ActiveRecord::Schema.define(version: 2020_06_04_074105) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "notifications", "users"
 end

@@ -1,11 +1,20 @@
 class RoomChannel < ApplicationCable::Channel
 
   def subscribed
-    # stream_from "room_channel_#{params['room'].to_s}"
-      stream_from "room_channel_#{params['room'].to_s}"
-    # if current_user.present?
-    #   stream_from "room_channel_#{params['room'].to_s}_#{current_user.id}"
-    # end
+    ip = self.connection.ip_addr
+    if current_user.present?
+      if Usermanager.where(user_id: current_user.id, room_ban: true, room_id: params['room'], login: true).exists? || Usermanager.where(user_id: current_user.id, login: true, room_id: params['room']).empty?
+        stream_from "room_channel_nil"
+      else
+        stream_from "room_channel_#{params['room'].to_s}"
+      end
+    else
+      if Usermanager.where(ip_id: ip, room_ban: true, room_id: params['room'], login: false).exists? || Usermanager.where(ip_id: ip, login: false, room_id: params['room']).empty?
+        stream_from "room_channel_nil"
+      else
+        stream_from "room_channel_#{params['room'].to_s}"
+      end
+    end
   end
 
   def unsubscribed
@@ -39,25 +48,22 @@ class RoomChannel < ApplicationCable::Channel
         return false
       end
       if Usermanager.where(ip_id: ip, room_id: params['room'], login: false).empty?
-      	return false
+        return false
       end
     end
-
-    ng_word_params.each do |ng|
-      unless current_user.present?
-        if Usermanager.where(ip_id: ip,user_id: nil, room_ban: false, room_id: params['room'].to_s, login: false, ng_word: true).exists?
-          unless data['message'].nil?
-            if data['message'].include?(ng)
-              return false
-            end
+    unless current_user.present?
+      if Usermanager.where(ip_id: ip, room_ban: false, room_id: params['room'].to_s, login: false, ng_word: true).exists?
+        ng_word_params.each do |ng|
+          if data['message'].include?(ng)
+             return false
           end
         end
-      else
-        if Usermanager.where(user_id: current_user.id, room_ban: false, room_id: params['room'].to_s, login: true, ng_word: true).exists?
-          unless data['message'].nil?
-            if data['message'].include?(ng)
-              return false
-            end
+      end
+    else
+      if Usermanager.where(user_id: current_user.id, room_ban: false, room_id: params['room'].to_s, login: true, ng_word: true).exists?
+        ng_word_params.each do |ng|
+          if data['message'].include?(ng)
+            return false
           end
         end
       end
@@ -78,7 +84,7 @@ class RoomChannel < ApplicationCable::Channel
         unless data['message'].nil?
           if Usermanager.where(ip_id: ip, room_ban: false, message_limit: false, room_id: params['room'].to_s, login: false).exists?
              if data['message'].length <= 1000
-          		 Message.create! content: data['message'], room_id: params['room'].to_s,username: "名無し",ip_id: ip, login: false, youtube_id: url, user_id: nil
+          		 @message = Message.create! content: data['message'], room_id: params['room'].to_s,username: "名無し",ip_id: ip, login: false, youtube_id: url, user_id: nil
         	   end
           end
          end
@@ -89,7 +95,7 @@ class RoomChannel < ApplicationCable::Channel
         unless data['message'].nil?
           if Usermanager.where(user_id: current_user.id, room_ban: false, room_id: params['room'].to_s,  message_limit: false, login: true).exists?
             if data['message'].length <= 1000
-    		       Message.create! content: data['message'], user_id: current_user.id, room_id: params['room'].to_s,username: current_user.name, ip_id: ip, login: true, youtube_id: url
+    		       @message = Message.create! content: data['message'], user_id: current_user.id, room_id: params['room'].to_s,username: current_user.name, ip_id: ip, login: true, youtube_id: url
             end
           end
         end

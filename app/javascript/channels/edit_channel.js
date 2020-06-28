@@ -13,10 +13,10 @@ $(function(){
 	  	// $(`#message-99`).html(data['message'])
 	  	// data['id']がしゅとくできないから　⇃　が　うまくいかない。　data['id']がundefinedになります。
 	    if (data['message'] != null){
-	    	$('#message-support-' + data['id']).html(data['message'])
+	    	$('#message-support-' + data['id']).html(data['message']);
 	    }
-	    message_go(data['message'], data['message_user_id'], data['id'])
-        message_nil_go(data['message_nil'], data['message_user_id_nil'], data['id'])
+	    message_go(data['message'], data['message_user_id'], data['id']);
+        message_nil_go(data['message_nil'], data['message_user_id_nil'], data['id']);
 	    // Called when there's incoming data on the websocket for this channel
 	  },
 
@@ -40,12 +40,15 @@ $(function(){
 	    	
         }
       }
-	$(document).on('keypress click','[data-behavior~=edit_speaker]', function(event){
+	$(document).on('keypress','[data-behavior~=edit_speaker]', function(event){
 		if(event.shiftKey){
 	      if(event.keyCode === 13){
+	      	if(event.target.value == '' || event.target.id == ''){
+				return false;
+			}
 			chat.edit(event.target.id, event.target.value);
+			return event.preventDefault();
 		  }
 		}
 	});
-
 });

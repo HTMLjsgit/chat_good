@@ -22,10 +22,52 @@
 	padding-top: 10px;
 	padding-bottom: 10px;
 }
+.loginBox{
+	margin: 0 auto;
+	max-width: 900px;
+	margin-top: 50px;
+}
 .publicText{
 	color: #fff;
 	padding-top: 20px;
 	padding-bottom: 20px;
+}
+.loginBox{
+}
+.loginkei_image{
+	display: flex;
+	justify-content:center;
+	margin-bottom: 30px;
+}
+.loginText{
+	text-align: center;
+	font-size: 23px;
+	margin-top: 20px;
+	color: #fff;
+	margin-bottom: 20px;
+}
+.google_login_button{
+	display: flex;
+	background-color: #fff;
+	border-radius: 10px;
+}
+.support-box-help{
+	display: flex;
+	justify-content: space-around;
+}
+.google_login_button h1{
+	line-height: 50px;
+	margin-left: 5em;
+	padding-right: 10px;
+}
+.support-box-help a{
+	text-decoration: none;
+	color: #000;
+}
+.google_login_button img{
+	width: 50px;
+	height: 50px;
+	padding-left: 20px;
 }
 .mypageBox{
 	margin: 0 auto;
