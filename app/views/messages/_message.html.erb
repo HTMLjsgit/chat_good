@@ -38,7 +38,7 @@
 								<%= f.submit "画像をアップロード" %>
 							<% end %>
 						</div>
-						<%= text_area_tag :content, message.content ,data: {behavior: "edit_speaker"},id: "edit_form message-#{message.id}", class: "edit_form" %>
+						<%= text_area_tag :content, message.content ,data: {behavior: "edit_speaker"},id: "message-#{message.id}", class: "edit_form" %>
 						<div class="submit-edit-box">
 							<%= submit_tag "送信", class: "edit_submit", id: "send-edit-submit-#{message.id}" %>
 						</div>
@@ -61,7 +61,7 @@
 			<%= content_tag(:div, iframe, class: "youtube-container2") %>
 		<% end %>
 		<% if message.image? %>
-			<%= image_tag message.image.url %>
+			<%= image_tag message.image.url, class: "message-image" %>
 		<% end %>
 
 	</div>
@@ -75,10 +75,13 @@
 		if(click == true){
 			$('#edit_form_box_<%= message.id %>').css('display', 'block');
 			$('#message-content-<%= message.id %>').css('display', 'none');
+			$('.message-image').css('display', 'none');
 			click = false
 		}else{
 			$('#edit_form_box_<%= message.id %>').css('display', 'none');
 			$('#message-content-<%= message.id %>').css('display', 'block');
+			$('.message-image').css('display', 'block');
+			
 			click = true
 		}
 	});

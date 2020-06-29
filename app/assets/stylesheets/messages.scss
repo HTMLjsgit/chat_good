@@ -16,8 +16,10 @@
 	background-color:#FF725C;
 	transition: 0.2s background-color ease;
 }
-.edit_submit{
-	
+.edit_submit:hover{
+    transition: 0.3s background-color ease;
+    background-color: #009BEF;
+  
 }
 .deleteBtnImage{
 

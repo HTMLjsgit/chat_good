@@ -21,8 +21,6 @@ class EditChannel < ApplicationCable::Channel
     if data['message'].nil?
       return false
     end
-    p "-------------------------" + data['message'].to_s
-    p "--------------------------------------" + data['id']
     now = Time.now
     secondsAgo = now - 10
     if current_user.present?
@@ -34,10 +32,10 @@ class EditChannel < ApplicationCable::Channel
         return false
       end
     end
-    ng_word_params.each do |ng|
-      if current_user.present?
-        if Usermanager.where(user_id: current_user.id, room_ban: false, room_id: params['room'].to_s, login: true, ng_word: true).exists?
-          unless data['message'].nil?
+    if current_user.present?
+      if Usermanager.where(user_id: current_user.id, room_ban: false, room_id: params['room'].to_s, login: true, ng_word: true).exists?
+        unless data['message'].nil?
+          ng_word_params.each do |ng|
             if data['message'].include?(ng)
               return false
             end

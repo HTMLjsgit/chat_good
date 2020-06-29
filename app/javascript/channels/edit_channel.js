@@ -40,20 +40,25 @@ $(function(){
 
         }
       }
-	$(document).on('keypress click submit','[data-behavior~=edit_speaker]', function(event){
-		if(event.shiftKey){
-	      if(event.keyCode === 13){
-	      	if(event.target.value == '' || event.target.id == ''){
+	$(document).on('click','[data-behavior~=edit_speaker]', function(event){
+		$('#send-edit-submit-' + event.target.id.replace(/message-/, "")).on('click', function(ee){
+			if(event.target.value == '' || event.target.id == ''){
 				return false;
 			}
-			chat.edit(event.target.id.replace(/edit_form/, ""), event.target.value);
-			return event.preventDefault();
-		  }
-		}
-		$('#send-edit-submit-' + event.target.id.replace(/edit_form message-/, "")).click(function(){
-			chat.edit(event.target.id.replace(/edit_form/, ""), event.target.value);
-			return event.preventDefault();
+			chat.edit(event.target.id, event.target.value);
+				// return event.preventDefault();
 		});
+	});
+	$(document).on('keypress', '[data-behavior~=edit_speaker]', function(event){
+	  if(event.shiftKey){
+	    if(event.keyCode === 13){
+	      if(event.target.value == '' || event.target.id == ''){
+			return false;
+		  }
+			chat.edit(event.target.id.replace(/edit_form/, ""), event.target.value);
+			return event.preventDefault();
+		}
+	  }
 	});
 
 });
