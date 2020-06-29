@@ -11,7 +11,6 @@ import consumer from "./consumer"
 
         received(data) {
           // 0.01秒たったら下に移動。
-          data['flash']
           setTimeout(function(){
             var submitscroll = $('#bottomGO').offset().top;
             $('html, body').scrollTop(submitscroll);

@@ -32,13 +32,14 @@
 	color: #fff;
 }
 .edit_form{
-	width: 50em;
+	width: 100%;
 	height: 5em;
 	background-color: #6C6C6C;
     border: 1px solid #d4d4d4;
     color: #fff;
+    font-size: 13px;
 	font-family: -apple-system, BlinkMacSystemFont, Roboto, "Segoe UI semibold", "Helvetica Neue", HelveticaNeue, YuGothic, "Yu Gothic", "Segoe UI", Verdana, Meiryo, sans-serif;
-	font-weight: bold;
+	/*font-weight: bold;*/
 	resize: none;
 	border-radius: 5px;
 
@@ -403,8 +404,21 @@
 	text-align: center;
 	max-width: 100%;
 }
-#imageSubmit{
-	
+.edit_submit{
+	outline: none;
+    border-style: none;
+    font-weight: bold;
+    background-color: #0989CF;
+    color: #fff;
+    border: 1px solid #ccc;
+    font-family: "游ゴシック", sans-serif;
+    border-radius: 10px;
+    width: 70px;
+    height: 30px;
+}
+.submit-edit-box{
+	display: flex;
+	justify-content:space-around; 
 }
 @media screen and (max-width: 1200px){
 	.formchat{

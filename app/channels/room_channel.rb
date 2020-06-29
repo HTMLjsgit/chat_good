@@ -15,6 +15,7 @@ class RoomChannel < ApplicationCable::Channel
         stream_from "room_channel_#{params['room'].to_s}"
       end
     end
+    
   end
 
   def unsubscribed

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_28_042654) do
+ActiveRecord::Schema.define(version: 2020_06_28_050828) do
 
   create_table "action_text_rich_texts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
@@ -57,19 +57,7 @@ ActiveRecord::Schema.define(version: 2020_06_28_042654) do
     t.string "url"
     t.integer "usermanager_id"
     t.boolean "edit_right", default: false, null: false
-  end
-
-  create_table "notifications", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.integer "recipient_id"
-    t.string "action"
-    t.string "notifiable_type"
-    t.integer "notifiable_id"
-    t.integer "message_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.boolean "checked", default: false, null: false
-    t.index ["user_id"], name: "index_notifications_on_user_id"
+    t.boolean "message_reading", default: false, null: false
   end
 
   create_table "passwordmanagers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -77,6 +65,15 @@ ActiveRecord::Schema.define(version: 2020_06_28_042654) do
     t.integer "room_id"
     t.string "ip_id"
     t.string "password"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "reading_messages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.boolean "read", default: false, null: false
+    t.integer "message_id", default: 0, null: false
+    t.integer "user_id", default: 0, null: false
+    t.integer "room_id", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -127,5 +124,4 @@ ActiveRecord::Schema.define(version: 2020_06_28_042654) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "notifications", "users"
 end

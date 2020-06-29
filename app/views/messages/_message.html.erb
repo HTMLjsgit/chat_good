@@ -38,8 +38,10 @@
 								<%= f.submit "画像をアップロード" %>
 							<% end %>
 						</div>
-						<%= text_area_tag :content, message.content ,data: {behavior: "edit_speaker"},id: "message-#{message.id} form-message-#{message.id}", class: "edit_form" %>
-						<%= submit_tag "送信", class: "edit_submit", id: "send-edit-submit-#{message.id}" %>
+						<%= text_area_tag :content, message.content ,data: {behavior: "edit_speaker"},id: "edit_form message-#{message.id}", class: "edit_form" %>
+						<div class="submit-edit-box">
+							<%= submit_tag "送信", class: "edit_submit", id: "send-edit-submit-#{message.id}" %>
+						</div>
 					</div>
 				<% end %>
 			<% end %>
@@ -80,4 +82,5 @@
 			click = true
 		}
 	});
+
 </script>

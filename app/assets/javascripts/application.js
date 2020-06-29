@@ -22,7 +22,6 @@ $(function(){
 		if(click == true){
 			$('.searchformBox .formsearchGOBOx').fadeIn('slow');
 			click = false;
-			console.log(click);
 		}else if(click == false){
 			$('.searchformBox .formsearchGOBOx').fadeOut('slow');
 			click = true;

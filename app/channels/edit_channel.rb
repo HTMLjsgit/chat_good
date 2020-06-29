@@ -21,6 +21,8 @@ class EditChannel < ApplicationCable::Channel
     if data['message'].nil?
       return false
     end
+    p "-------------------------" + data['message'].to_s
+    p "--------------------------------------" + data['id']
     now = Time.now
     secondsAgo = now - 10
     if current_user.present?
