@@ -5,3 +5,4 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Room.create!(title: "初回ルーム", id: "40938u204u32ioh34irhweiufh980r32u04", public: true)
