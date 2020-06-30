@@ -46,7 +46,7 @@ $(function(){
 				return false;
 			}
 			chat.edit(event.target.id, event.target.value);
-				// return event.preventDefault();
+			return event.preventDefault();
 		});
 	});
 	$(document).on('keypress', '[data-behavior~=edit_speaker]', function(event){

@@ -24,7 +24,11 @@
 			<div id="bottomGO"></div>
 		<% end %>
 	</div>
-	<div class="sidebarBox">
+	<div class="edit_smart_phone_button">
+		<%= image_tag "矢印ボタン_左2.png", class: "left_button_png" %>
+		<%= image_tag "矢印ボタン_右2.png", class: "right_button_png" %>
+	</div>
+	<div class="smart_phone_sidebarBox">
 		<div class="messageitiranBox">
 			<%= link_to "一番最新のメッセージを見る⇃","",id: "messagenewLink" %>
 		</div>
@@ -42,21 +46,21 @@
 				<% if @room.user_id != current_user.id %>
 					<% if usermanager.user_id == current_user.id %>
 						<% if usermanager.login == true %>
-							<%= link_to "退会", room_usermanager_path(@room.id, usermanager.id), method: :delete, class: "kyanseruAccount" %>
+							<%= link_to "ルームを退会(※メッセージは削除されません。)", room_usermanager_path(@room.id, usermanager.id), method: :delete, class: "kyanseruAccount" %>
 						<% end %>
 					<% end %>
 				<% end %>
 			<% else %>
 				<% if usermanager.ip_id == request.ip %>
 					<% if usermanager.login == false %>
-						<%= link_to "退会", room_usermanager_path(@room.id,usermanager.id), method: :delete, class: "kyanseruAccount" %>
+						<%= link_to "ルームを退会(※メッセージは削除されません。)", room_usermanager_path(@room.id,usermanager.id), method: :delete, class: "kyanseruAccount" %>
 					<% end %>
 				<% end %>
 			<% end %>
 		<% end %>
 		<% if user_signed_in? %>
 			<% if current_user.id == @room.user_id %>
-				<%= link_to "編集", edit_room_path(@room) %>
+				<%= link_to "ルームを編集", edit_room_path(@room), class: "room_edit_link" %>
 			<% end %>
 		<% end %>
 	</div>
@@ -152,4 +156,20 @@
 
  	}, 100);
  });
+ var click = true;
+
+ $('.edit_smart_phone_button').click(function(){
+ 	if(click == true){
+ 		$('.smart_phone_sidebarBox').css('right', '-100%');
+ 		$('.left_button_png').css('display', 'none');
+ 		$('.right_button_png').css('display', 'block')
+ 		click = false;
+ 	}else if(click == false){
+ 		$('.smart_phone_sidebarBox').css('right', '10%');
+ 		$('.right_button_png').css('display', 'none');
+ 		$('.left_button_png').css('display', 'block');
+ 		click = true;
+ 	}
+ });
+
 </script>

@@ -404,6 +404,9 @@
 	text-align: center;
 	max-width: 100%;
 }
+.room_edit_link{
+	color: #ffffff;
+}
 .edit_submit{
 	outline: none;
     border-style: none;
@@ -415,11 +418,40 @@
     border-radius: 10px;
     width: 70px;
     height: 30px;
+    margin-top: 20px;
 }
 .submit-edit-box{
 	display: flex;
 	justify-content:space-around; 
 }
+.smart_phone_sidebarBox{
+	position: -webkit-sticky;
+	position: fixed;
+	right: 10%;
+	display: block;
+	z-index: 11;
+	transition: 1s;
+
+}
+.edit_smart_phone_button{
+	display: block;
+	position: fixed;
+	right: 5%;
+	background-color: #eee;
+	border-radius: 50%;
+	border: none;
+	width: 40px;
+	height: 40px;
+	cursor: pointer;
+}
+.edit_smart_phone_button img{
+	width: 40px;
+	height: 40px;
+}
+.right_button_png{
+	display: none;
+}
+
 @media screen and (max-width: 1200px){
 	.formchat{
 		max-width: 100%;
@@ -444,6 +476,7 @@
 	.imguploader{
 		margin-left: 10px;
 	}
+
 	.edit_submit{
 		text-align: center;
 		margin-bottom: 30px;
