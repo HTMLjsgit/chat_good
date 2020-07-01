@@ -1,7 +1,6 @@
 class ApplicationController < ActionController::Base
 	protect_from_forgery
 	# ApplicationController.render 'messages/message'
-	before_action :set_current_user
 	before_action :search
 
 	before_action :configure_permitted_parameters, if: :devise_controller?

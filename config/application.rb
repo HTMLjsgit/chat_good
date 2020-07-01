@@ -6,7 +6,15 @@ require "action_mailer/railtie"
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
-
+if defined?(ActionMailer)
+  class Devise::Mailer < Devise.parent_mailer.constantize
+    # whatever was already there
+  end
+else
+  if Rails::Version::MAJOR >= "6"
+    Rails.autoloaders.main.ignore("#{__dir__}/relative/path/to/devise/mailer.rb")
+  end
+end
 module Chatapp
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
