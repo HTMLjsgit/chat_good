@@ -15,12 +15,6 @@ class ApplicationController < ActionController::Base
 	   renderer.render(*args)
 	end
 
-    def set_current_user
-    	if current_user.present?
-      		User.current = current_user
-      	end
-    end
-
 	def search
 		@q = Room.ransack(params[:q])
 		@rooms = @q.result(distinct: true).where(public: true).order(created_at: :desc)

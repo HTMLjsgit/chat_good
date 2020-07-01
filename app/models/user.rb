@@ -7,13 +7,6 @@ class User < ApplicationRecord
   has_many :rooms, dependent: :destroy
   has_many :usermanagers, dependent: :destroy
   has_many :passwordmanagers, dependent: :destroy
-  def self.current
-    Thread.current[:current_user]
-  end
-
-  def self.current=(usr)
-    Thread.current[:current_user] = usr
-  end
   protected
   	def self.find_for_google(auth)
   		user = User.where(uid: auth.uid, provider: auth.provider).first
