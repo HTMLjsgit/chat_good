@@ -12,9 +12,10 @@ Rails.application.routes.draw do
     resources :usermanagers
   end
   resources :messages
+
+  resources :users, only: [:show, :edit, :update]
   get '*path', to: 'application#render_404'
   get '*path', to: 'application#render_500'
-  resources :users, only: [:show, :edit, :update]
   # get 'rooms/:id/usermanagers/:id/messages' => 'rooms#usermessages', as: "room_user_messages"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
