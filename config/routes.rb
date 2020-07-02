@@ -16,6 +16,8 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :edit, :update]
   get '*path', to: 'application#render_404'
   get '*path', to: 'application#render_500'
+  # get '*path'は　最後の行じゃないと、バグが起こるから注意しよう
+  
   # get 'rooms/:id/usermanagers/:id/messages' => 'rooms#usermessages', as: "room_user_messages"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
