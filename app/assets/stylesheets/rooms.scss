@@ -13,6 +13,45 @@
 	display: flex;
 	justify-content: space-between;
 }
+.box-error-flex{
+	margin-top: 50px;
+}
+.not_found_page{
+	font-size: 30px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+.sorry_page_is_not_found{
+	font-size: 17px;
+	font-weight: bold;
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+.used-to-think-that{
+	padding-bottom: 10px;
+}
+.link-mistake{
+	padding-bottom: 5px;
+}
+.link-is-null{
+	padding-bottom: 5px;
+}
+.errorCodeParameter{
+	font-size: 20px;
+	color: red;
+	padding-bottom: 5px;
+	border: 2px solid #d0d0d0d0;
+	text-align: center;
+	line-height: 50px;
+}
+.error-box{
+	margin: 0 auto;
+	padding-left: 30px;
+	max-width: 900px;
+	background-color: #eeeeee;
+	border-radius: 10px;
+	padding-bottom: 50px;
+}
 .roomBox:hover{
 	background-color: #939393;
 	transition: 0.3s background-color ease;
@@ -274,9 +313,10 @@
 	color: #ffffff; 
 
 }
-.messageitiranBox{
+#messagenewLink{
 	line-height: 50px;
-
+	z-index: 8;
+	position: relative;
 }
 #messagenewLink{
 	color: #fff;
@@ -427,11 +467,14 @@
 .smart_phone_sidebarBox{
 	position: -webkit-sticky;
 	position: fixed;
-	right: 10%;
+	right: 15%;
 	display: block;
-	z-index: 11;
+	z-index: 3;
 	transition: 1s;
-
+	border-radius: 10px;
+	background-color:#00bfff;
+	opacity: 0.7;
+	padding-bottom: 50px;
 }
 .edit_smart_phone_button{
 	display: block;
@@ -443,6 +486,7 @@
 	width: 40px;
 	height: 40px;
 	cursor: pointer;
+	z-index: 9;
 }
 .edit_smart_phone_button img{
 	width: 40px;
@@ -476,7 +520,9 @@
 	.imguploader{
 		margin-left: 10px;
 	}
-
+	.not_found_page{
+		font-size: 25px;
+	}
 	.edit_submit{
 		text-align: center;
 		margin-bottom: 30px;

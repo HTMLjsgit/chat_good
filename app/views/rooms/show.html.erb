@@ -46,14 +46,14 @@
 				<% if @room.user_id != current_user.id %>
 					<% if usermanager.user_id == current_user.id %>
 						<% if usermanager.login == true %>
-							<%= link_to "ルームを退会(※メッセージは削除されません。)", room_usermanager_path(@room.id, usermanager.id), method: :delete, class: "kyanseruAccount" %>
+							<%= link_to "ルームを退会", room_usermanager_path(@room.id, usermanager.id), method: :delete,data: {confirm: "本当にルームを退会してもよろしいですか？(投稿されたメッセージは削除されません。)"}, class: "kyanseruAccount" %>
 						<% end %>
 					<% end %>
 				<% end %>
 			<% else %>
 				<% if usermanager.ip_id == request.ip %>
 					<% if usermanager.login == false %>
-						<%= link_to "ルームを退会(※メッセージは削除されません。)", room_usermanager_path(@room.id,usermanager.id), method: :delete, class: "kyanseruAccount" %>
+						<%= link_to "ルームを退会", room_usermanager_path(@room.id, usermanager.id), method: :delete,data: {confirm: "本当にルームを退会してもよろしいですか？(投稿されたメッセージは削除されません。)"}, class: "kyanseruAccount" %>
 					<% end %>
 				<% end %>
 			<% end %>
@@ -165,7 +165,7 @@
  		$('.right_button_png').css('display', 'block')
  		click = false;
  	}else if(click == false){
- 		$('.smart_phone_sidebarBox').css('right', '10%');
+ 		$('.smart_phone_sidebarBox').css('right', '15%');
  		$('.right_button_png').css('display', 'none');
  		$('.left_button_png').css('display', 'block');
  		click = true;
