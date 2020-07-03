@@ -99,6 +99,7 @@
 
 .kyanseruAccount{
 	color: #fff;
+	padding-top: 20px;
 }
 .text_areachat{
 	border-radius: 10px;
@@ -338,6 +339,10 @@
 .requestUrl{
 	display: none;
 	color: #fff;
+	max-width: 200px;
+    word-wrap: break-word;
+   	padding-top: 10px;
+    padding-bottom: 10px;
 }
 .message{
 	padding-bottom: 20px;
@@ -473,7 +478,9 @@
 	transition: 1s;
 	border-radius: 10px;
 	background-color:#00bfff;
-	opacity: 0.7;
+	opacity: 0.9;
+	padding-right: 20px;
+	padding-left: 20px;
 	padding-bottom: 50px;
 }
 .edit_smart_phone_button{
@@ -519,6 +526,9 @@
 @media screen and (max-width: 480px){
 	.imguploader{
 		margin-left: 10px;
+	}
+	.requestUrl{
+
 	}
 	.not_found_page{
 		font-size: 25px;

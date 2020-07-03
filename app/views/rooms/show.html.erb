@@ -46,14 +46,18 @@
 				<% if @room.user_id != current_user.id %>
 					<% if usermanager.user_id == current_user.id %>
 						<% if usermanager.login == true %>
-							<%= link_to "ルームを退会", room_usermanager_path(@room.id, usermanager.id), method: :delete,data: {confirm: "本当にルームを退会してもよろしいですか？(投稿されたメッセージは削除されません。)"}, class: "kyanseruAccount" %>
+							<p class="kyanseruAccount">
+								<%= link_to "ルームを退会", room_usermanager_path(@room.id, usermanager.id), method: :delete,data: {confirm: "本当にルームを退会してもよろしいですか？(投稿されたメッセージは削除されません。)"}, class: "kyanseruAccount" %>
+							</p>
 						<% end %>
 					<% end %>
 				<% end %>
 			<% else %>
 				<% if usermanager.ip_id == request.ip %>
 					<% if usermanager.login == false %>
-						<%= link_to "ルームを退会", room_usermanager_path(@room.id, usermanager.id), method: :delete,data: {confirm: "本当にルームを退会してもよろしいですか？(投稿されたメッセージは削除されません。)"}, class: "kyanseruAccount" %>
+						<p class="kyanseruAccount">
+							<%= link_to "ルームを退会", room_usermanager_path(@room.id, usermanager.id), method: :delete,data: {confirm: "本当にルームを退会してもよろしいですか？(投稿されたメッセージは削除されません。)"}, class: "kyanseruAccount" %>
+						</p>
 					<% end %>
 				<% end %>
 			<% end %>
@@ -108,8 +112,15 @@
     $('html, body').animate({scrollTop:submitscroll});
     return e.preventDefault();
  });
+ var kyo_click = false;
  $('#kyouyu').click(function(){
- 	$('.requestUrl').fadeIn('slow');
+ 	if(kyo_click == false){
+ 		$('.requestUrl').fadeIn('slow');
+ 		kyo_click = true;
+ 	}else{
+ 		$('.requestUrl').fadeOut('slow');
+ 		kyo_click = false;
+ 	}
  })
  $('#password').click(function(){
  	$('.passwordhyouzi').fadeIn('slow');
