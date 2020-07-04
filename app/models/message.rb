@@ -9,6 +9,7 @@ class Message < ApplicationRecord
 
 	after_create_commit { MessageBroadcastJob.perform_later self}
 	after_create_commit { MessageAdminBroadcastJob.perform_later self}
+	after_destroy_commit  { DeleteMessageJob.perform_later self }
 	# after_update_commit { EditBroadcastJob.perform_later self }
 	# has_rich_text :content
 	validates :content, length: {maximum: 1000 }

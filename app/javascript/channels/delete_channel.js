@@ -1,7 +1,7 @@
 import consumer from "./consumer"
 $(function(){
 
-	const chat = consumer.subscriptions.create({channel: "DeleteChannel", room: $("#messages").data('room_id') }, {
+	const chat = consumer.subscriptions.create({channel: "DeleteChannel", room: $("#messages").data('room_id'), current_user: $('#messages').data('current_user') }, {
 	  connected() {
 	    // Called when the subscription is ready for use on the server
 	  },
@@ -12,8 +12,11 @@ $(function(){
 
 	  received(data) {
 	    // Called when there's incoming data on the websocket for this channel
-	    $("#message-" + data['id']).remove()
-
+	    if($('#messages').data('current_user') == data['user_id']){
+	    	$("#message-" + data['id']).remove()
+	    }else{
+	    	return false;
+	    }
 	  },
 	  delete: function(id){
 	  	return this.perform('delete', {
