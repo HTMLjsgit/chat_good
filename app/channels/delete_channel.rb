@@ -8,7 +8,6 @@ class DeleteChannel < ApplicationCable::Channel
   end
 
   def delete(data)
-  	ActionCable.server.broadcast 'delete_channel', id: data['id'], room_id: params['room'], current_user: current_user.id
     if current_user.nil?
       return false
     end
@@ -26,5 +25,6 @@ class DeleteChannel < ApplicationCable::Channel
     if message.present?
   	 message.destroy!
     end
+    ActionCable.server.broadcast 'delete_channel', id: data['id'], room_id: params['room'], current_user: current_user.id, user_id: message.user_id
   end
 end
