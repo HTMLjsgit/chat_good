@@ -21,6 +21,20 @@
 	padding-top: 20px;
 	padding-bottom: 20px;
 }
+.room-delete-usermanager-box{
+	display: flex;
+	justify-content: center;	
+	margin-top: 20px;
+	border-radius: 10px;
+	border: 2px solid #fff;
+	background-color: #7DACF1;
+	color: #fff;
+	cursor: pointer;
+}
+.room-delete-usermanager-box:hover{
+	transition: 0.3s background-color ease;
+    background-color: #009BEF;
+}
 .sorry_page_is_not_found{
 	font-size: 17px;
 	font-weight: bold;
@@ -99,14 +113,13 @@
 
 .kyanseruAccount{
 	color: #fff;
-	padding-top: 30px;
-	padding-bottom: 20px;
 	text-decoration: none;
 	/*background-color: #fff;*/
 }
 .room-channsel-text{
 	text-align: center;
-	padding-top: 20px;
+	padding-top: 10px;
+	padding-bottom: 10px;
 }
 .text_areachat{
 	border-radius: 10px;
@@ -596,7 +609,7 @@
 .smart_phone_sidebarBox{
 	position: -webkit-sticky;
 	position: fixed;
-	right: 8%;
+	right: -150%;
 	display: block;
 	z-index: 3;
 	transition: 1s;
@@ -607,6 +620,7 @@
 	padding-left: 20px;
 	padding-bottom: 50px;
 }
+
 .edit_smart_phone_button{
 	display: block;
 	position: fixed;
@@ -626,7 +640,10 @@
 .right_button_png{
 	display: none;
 }
-
+/*.left_button_png{
+	display: none;
+}
+*/
 @media screen and (max-width: 1200px){
 	.formchat{
 		max-width: 100%;

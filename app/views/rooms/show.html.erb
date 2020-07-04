@@ -49,19 +49,25 @@
 				<% if @room.user_id != current_user.id %>
 					<% if usermanager.user_id == current_user.id %>
 						<% if usermanager.login == true %>
-							<p class="room-channsel-text">
-								<%= link_to "ルームを退会", room_usermanager_path(@room.id, usermanager.id), method: :delete,data: {confirm: "本当にルームを退会してもよろしいですか？(投稿されたメッセージは削除されません。)"}, class: "kyanseruAccount" %>
-							</p>
-							<%= image_tag "" %>
+							<div class="room-delete-usermanager-box">
+								<h1 class="room-channsel-text">
+									<%= link_to "ルームを退会", room_usermanager_path(@room.id, usermanager.id), method: :delete,data: {confirm: "本当にルームを退会してもよろしいですか？(投稿されたメッセージは削除されません。)"}, class: "kyanseruAccount" %>
+								</h1>
+								<%= image_tag "人物シルエット_マイナス.png" %>
+							</div>
 						<% end %>
 					<% end %>
 				<% end %>
 			<% else %>
 				<% if usermanager.ip_id == request.ip %>
 					<% if usermanager.login == false %>
-						<p class="room-channsel-text">
-							<%= link_to "ルームを退会", room_usermanager_path(@room.id, usermanager.id), method: :delete,data: {confirm: "本当にルームを退会してもよろしいですか？(投稿されたメッセージは削除されません。)"}, class: "kyanseruAccount" %>
-						</p>
+						<div class="room-delete-usermanager-box">
+							<h1 class="room-channsel-text">
+								<%= link_to "ルームを退会", room_usermanager_path(@room.id, usermanager.id), method: :delete,data: {confirm: "本当にルームを退会してもよろしいですか？(投稿されたメッセージは削除されません。)"}, class: "kyanseruAccount" %>
+							</h1>
+							<%= image_tag "人物シルエット_マイナス.png" %>
+
+						</div>
 					<% end %>
 				<% end %>
 			<% end %>
@@ -186,18 +192,18 @@
 
  	}, 100);
  });
- var click = true;
+ var click = false;
 
  $('.edit_smart_phone_button').click(function(){
  	if(click == true){
- 		$('.smart_phone_sidebarBox').css('right', '-200%');
- 		$('.left_button_png').css('display', 'none');
- 		$('.right_button_png').css('display', 'block')
+ 		$('.smart_phone_sidebarBox').css('right', '-150%');
+ 		$('.left_button_png').css('display', 'block');
+ 		$('.right_button_png').css('display', 'none')
  		click = false;
  	}else if(click == false){
  		$('.smart_phone_sidebarBox').css('right', '8%');
- 		$('.right_button_png').css('display', 'none');
- 		$('.left_button_png').css('display', 'block');
+ 		$('.right_button_png').css('display', 'block');
+ 		$('.left_button_png').css('display', 'none');
  		click = true;
  	}
  });
