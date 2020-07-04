@@ -29,13 +29,16 @@
 		<%= image_tag "矢印ボタン_右2.png", class: "right_button_png" %>
 	</div>
 	<div class="smart_phone_sidebarBox">
-		<div class="messageitiranBox">
-			<%= link_to "一番最新のメッセージを見る⇃","",id: "messagenewLink" %>
+		<%= link_to room_usermanagers_path(@room), class: "room-user-tags-a" do %>
+			<div class="roomuserLinkBox">
+				<h1 class="in-room-user-all-text">ルームに入ってるユーザー一覧</h1>
+				<%= image_tag "名刺・会員証のアイコン素材.png", class: "icon_png_user_all" %>
+			</div>
+		<% end %>
+		<div class="allurlgo-box">
+			<h1 class="room-share-button-text">ルームを共有する</h1>
+			<%= image_tag "共有アイコン2.png" %>
 		</div>
-		<div class="roomuserLinkBox">
-			<%= link_to "ルームに入ってるユーザー 一覧",room_usermanagers_path(@room) %>
-		</div>
-		<button id="kyouyu">共有URL</button>
 		<div class="requestUrl"><%= request.url %></div>
 		<% unless @room.public %>
 			<button id="password">パスワード</button>
@@ -46,16 +49,17 @@
 				<% if @room.user_id != current_user.id %>
 					<% if usermanager.user_id == current_user.id %>
 						<% if usermanager.login == true %>
-							<p class="kyanseruAccount">
+							<p class="room-channsel-text">
 								<%= link_to "ルームを退会", room_usermanager_path(@room.id, usermanager.id), method: :delete,data: {confirm: "本当にルームを退会してもよろしいですか？(投稿されたメッセージは削除されません。)"}, class: "kyanseruAccount" %>
 							</p>
+							<%= image_tag "" %>
 						<% end %>
 					<% end %>
 				<% end %>
 			<% else %>
 				<% if usermanager.ip_id == request.ip %>
 					<% if usermanager.login == false %>
-						<p class="kyanseruAccount">
+						<p class="room-channsel-text">
 							<%= link_to "ルームを退会", room_usermanager_path(@room.id, usermanager.id), method: :delete,data: {confirm: "本当にルームを退会してもよろしいですか？(投稿されたメッセージは削除されません。)"}, class: "kyanseruAccount" %>
 						</p>
 					<% end %>
@@ -64,9 +68,23 @@
 		<% end %>
 		<% if user_signed_in? %>
 			<% if current_user.id == @room.user_id %>
-				<%= link_to "ルームを編集", edit_room_path(@room), class: "room_edit_link" %>
+				<%= link_to  edit_room_path(@room), class: "room_edit_link" do %>
+					<div class="room-edit-box-flex">
+						<p class="edit-room-text">
+							ルームを編集
+						</p>
+						<%= image_tag "設定の歯車アイコン　その2.png", id: "setting-img-room" %>
+					</div>
+				<% end %>
 			<% end %>
 		<% end %>
+		<%= link_to "", id: "messagenewLink"  do %>
+			<div class="messageitiranBox">
+				<h5 class="new-message-link-text">最新のメッセージ</h5>
+				<%= image_tag "下向きの矢印のアイコン素材.png",class: "down-arrow-room-png" %>
+			</div>
+		<% end %>
+
 	</div>
 </div>
 <div class="operationBox">
@@ -113,7 +131,7 @@
     return e.preventDefault();
  });
  var kyo_click = false;
- $('#kyouyu').click(function(){
+ $('.allurlgo-box').click(function(){
  	if(kyo_click == false){
  		$('.requestUrl').fadeIn('slow');
  		kyo_click = true;
@@ -171,12 +189,12 @@
 
  $('.edit_smart_phone_button').click(function(){
  	if(click == true){
- 		$('.smart_phone_sidebarBox').css('right', '-100%');
+ 		$('.smart_phone_sidebarBox').css('right', '-200%');
  		$('.left_button_png').css('display', 'none');
  		$('.right_button_png').css('display', 'block')
  		click = false;
  	}else if(click == false){
- 		$('.smart_phone_sidebarBox').css('right', '15%');
+ 		$('.smart_phone_sidebarBox').css('right', '8%');
  		$('.right_button_png').css('display', 'none');
  		$('.left_button_png').css('display', 'block');
  		click = true;

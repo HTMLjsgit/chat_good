@@ -99,6 +99,13 @@
 
 .kyanseruAccount{
 	color: #fff;
+	padding-top: 30px;
+	padding-bottom: 20px;
+	text-decoration: none;
+	/*background-color: #fff;*/
+}
+.room-channsel-text{
+	text-align: center;
 	padding-top: 20px;
 }
 .text_areachat{
@@ -315,21 +322,82 @@
 
 }
 #messagenewLink{
-	line-height: 50px;
-	z-index: 8;
-	position: relative;
-}
-#messagenewLink{
-	color: #fff;
 	text-decoration: none;
-	border-radius: 15px;
-	border: 1px solid #fff;
+}
+.down-arrow-room-png{
+	padding-left: 10px;
+
+}
+.icon_png_user_all{
+	padding-right: 10px;
+}
+.new-message-link-text{
+	color: #fff;
+	padding-left: 10px;
+}
+.messageitiranBox{
+	margin-top: 20px;
+	/*text-align: center;*/
+	display: flex;
+	justify-content: center;
+	border-radius: 10px;
+	border: 2px solid #fff;
+	background-color: #7DACF1;
+}
+.messageitiranBox:hover{
+		transition:background-color ease 0.3s ;
+	background-color: #579AFB;
+}
+.new-message-link-text{
+	padding-top: 10px;
+}
+.in-room-user-all-text{
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-right: 10px;
+	color: #fff;
+}
+.room-user-tags-a{
+	text-decoration: none;
 }
 .roomuserLinkBox{
-	line-height: 50px;
+	padding-left: 20px;
+	/*padding-top: 10px;*/
+	display: flex;
+	border-radius: 10px;
+	border: 2px solid #fff;
+	background-color: #7DACF1;
+	margin-top: 20px;
+}
+.roomuserLinkBox:hover{
+	transition:background-color ease 0.3s ;
+	background-color: #579AFB;
+}
+#kyouyu{
+	margin-top: 10px;
+	text-align: center;
+
+}
+.allurlgo-box{
+	display: flex;
+	justify-content: center;	
+	margin-top: 20px;
+	border-radius: 10px;
+	border: 2px solid #fff;
+	background-color: #7DACF1;
+	color: #fff;
+	cursor: pointer;
+}
+.allurlgo-box:hover{
+	transition:background-color ease 0.3s ;
+	background-color: #579AFB;
+}
+.room-share-button-text{
+	padding: 10px;
 }
 .roomuserLinkBox a{
 	color: #fff;
+	text-decoration: none;
 }
 .roomshowBox{
 	transform: translateY(-300px);
@@ -338,11 +406,15 @@
 }
 .requestUrl{
 	display: none;
-	color: #fff;
-	max-width: 200px;
+	color: #000000;
+	max-width: 300px;
     word-wrap: break-word;
    	padding-top: 10px;
     padding-bottom: 10px;
+    border: 1px solid #fff;
+    background-color: #eee;
+    border-radius: 5px;
+    margin-top: 10px;
 }
 .message{
 	padding-bottom: 20px;
@@ -451,6 +523,30 @@
 }
 .room_edit_link{
 	color: #ffffff;
+	text-decoration: none;
+
+}
+.room-edit-box-flex{
+	display: flex;
+	justify-content: center;
+	border: 2px solid #fff;
+	border-radius: 15px;
+	margin-top: 20px;
+	background-color: #7DACF1;
+}
+.room-edit-box-flex:hover{
+	transition:background-color ease 0.3s ;
+	background-color: #579AFB;
+}
+#setting-img-room{
+	padding-top: 3px;
+	padding-bottom: 3px;
+}
+.edit-room-text{
+	text-align: center;
+	padding-top: 8px;
+	padding-right: 10px;
+	font-weight: bold;
 }
 .edit_submit{
 	outline: none;
@@ -472,7 +568,7 @@
 .smart_phone_sidebarBox{
 	position: -webkit-sticky;
 	position: fixed;
-	right: 15%;
+	right: 8%;
 	display: block;
 	z-index: 3;
 	transition: 1s;
