@@ -160,13 +160,14 @@ class RoomsController < ApplicationController
 
   def destroy
   	@room.destroy
-  	redirect_to room_path(@room)
+  	redirect_to rooms_path
   end
 
   def usermessages
     @user = User.find params[:id]
     @messages = @user.messages
   end
+
 
   private
   def room_find

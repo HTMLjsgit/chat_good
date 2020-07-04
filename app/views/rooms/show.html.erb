@@ -78,13 +78,14 @@
 				<% end %>
 			<% end %>
 		<% end %>
-		<%= link_to "", id: "messagenewLink"  do %>
-			<div class="messageitiranBox">
-				<h5 class="new-message-link-text">最新のメッセージ</h5>
-				<%= image_tag "下向きの矢印のアイコン素材.png",class: "down-arrow-room-png" %>
-			</div>
-		<% end %>
-
+		<div>
+			<%= link_to "", id: "messagenewLink"  do %>
+				<div class="messageitiranBox">
+					<h5 class="new-message-link-text">最新のメッセージ</h5>
+					<%= image_tag "下向きの矢印のアイコン素材.png",class: "down-arrow-room-png" %>
+				</div>
+			<% end %>
+		</div>
 	</div>
 </div>
 <div class="operationBox">
