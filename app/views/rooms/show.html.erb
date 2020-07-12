@@ -13,11 +13,6 @@
 			<% end %>
 			<div id="bottomGO"></div>
 		<% else %>
-			<% if user_signed_in? %>
-				<% if current_user.id == @room.user_id %>
-					<%= link_to "パスワードを設定", room_password_path(@room) %>
-				<% end %>
-			<% end %>
 			<div id="messages" data-room_id="<%= @room.id %>">
 				<%= render @messages %>
 			</div>
@@ -35,14 +30,27 @@
 				<%= image_tag "名刺・会員証のアイコン素材.png", class: "icon_png_user_all" %>
 			</div>
 		<% end %>
-		<div class="allurlgo-box">
+		<div class="allurlgo-box" id="room-share-button">
 			<h1 class="room-share-button-text">ルームを共有する</h1>
 			<%= image_tag "共有アイコン2.png" %>
 		</div>
 		<div class="requestUrl"><%= request.url %></div>
 		<% unless @room.public %>
-			<button id="password">パスワード</button>
-			<div class="passwordhyouzi">パスワード: <%= @room.password %></div>
+			<div id="password-button" class="allurlgo-box">
+				<h1 class="room-share-button-text">パスワード</h1>
+				<%= image_tag "鍵のアイコン8.png",class: "icon_png_user_all" %>
+			</div>
+			<div class="password-request-share">パスワード: <%= @room.password %></div>
+		<% end %>
+		<% if user_signed_in? %>
+			<% if current_user.id == @room.user_id %>
+				<%= link_to room_password_path(@room), class: "room-user-tags-a" do %>
+					<div id="password-button" class="allurlgo-box">
+						<h1 class="room-share-button-text">パスワードを編集</h1>
+						<%= image_tag "鍵のオープンアイコン素材.png" %>
+					</div>
+				<% end %>
+			<% end %>
 		<% end %>
 		<% @room.usermanagers.each do |usermanager| %>
 			<% if user_signed_in? %>
@@ -138,7 +146,7 @@
     return e.preventDefault();
  });
  var kyo_click = false;
- $('.allurlgo-box').click(function(){
+ $('#room-share-button').click(function(){
  	if(kyo_click == false){
  		$('.requestUrl').fadeIn('slow');
  		kyo_click = true;
@@ -147,8 +155,16 @@
  		kyo_click = false;
  	}
  })
- $('#password').click(function(){
- 	$('.passwordhyouzi').fadeIn('slow');
+ var password_click = false;
+ $('#password-button').click(function(){
+ 	if(password_click == false){
+ 		$('.password-request-share').fadeIn('slow');
+ 		password_click = true;
+
+ 	}else{
+ 		$('.password-request-share').fadeOut('slow');
+ 		password_click = false;
+ 	}
  });
   var text_max = 1000; // 最大入力値
   // $(".textCount").text(text_max - $(".text_chatarea").val().length);

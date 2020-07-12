@@ -1,4 +1,12 @@
-<%= form_with local: true, url: room_certifications_path(@room) do |f| %>
-	<%= f.text_field :password, placeholder: "パスワードを入力" %>
-	<%= f.submit "パスワードを送信" %>
-<% end %>
+<div class="flex-box-display password-design">
+	<h2 class="password-edit-text">ルームに入る。</h2>
+	<%= image_tag "鍵のアイコン8.png", class: "rock-edit-icon" %>
+</div>
+<div class="password-form-rooms-box">
+	<%= form_with local: true, url: room_certifications_path(@room) do |f| %>
+		<div class="password-form-all-box">
+			<%= f.text_field :password, placeholder: "パスワードを入力", class: "password_form_area"  %>
+			<%= f.submit "パスワードを送信", class: "password-submit" %>
+		</div>
+	<% end %>
+</div>

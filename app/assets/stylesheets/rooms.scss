@@ -376,6 +376,63 @@
 	color: #fff;
 	padding-left: 10px;
 }
+.password-form-all-box{
+	display: flex;
+}
+.password-request-share{
+    display: none;
+    color: #000000;
+    max-width: 300px;
+    word-wrap: break-word;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border: 1px solid #fff;
+    background-color: #eee;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+.rock-edit-icon{
+	margin-left: 10px;
+}
+.flex-box-display{
+	display: flex;
+}
+.password-design{
+	justify-content: center;
+	margin-top: 30px;
+}
+.password-submit{
+	float: right;
+	outline: none;
+	border-radius: 5px;
+	outline: none;
+	font-weight: bold;
+	font-family: "游ゴシック", sans-serif;
+	background-color:#117ec6;
+	color: #fff;
+	border: none;
+	box-shadow: 1px 1px 2px #000;
+	margin-left: 10px;
+}
+.password-submit:hover{
+	transition: background-color 0.3s ease;
+	background-color: #106dab;
+}
+.password_form_area{
+	height: 25px;
+	border-radius: 5px; 
+	width: 300px;
+	outline: none;
+
+	font-size: 17px;
+}
+.password-form-rooms-box{
+	margin: 0 auto;
+	max-width: 500px;
+	padding-left: 60px;
+	margin-top: 100px;
+	display: flex;
+}
 .messageitiranBox{
 	margin-top: 20px;
 	/*text-align: center;*/
@@ -384,6 +441,8 @@
 	border-radius: 10px;
 	border: 2px solid #fff;
 	background-color: #7DACF1;
+	padding-top: 3px;
+	padding-bottom: 3px;
 }
 .messageitiranBox:hover{
 	transition:background-color ease 0.3s ;
@@ -520,10 +579,10 @@
 	outline: none;
 	border-style: none;
 	font-weight: bold;
-    background-color: #0989CF;
     color: #fff;
-    border: 1px solid #ccc;
     font-family: "游ゴシック", sans-serif;
+    background-color: #117ec6;
+    box-shadow: 1px 1px 2px #000;
 }
 .error_box{
 	background-color: #eeeeee;
@@ -548,7 +607,7 @@
 }
 #submit:hover{
 	transition: 0.3s background-color ease;
-    background-color: #009BEF;
+	background-color: #106dab;
 }
 .submitBox{
 	display: flex;
@@ -640,6 +699,11 @@
 .right_button_png{
 	display: none;
 }
+.password-edit-text{
+	font-size: 25px;
+	color: #eee;
+	text-align: center;
+}
 /*.left_button_png{
 	display: none;
 }
@@ -667,6 +731,12 @@
 @media screen and (max-width: 480px){
 	.imguploader{
 		margin-left: 10px;
+	}
+	.password-form-rooms-box{
+		padding: 0;
+	}
+	.password_form_area{
+		width: 100%;
 	}
 	.requestUrl{
 
