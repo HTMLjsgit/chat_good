@@ -1,6 +1,6 @@
 class RoomsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :update, :edit,:create]
-  before_action :room_find, only: [:edit, :update, :destory, :show, :password, :password_edit, :password_update, :room_certification_create, :room_certification]
+  before_action :room_find, only: [:edit, :update, :destory, :show, :password, :password_edit, :password_update, :room_certification_create, :room_certification,:explanation]
   before_action :usermanager_room_ban, only: [:show, :room_certification_create, :room_certification]
   before_action :is_mine, only: [:edit, :update, :destroy, :password_edit,:password_upate]
   def index
@@ -156,6 +156,9 @@ class RoomsController < ApplicationController
   def update
   	@room.update(create_params)
   	redirect_to room_path(@room)
+  end
+
+  def explanation
   end
 
   def destroy

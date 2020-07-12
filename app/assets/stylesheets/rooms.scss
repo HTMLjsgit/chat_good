@@ -13,8 +13,36 @@
 	display: flex;
 	justify-content: space-between;
 }
+.room-explanation-box{
+	margin: 0 auto;
+	max-width: 600px;
+	margin-top: 30px;
+}
 .box-error-flex{
 	margin-top: 50px;
+}
+.room-usermanagers-exlanaption-all{
+	color: #2C8AC5;
+}
+.room-explanation-title{
+	font-size: 20px;
+	padding-bottom: 20px;
+}
+.room-explanation-all-rooms-box{
+	margin-top: 30px;
+	border: 1px solid #000;
+	border-radius: 10px;
+	background-color: #eeeeee;
+	padding-bottom: 30px;
+	padding-top: 30px;
+	padding-left: 30px;
+	padding-right: 30px;
+}
+.room-explanation-text{
+	font-size: 25px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	color: #eeeeee;
 }
 .not_found_page{
 	font-size: 30px;

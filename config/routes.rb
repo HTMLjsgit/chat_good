@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   put 'rooms/:id/passwords' => 'rooms#password_update', as: "room_password_update"
   get 'rooms/:id/password_certification' => 'rooms#room_certification', as: "room_certification"
   post 'rooms/:id/password_certifications' => 'rooms#room_certification_create', as: "room_certifications"
+  get 'rooms/:id/explanation' => 'rooms#explanation', as: "room_explanation"
   resources :rooms do
     resources :usermanagers
   end

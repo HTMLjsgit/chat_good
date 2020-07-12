@@ -4,7 +4,7 @@ class UsersController < ApplicationController
 	def show
 		@rooms = @user.rooms
 		@rooms_public = @user.rooms.where(public: true)
-		@room_private = @user.rooms.where(public: false)
+		@rooms_private = @user.rooms.where(public: false)
 	end
 	def edit
 	end

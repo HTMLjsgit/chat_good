@@ -19,9 +19,11 @@
 	<% if @rooms_public.present? %>
 		<h1 class="publicText">作った公開ルーム一覧</h1>
 	<% end %>
-	<% @rooms.each do |room| %>
-		<%= render 'public', room: room %>
-	<% end %>
+	<div class="mypage-border-public-false-true-box">
+		<% @rooms.each do |room| %>
+			<%= render 'public', room: room %>
+		<% end %>
+	</div>
 	<% if user_signed_in? %>
 		<% if current_user.id == @user.id %>
 			<% if @rooms_private.present? %>
@@ -34,7 +36,9 @@
 		<% if room.public == false %>
 			<% if user_signed_in? %>
 				<% if current_user.id == room.user_id %>
-					<%= render 'private' ,room: room %>
+					<div class="mypage-border-public-false-true-box">
+						<%= render 'private' ,room: room %>
+					</div>
 				<% end %>
 			<% end %>
 		<% end %>

@@ -80,6 +80,12 @@
 				<% end %>
 			<% end %>
 		<% end %>
+		<%= link_to room_explanation_path(@room), class: "kyanseruAccount" do %>
+			<div class="allurlgo-box">
+				<h1 class="room-share-button-text">ルームの詳細</h1>
+				<%= image_tag "はてなマークのアイコン.png" %>
+			</div>
+		<% end %>
 		<% if user_signed_in? %>
 			<% if current_user.id == @room.user_id %>
 				<%= link_to  edit_room_path(@room), class: "room_edit_link" do %>

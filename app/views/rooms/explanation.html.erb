@@ -1,0 +1,7 @@
+<div class="room-explanation-box">
+	<h1 class="room-explanation-text">Roomの詳細</h1>
+	<div class="room-explanation-all-rooms-box">
+		<p class="room-explanation-title">ルーム名: <%= @room.title %></p>
+		<p>ルームに入ってるユーザー数: <%= link_to @room.usermanagers.count, room_usermanagers_path(@room.id), class: "room-usermanagers-exlanaption-all" %></p>	
+	</div>
+</div>
