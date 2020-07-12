@@ -69,20 +69,20 @@
 
 <script>
 
-	var click = true
+	var edit_click = true
 
 	$("#edit_click-<%= message.id %>").click(function(){
-		if(click == true){
+		if(edit_click == true){
 			$('#edit_form_box_<%= message.id %>').css('display', 'block');
 			$('#message-content-<%= message.id %>').css('display', 'none');
 			$('.message-image').css('display', 'none');
-			click = false
-		}else{
+			edit_click = false
+		}else if(edit_click == false){
 			$('#edit_form_box_<%= message.id %>').css('display', 'none');
 			$('#message-content-<%= message.id %>').css('display', 'block');
 			$('.message-image').css('display', 'block');
 			
-			click = true
+			edit_click = true
 		}
 	});
 

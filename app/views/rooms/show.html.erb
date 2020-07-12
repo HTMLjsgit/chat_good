@@ -35,23 +35,24 @@
 			<%= image_tag "共有アイコン2.png" %>
 		</div>
 		<div class="requestUrl"><%= request.url %></div>
-		<% unless @room.public %>
+		<% if @room.public == false %>
 			<div id="password-button" class="allurlgo-box">
 				<h1 class="room-share-button-text">パスワード</h1>
 				<%= image_tag "鍵のアイコン8.png",class: "icon_png_user_all" %>
 			</div>
 			<div class="password-request-share">パスワード: <%= @room.password %></div>
-		<% end %>
-		<% if user_signed_in? %>
-			<% if current_user.id == @room.user_id %>
-				<%= link_to room_password_path(@room), class: "room-user-tags-a" do %>
-					<div id="password-button" class="allurlgo-box">
-						<h1 class="room-share-button-text">パスワードを編集</h1>
-						<%= image_tag "鍵のオープンアイコン素材.png" %>
-					</div>
+			<% if user_signed_in? %>
+				<% if current_user.id == @room.user_id %>
+					<%= link_to room_password_path(@room), class: "room-user-tags-a" do %>
+						<div id="password-button" class="allurlgo-box">
+							<h1 class="room-share-button-text">パスワードを編集</h1>
+							<%= image_tag "鍵のオープンアイコン素材.png" %>
+						</div>
+					<% end %>
 				<% end %>
 			<% end %>
 		<% end %>
+		
 		<% @room.usermanagers.each do |usermanager| %>
 			<% if user_signed_in? %>
 				<% if @room.user_id != current_user.id %>
