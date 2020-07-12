@@ -62,7 +62,7 @@ ActiveRecord::Schema.define(version: 2020_06_28_050055) do
 
   create_table "passwordmanagers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "room_id"
+    t.string "room_id"
     t.string "ip_id"
     t.string "password"
     t.datetime "created_at", precision: 6, null: false
