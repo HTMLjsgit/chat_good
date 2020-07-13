@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_28_050055) do
+ActiveRecord::Schema.define(version: 2020_06_27_054846) do
 
   create_table "action_text_rich_texts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
@@ -57,7 +57,6 @@ ActiveRecord::Schema.define(version: 2020_06_28_050055) do
     t.string "url"
     t.integer "usermanager_id"
     t.boolean "edit_right", default: false, null: false
-    t.boolean "message_reading", default: false, null: false
   end
 
   create_table "passwordmanagers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -72,11 +71,11 @@ ActiveRecord::Schema.define(version: 2020_06_28_050055) do
   create_table "rooms", id: :string, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "title"
     t.integer "user_id"
+    t.text "body"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "public", default: false
     t.string "password"
-    t.boolean "reading", default: false
   end
 
   create_table "usermanagers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|

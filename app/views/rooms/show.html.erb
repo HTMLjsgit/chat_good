@@ -1,23 +1,16 @@
 
 <div class="main_sidebar">
 	<div class="yieldBox roomShowBox">
-		<% if @room.public %>
-			<% if user_signed_in? %>
-				<div id="messages" data-room_id="<%= @room.id %>" data-current_user="<%= current_user.id %>">
-					<%= render @messages %>
-				</div>
-			<% else %>
-				<div id="messages" data-room_id="<%= @room.id %>" data-current_user="<%= nil %>">
-					<%= render @messages %>
-				</div>
-			<% end %>
-			<div id="bottomGO"></div>
-		<% else %>
-			<div id="messages" data-room_id="<%= @room.id %>">
+		<% if user_signed_in? %>
+			<div id="messages" data-room_id="<%= @room.id %>" data-current_user="<%= current_user.id %>">
 				<%= render @messages %>
 			</div>
-			<div id="bottomGO"></div>
+		<% else %>
+			<div id="messages" data-room_id="<%= @room.id %>" data-current_user="<%= nil %>">
+				<%= render @messages %>
+			</div>
 		<% end %>
+		<div id="bottomGO"></div>
 	</div>
 	<div class="edit_smart_phone_button">
 		<%= image_tag "矢印ボタン_左2.png", class: "left_button_png" %>

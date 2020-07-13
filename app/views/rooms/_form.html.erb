@@ -2,6 +2,7 @@
 	<%= form_with model: @room, local: true do |f| %>
 		<%= render 'layouts/error', model: f.object %>
 		<%= f.text_field :title, class: "room_text_field", placeholder: "タイトルを入力" %><br>
+		<%= f.text_area :body, class: "room_text_field", placeholder: "ルームの詳細内容を入力(例: ゲーム用。)" %>
 		<div class="radioBox">
 			<div class="privateBox" id="private-box-1">
 				<%= f.label :public, value: "非公開", class: "public_Text"%>

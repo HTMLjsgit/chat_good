@@ -3,16 +3,34 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
 .roomBox{
-	font-size: 18px;
-	line-height: 30px;
-	padding-top: 20px;
-	padding-bottom: 20px;
-	padding-left: 20px;
-	border-bottom: 1px solid #cccccc;
-	padding-right: 20px;
-	display: flex;
-	justify-content: space-between;
+	font-size: 20px;
+	background-color: #747474;
+	border-radius: 5px;
+	/*padding: 0px 20px 20px 20px;*/
+	margin-bottom: 30px;
+	border: 1px solid #eeeeee;
+	max-width: 400px;
+	min-width: 400px;
+	min-height: 300px;
+	max-height: 320px;
 }
+.roomBox h1{
+	background-color:#242732;
+	color: #fff;
+	padding: 10px;
+	text-align: center;
+}
+
+.body-rooms{
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  color: #fff;
+  max-height: 200px;
+  padding-left: 10px;
+}
+
 .room-explanation-box{
 	margin: 0 auto;
 	max-width: 600px;
@@ -24,6 +42,7 @@
 .room-usermanagers-exlanaption-all{
 	color: #2C8AC5;
 }
+
 .room-explanation-title{
 	font-size: 20px;
 	padding-bottom: 20px;
@@ -95,12 +114,16 @@
 	padding-bottom: 50px;
 }
 .roomBox:hover{
-	background-color: #939393;
+	background-color: #8D8B8B;
 	transition: 0.3s background-color ease;
 }
 .room_created_at_text{
 	font-size: 16px;
-	padding-bottom: 20px;
+	/*line-height: 100px;*/
+	padding-top: 30px;
+	text-align: center;  
+	color: #fff;
+
 }
 .editform{
 	display: none;
@@ -132,11 +155,11 @@
 	border-style: none;
 }
 .roomsBox{
-	border: 3px  solid #fff;
 	margin: 0 auto;
 	max-width: 900px;
-	border-radius: 10px;
-
+	display: flex;
+	justify-content: space-around;
+	flex-wrap: wrap;
 }
 
 .kyanseruAccount{
@@ -206,7 +229,7 @@
 }
 
 .publicitiranText{
-	color: #ffffff;
+	color: #eeeeee;
 	font-size: 25px;
 	margin: 0 auto;
 	max-width: 1000px;
@@ -360,7 +383,7 @@
 }
 
 .roomsBox a{
-	color: #ffffff; 
+	color: #000000; 
 
 }
 #messagenewLink{
