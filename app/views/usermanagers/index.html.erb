@@ -5,11 +5,13 @@
 			<% @managers.each do |manager| %>
 					<% if user.id == manager.user_id %>
 						<% if @room.id == manager.room_id %>
-							<%= link_to room_usermanager_path(@room, manager.id), class: "room_user_a" do %>
-								<div class="roomBox">
-									<h3 class="link_name_usermanager"><%= user.name %></h3>
-								</div>
-							<% end %>
+							<div class="room-manager-user-box">
+								<%= link_to room_usermanager_path(@room, manager.id), class: "room_user_a" do %>
+									<div class="usermanager-box">
+										<h3 class="link_name_usermanager"><%= user.name %></h3>
+									</div>
+								<% end %>
+							</div>
 						<% end %>
 					<% end %>
 			<% end %>
@@ -18,11 +20,13 @@
 			<% unless manager.login %>
 				<% if request.ip == manager.ip_id %>
 					<% if @room.id == manager.room_id %>
-						<%= link_to room_usermanager_path(@room, manager.id), class: "room_user_a" do %>
-							<div class="roomBox">
-								<h3 class="link_name_usermanager">名無し</h3>
-							</div>
-						<% end %>
+						<div class="room-manager-user-box">
+							<%= link_to room_usermanager_path(@room, manager.id), class: "room_user_a" do %>
+								<div class="usermanager-box">
+									<h3 class="link_name_usermanager">名無し</h3>
+								</div>
+							<% end %>
+						</div>
 					<% end %>
 				<% end %>
 			<% end %>

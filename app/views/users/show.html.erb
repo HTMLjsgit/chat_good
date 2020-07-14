@@ -19,11 +19,15 @@
 	<% if @rooms_public.present? %>
 		<h1 class="publicText">作った公開ルーム一覧</h1>
 	<% end %>
-	<div class="mypage-border-public-false-true-box">
+	<!-- <div class="mypage-border-public-false-true-box"> -->
+	<div class="roomsBox">
+
 		<% @rooms.each do |room| %>
-			<%= render 'public', room: room %>
+				<%= render 'public', room: room %>
 		<% end %>
 	</div>
+
+	<!-- </div> -->
 	<% if user_signed_in? %>
 		<% if current_user.id == @user.id %>
 			<% if @rooms_private.present? %>
@@ -31,19 +35,20 @@
 			<% end %>
 		<% end %>
     <% end %>
-
-	<% @rooms.each do |room| %>
-		<% if room.public == false %>
-			<% if user_signed_in? %>
-				<% if current_user.id == room.user_id %>
-					<div class="mypage-border-public-false-true-box">
+	<div class="roomsBox">
+		<% @rooms.each do |room| %>
+			<% if room.public == false %>
+				<% if user_signed_in? %>
+					<% if current_user.id == room.user_id %>
 						<%= render 'private' ,room: room %>
-					</div>
+					<% end %>
 				<% end %>
 			<% end %>
 		<% end %>
-	<% end %>
+	</div>
+
 </div>
+
 <script>
 	var click = false;
 	$('#profileLink').click(function(){

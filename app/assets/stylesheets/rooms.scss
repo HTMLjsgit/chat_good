@@ -11,8 +11,7 @@
 	border: 1px solid #eeeeee;
 	max-width: 400px;
 	min-width: 400px;
-	min-height: 300px;
-	max-height: 320px;
+	min-height: 320px;
 }
 .roomBox h1{
 	background-color:#242732;
@@ -22,40 +21,60 @@
 }
 
 .body-rooms{
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  max-width: 100%;
+  word-break: break-all;
+}
+.room-body-box{
+  font-size: 15px;
+  padding-top: 10px;
   color: #fff;
-  max-height: 200px;
   padding-left: 10px;
+  max-width: 100%;
 }
 
 .room-explanation-box{
 	margin: 0 auto;
 	max-width: 600px;
 	margin-top: 30px;
+
 }
 .box-error-flex{
 	margin-top: 50px;
 }
 .room-usermanagers-exlanaption-all{
-	color: #2C8AC5;
+	color: #59D6FF;
+	font-size: 20px;
+	padding-left: 10px;
 }
 
 .room-explanation-title{
+	background-color: #242732;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
 	font-size: 20px;
 	padding-bottom: 20px;
+	margin-bottom: 20px;
+}
+.explanation-body{
+	color: #fff;
+	padding-left: 10px;
+}
+.room-open-gone-user-alls{
+	padding-top: 20px;
+	padding-bottom: 20px;
+	color: #fff;
+	padding-left: 10px;
 }
 .room-explanation-all-rooms-box{
 	margin-top: 30px;
 	border: 1px solid #000;
 	border-radius: 10px;
-	background-color: #eeeeee;
-	padding-bottom: 30px;
-	padding-top: 30px;
-	padding-left: 30px;
-	padding-right: 30px;
+	background-color: #8D8B8B;
+	min-height: 250px;
+	/*padding-bottom: 30px;*/
+	/*padding-top: 30px;*/
+	/*padding-left: 30px;*/
+	/*padding-right: 30px;*/
 }
 .room-explanation-text{
 	font-size: 25px;
@@ -252,6 +271,12 @@
 	border-radius: 5px;
 	background-color: #6C6C6C;
     color: #EEEEEE;
+    max-width: 100%;
+    font-family: "游ゴシック", sans-serif;
+}
+.room_text_area{
+	min-height: 300px;
+	border: 1px solid #ddd;
 }
 .room_text_field::placeholder{
 	color: #D4D4D4;
@@ -266,7 +291,7 @@
 .new_rooms_form_box{
 	margin: 0 auto;
 	max-width: 800px;
-	padding-left: 50px;
+	padding: 10px;
 
 }
 .room_submit{
@@ -419,6 +444,7 @@
 	background-color: #FC4D4D;
 	justify-content: space-around;
 	margin-left: 10%;
+	margin-bottom: 10%;
 }
 .room-delete-box:hover{
 	transition: background-color ease 0.3s;
@@ -795,6 +821,20 @@
 	}
 	.not_found_page{
 		font-size: 25px;
+	}
+	.body-rooms{
+		max-height: 140px;
+	}
+	.roomsBox{
+		max-width: 100%;
+		display: block;
+	}
+	.roomBox{
+		min-width: 100%;
+		max-width: 100%;
+		width: 100%;
+		min-height: 270px;
+		max-height: 270px;
 	}
 	.edit_submit{
 		text-align: center;

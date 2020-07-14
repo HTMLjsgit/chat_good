@@ -5,10 +5,15 @@
 			<div class="roomAtagBox">
 				<%= link_to room_path(room, :anchor => 'bottomGO') do %>
 					<div class="roomBox">
+
 						<h1><%= room.title.truncate(10) %></h1>
+						<div class="room-body-box">
 							<% if room.body.present? %>
-								<%= simple_format room.body, class: "body-rooms" %>
+								<p class="body-rooms">
+									<%= room.body.truncate(100) %>
+								</p>
 							<% end %>
+						</div>
 						<p class="room_created_at_text">
 							<%= room.created_at.strftime("%Y-%m-%d %H:%M") %>		
 						</p>
