@@ -13,16 +13,40 @@
 	outline: none;
 }
 .delete_btn:hover{
-	background-color:#FF725C;
-	transition: 0.2s background-color ease;
+	background-color:#F30000;
 }
 .edit_submit:hover{
     transition: 0.3s background-color ease;
-    background-color: #009BEF;
+    /*background-color: #F50101;*/
   
 }
+.edit_click:hover{
+	background-color: #ddd;
+}
+.edit_click{
+	outline: none;
+}
 .edit_submit{
-	
+	outline: none;
+    border-style: none;
+    border-radius: 10px;
+    margin-top: 25px;
+    margin-left: 50px;
+    margin-bottom: 10px;
+    outline: none;
+    border-style: none;
+    font-weight: bold;
+    color: #fff;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-family: "游ゴシック", sans-serif;
+    background-color: #117ec6;
+    box-shadow: 1px 1px 2px #000;
+}
+.edit_submit:hover{
+	background-color: #106dab;
 }
 .deleteBtnImage{
 

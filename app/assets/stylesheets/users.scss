@@ -126,20 +126,26 @@
 	background-color: #6C6C6C;
 }
 #submit_user{
-	font-size: 18px;
-	background-color: #0989CF;
-	color: #fff;
-	font-family: "游ゴシック", sans-serif;
-	font-weight: bold;
-	border: 1px solid #505050;
-	
-	border-radius: 10px;
-	width: 100px;
-	height: 40px;
+	outline: none;
+    border-style: none;
+    border-radius: 10px;
+    outline: none;
+    border-style: none;
+    font-weight: bold;
+    color: #fff;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 16px;
+    font-family: "游ゴシック", sans-serif;
+    background-color: #117ec6;
+    box-shadow: 1px 1px 2px #000;
 }
 #submit_user:hover{
 	transition: 0.3s background-color ease;
-	background-color: #009BEF;
+	background-color: #106dab;
+
 }
 .submit_area{
 	text-align: center;
@@ -158,6 +164,7 @@
 	color: #EEEEEE;
 	border: 1px solid #ddd;
 }
+
 .profileText{
 	margin-top: 30px;
 	margin-bottom: 10px;

@@ -1,9 +1,19 @@
 	<div class="form_area_current">
 		<%= form_with model: current_user, local: true do |f| %>
-			<%= f.text_field :name, id: "user_name_form" %><br>
-			<%= f.text_area :profile, id: "user_profile_form" %><br>
+			<%= f.text_field :name,placeholder: "名前", id: "user_name_form" %><br>
+			<%= f.text_area :profile, placeholder: "プロフィール内容", id: "user_profile_form" %><br>
 			<div class="submit_area">
 				<%= f.submit "送信",id: "submit_user" %>
 			</div>
 		<% end %> 
 	</div>
+<style>
+#user_name_form::placeholder{
+	color: #eeeeee;
+	opacity: 0.8;
+}
+#user_profile_form::placeholder{
+	color: #eeeeee;
+	opacity: 0.8;
+}
+</style>

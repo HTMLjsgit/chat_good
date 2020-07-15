@@ -206,6 +206,7 @@
 	max-height: 81px;
 	min-height: 81px;
 	min-width: 100%;
+	max-width: 100%;
 	height: 81px;
 	font-family: 游ゴシック, sans-serif;
 	background-color: #6C6C6C;
@@ -729,19 +730,7 @@
 	padding-right: 10px;
 	font-weight: bold;
 }
-.edit_submit{
-	outline: none;
-    border-style: none;
-    font-weight: bold;
-    background-color: #0989CF;
-    color: #fff;
-    border: 1px solid #ccc;
-    font-family: "游ゴシック", sans-serif;
-    border-radius: 10px;
-    width: 70px;
-    height: 30px;
-    margin-top: 20px;
-}
+
 .submit-edit-box{
 	display: flex;
 	justify-content:space-around; 
