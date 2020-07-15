@@ -1,7 +1,13 @@
 <div class="roomusermanager_all_box">
-	<h1 class="roomuser">Roomに入ってるユーザー一覧</h1>
+	<div class="room-catagoles-box">
+		<h1 class="roomuser">Roomに入ってるユーザー 一覧</h1>
+		<p class="room_usermanagers_count_text">
+			<%= @room.usermanagers.count %>人
+		</p>
+	</div>
 	<div class="usermanager_list_all_box">
 		<% @users.each do |user| %>
+
 			<% @managers.each do |manager| %>
 					<% if user.id == manager.user_id %>
 						<% if @room.id == manager.room_id %>
