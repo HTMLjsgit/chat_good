@@ -80,17 +80,35 @@
 	max-width: 900px;
 	margin-top: 50px;
 }
+.profile-edit-button{
+	border-radius: 10px;
+	padding: 10px;
+	outline: none;
+	border-style: none;
+	font-weight: bold;
+    color: #fff;
+    font-family: "游ゴシック", sans-serif;
+    background-color: #117ec6;
+    box-shadow: 1px 1px 2px #000;
+}
+.profile-edit-button:hover{
+	transition: 0.3s background-color ease;
+	background-color: #106dab;
+}
 .profileBox{
 	border-radius: 5px;
-	border: 1px solid #fff;
+	/*border: 1px solid #fff;*/
 	margin-right: 20px;
-
+	border-bottom: 1px solid #eeeeee;
+	border-top: 1px solid #eeeeee;
+	margin-top: 30px;
+	margin-bottom: 30px;
 }
 .profileBox p{
 	padding-top: 10px;
 	padding-bottom: 10px;
-	padding-left: 10px;
-	color: #fff;
+	padding-left: 5px;
+	color: #eeeeee;
 	word-break: break-word;
 }
 
@@ -169,4 +187,21 @@
 	margin-top: 30px;
 	margin-bottom: 10px;
 	color: #fff;
+}
+
+@media screen and(max-width: 480px){
+	.mypageBox{
+		padding: 0;
+	}
+	.publicText{
+		text-align: center;
+	}
+	.user_name{
+		text-align: center;
+		padding-bottom: 30px;
+	}
+	.profileBox{
+		padding-left: 1em;
+		margin: 0;
+	}
 }

@@ -1,7 +1,6 @@
 <div class="mypageBox">
 	<h1 class="user_name"><%= @user.name %></h1>
 	<% if @user.profile.present? %>
-		<p class="profileText">プロフィール</p>
 		<div class="profileBox">
 			<p><%= simple_format h(@user.profile) %></p>
 		</div>
@@ -10,9 +9,9 @@
 		<% if user_signed_in? %>
 			<% if current_user.id == @user.id %>
 				<%= link_to edit_user_path(current_user),  id: "profileLink" do %>
-					<button>プロフィール編集</button>
+					<button class="profile-edit-button">プロフィール編集</button>
 				<% end %>
-				<p><%= button_to "アカウント退会", registration_path(current_user), data: { confirm: "本当に#{current_user.name}をアカウントを退会させますか？" }, method: :delete %></p>
+				<%= button_to "アカウント退会", registration_path(current_user), data: { confirm: "本当に#{current_user.name}をアカウントを退会させますか？" }, method: :delete,class: "profile-edit-button" %>
 			<% end %>
 		<% end %>
 	</div>
