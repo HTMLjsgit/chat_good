@@ -353,13 +353,7 @@
 	height: 400px;
 	text-align: center;
 }
-.message_content a{
-	color: #87ceeb;
-	text-decoration: none;
-}
-.message_content a:hover{
-	text-decoration: underline;
-}
+
 .usernameAndTimeBox{
 	margin-bottom: 10px;
 }
@@ -378,7 +372,7 @@
 .message_username{
 	padding-top: 10px;
 	color: #32cd32;
-	font-size: 15px;
+	font-size: 15px
 }
 .message a{
 	text-decoration: none;
@@ -587,7 +581,7 @@
 .roomshowBox{
 	transform: translateY(-300px);
     display: none;
-
+    margin-top: 30px;
 }
 .requestUrl{
 	display: none;

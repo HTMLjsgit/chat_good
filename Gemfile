@@ -82,6 +82,7 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'spring-commands-rspec'
 end
+
 # gem 'backport_new_renderer'
 # gem 'nokogiri'
 # gem 'open-uri'

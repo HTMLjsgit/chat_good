@@ -26,7 +26,7 @@
 		</div>
 		<div id="message-<%= message.id %>-box">
 			<div id="message-content-<%= message.id %>">
-				<%= raw Rinku.auto_link simple_format h(message.content), class: "message_content", id: "message-link-#{message.id}" %>
+				<%= raw Rinku.auto_link(simple_format(h(message.content), class: "message_content rinku-auto-link", id: "message-link-#{message.id}"), :all,'target="_blank"') %>
 			</div>
 			<% if user_signed_in? %>
 				<% if current_user.id == message.user_id %>

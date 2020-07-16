@@ -11,7 +11,34 @@
 			<% @room.messages.each do |message| %>
 				<% if message.login == true %>
 					<% if message.user_id == @usermanager.user_id %>
-						<%= simple_format message.content, class: "messageText" %>
+						<div class="message">
+							<div class="usettimeAndDeleteBox">
+								<p class="agomessage"><%= time_ago_in_words(message.created_at) + "前" %></p>
+								<% if message.edit_right == true %>
+									<p class="finished_editing">(編集済み)</p>
+								<% end %>
+							</div>
+							<div id="message-content-<%= message.id %>">
+
+								<%= raw Rinku.auto_link(simple_format(h(message.content), class: "message_content rinku-auto-link", id: "message-link-#{message.id}"), :all,'target="_blank"') %>
+							</div>
+							<% unless message.youtube_id.nil? %>
+								<% iframe = content_tag(
+									:iframe,
+									'',
+									width: 560,
+									height: 315,
+									src: "https://www.YouTube.com/embed/#{message.youtube_id}",
+									frameborder: 0,
+									allowfullscreen: true,
+									class: "youtube-container"
+								) %>
+								<%= content_tag(:div, iframe, class: "youtube-container2") %>
+							<% end %>
+							<% if message.image? %>
+								<%= image_tag message.image.url, class: "message-image" %>
+							<% end %>
+						</div>
 					<% end %>
 				<% end %>
 			<% end %>
@@ -54,6 +81,13 @@
 		width: 20px;
 		height: 20px;
 		cursor: pointer;
+	}
+	.finished_editing{
+		font-size: 12px;
+		margin-top: 10px;
+	}
+	.usettimeAndDeleteBox{
+		padding-bottom: 30px;
 	}
 </style>
 

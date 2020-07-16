@@ -2,7 +2,7 @@
 	<h1 class="user_name"><%= @user.name %></h1>
 	<% if @user.profile.present? %>
 		<div class="profileBox">
-			<p><%= simple_format h(@user.profile) %></p>
+			<p><%= raw Rinku.auto_link(simple_format(h(@user.profile), class: "user-profile-text rinku-auto-link"), :all,'target="_blank"') %></p>
 		</div>
 	<% end %>
 	<div class="edit_box_user">
