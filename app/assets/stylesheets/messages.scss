@@ -12,6 +12,9 @@
 	margin-left: 20px;
 	outline: none;
 }
+#messages{
+    padding: 10px;
+}
 .delete_btn:hover{
 	background-color:#F30000;
 }
@@ -59,4 +62,9 @@
 	margin-left: 20px;
 	color: #dddddd;
 	font-size: 13px;
+}
+@media screen and(max-width: 480px){
+    .message{
+        padding-top: 20px;
+    }
 }

@@ -1,4 +1,5 @@
 <div class="userallBox">
+
 	<% if @usermanager.login == true %>
 		<div class="userandAdmin">
 			<h3 class="username"><%= @user.name %></h3>
@@ -6,7 +7,14 @@
 				<h3 class="username roomadmin">ルーム管理者</h3>
 			<% end %>
 		</div>
-		<%= link_to "#{@user.name}のメッセージ表示", "", id: "roomopen" %>
+		<div class="room-open-link-box">
+			<%= link_to "", id: "roomopen" do %>
+				<div class="room-open-box">
+					<h3><%= @user.name %>のメッセージを表示</h3>
+				</div>
+
+			<% end %>
+		</div>
 		<div class="roomshowBox">
 			<% @room.messages.each do |message| %>
 				<% if message.login == true %>

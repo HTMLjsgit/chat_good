@@ -302,6 +302,7 @@
 	padding: 10px;
 
 }
+
 .room_submit{
 	width: 100px;
 	height: 35px;
@@ -793,6 +794,15 @@
 	}
 	.bottomRoomBox{
 		padding: 0;
+	}
+}
+@media screen and (max-width: 980px){
+
+}
+@media screen and (max-width: 745px){
+	.youtube-container{
+		max-width: 450px;
+		height: 300px;
 	}
 }
 @media screen and (max-width: 480px){
