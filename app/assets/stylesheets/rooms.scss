@@ -165,7 +165,7 @@
 .edit_form{
 	width: 100%;
 	height: 5em;
-	background-color: #6C6C6C;
+    background-color: #717070;
     border: 1px solid #d4d4d4;
     color: #fff;
     font-size: 13px;
@@ -213,7 +213,7 @@
 	max-width: 100%;
 	height: 81px;
 	font-family: 游ゴシック, sans-serif;
-	background-color: #6C6C6C;
+    background-color: #717070;
 	border: 1px solid #d4d4d4;
 }
 #chat_area::placeholder{
@@ -277,7 +277,8 @@
 	margin-top: 50px;
 	outline: none;
 	border-radius: 5px;
-	background-color: #6C6C6C;
+	background-color: #717070;
+
     color: #EEEEEE;
     max-width: 100%;
     font-family: "游ゴシック", sans-serif;
@@ -285,6 +286,14 @@
 .room_text_area{
 	min-height: 300px;
 	border: 1px solid #ddd;
+}
+.new-room-text{
+	/*text-align: center;*/
+	color: #eeeeee;
+	font-size: 23px;
+	padding-top: 50px;
+	margin: 0 auto;
+	max-width: 200px;
 }
 .room_text_field::placeholder{
 	color: #D4D4D4;
@@ -382,7 +391,7 @@
 	text-decoration: underline;
 }
 .bottomRoomBox{
-	background-color: #808080;
+	background-color: #535558;
 	border-radius: 15px;
 	position: -webkit-sticky;
 	position: sticky;
