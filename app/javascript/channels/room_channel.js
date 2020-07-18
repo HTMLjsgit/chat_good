@@ -13,6 +13,7 @@ import consumer from "./consumer"
           // 0.01秒たったら下に移動。
           setTimeout(function(){
             var submitscroll = $('#bottomGO').offset().top;
+            document.getElementById('chat_area').value = '';
             $('html, body').scrollTop(submitscroll);
           },10);
           // return $('#messages').append(data['message']);

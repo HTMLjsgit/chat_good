@@ -130,8 +130,9 @@
 		<% end %>
 		<% if request.os == "PlayStation Vita" %>
 			<div class="submitBox">
-				<%= form_with model: Message.new do |f| %>
+				<%= form_with model: @message, local: false, url: messages_path do |f| %>
 					<%= f.text_area :content ,id: "chat_area", class: "text_areachat"%>
+					<%= f.hidden_field :room_id, value: @room.id %>
 					<%= f.submit "送信", id: "submit" %>
 				<% end %>
 			</div>
