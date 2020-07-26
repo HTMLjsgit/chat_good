@@ -24,16 +24,14 @@
 		<% end %>
 		<% @managers.each do |manager| %>
 			<% unless manager.login %>
-				<% if request.ip == manager.ip_id %>
-					<% if @room.id == manager.room_id %>
-						<div class="room-manager-user-box">
-							<%= link_to room_usermanager_path(@room, manager.id), class: "room_user_a" do %>
-								<div class="usermanager-box">
-									<h3 class="link_name_usermanager">名無し</h3>
-								</div>
-							<% end %>
-						</div>
-					<% end %>
+				<% if @room.id == manager.room_id %>
+					<div class="room-manager-user-box">
+						<%= link_to room_usermanager_path(@room, manager.id), class: "room_user_a" do %>
+							<div class="usermanager-box">
+								<h3 class="link_name_usermanager">名無し</h3>
+							</div>
+						<% end %>
+					</div>
 				<% end %>
 			<% end %>
 		<% end %>
