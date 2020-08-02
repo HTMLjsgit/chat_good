@@ -97,7 +97,7 @@ class RoomChannel < ApplicationCable::Channel
     else
 
       if messagesCount <= 5
-        unless data['message'].nil? && 
+        unless data['message'].nil?
           if Usermanager.where(user_id: current_user.id, room_ban: false, room_id: params['room'].to_s,  message_limit: false, login: true).exists?
             if data['message'].length <= 1000
     		       @message = Message.create! content: data['message'], user_id: current_user.id, room_id: params['room'].to_s,username: current_user.name, ip_id: ip, login: true, youtube_id: url
