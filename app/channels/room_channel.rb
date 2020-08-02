@@ -30,7 +30,11 @@ class RoomChannel < ApplicationCable::Channel
 
     end
     # NGワード集
-    ng_word_params = ["ナイフ","死ね","しね", "4ね","氏ね","cね","ｃね","殺","市ね", "sine", "fack","fuck", "くそやろ" ,"クソ野郎","56す", "住所","刺す", "殺す", "殺してやる", "変態","野獣先輩", "キチガイ", "セクハラ", "ぶっ殺す", "ちんこ", "キス", "うんち", "うんこ", "ゴミ", "おっぱい", "まんこ", "性器", "せっくす", "SEX", "サル", "陰キャ", "カス", "かす", "ぶす", "ブス", "ぶ/す", "ぶっす", "ぶさいく", "ブサイク", "ぶっすう", "あの世", "血", "グロ", "ばばぁ","じじい", "婆", "爺","老害", "障害" ,"ちび", "チビ", "雑魚", "あほ", "アホ", "バカ", "馬鹿", "bs"] 
+    ng_word = ENV['NG_WORD']
+    ng_word2 = ng_word.split(',').map { |m| m.delete('[]"\\\\')}
+    ng_word_params = ng_word2.map {|m| m.gsub(' ', "")}
+
+    # ng_word_params = ["ナイフ","死ね","しね", "4ね","氏ね","cね","ｃね","殺","市ね", "sine", "fack","fuck", "くそやろ" ,"クソ野郎","56す", "住所","刺す", "殺す", "殺してやる", "変態","野獣先輩", "キチガイ", "セクハラ", "ぶっ殺す", "ちんこ", "キス", "うんち", "うんこ", "ゴミ", "おっぱい", "まんこ", "性器", "せっくす", "SEX", "サル", "陰キャ", "カス", "かす", "ぶす", "ブス", "ぶ/す", "ぶっす", "ぶさいく", "ブサイク", "ぶっすう", "あの世", "血", "グロ", "ばばぁ","じじい", "婆", "爺","老害", "障害" ,"ちび", "チビ", "雑魚", "あほ", "アホ", "バカ", "馬鹿", "bs"]
     ip = self.connection.ip_addr
     # puts "==========================" + current_user.name
     # user_signed_in? = self.connection.signed_in
@@ -93,7 +97,7 @@ class RoomChannel < ApplicationCable::Channel
     else
 
       if messagesCount <= 5
-        unless data['message'].nil?
+        unless data['message'].nil? && 
           if Usermanager.where(user_id: current_user.id, room_ban: false, room_id: params['room'].to_s,  message_limit: false, login: true).exists?
             if data['message'].length <= 1000
     		       @message = Message.create! content: data['message'], user_id: current_user.id, room_id: params['room'].to_s,username: current_user.name, ip_id: ip, login: true, youtube_id: url
