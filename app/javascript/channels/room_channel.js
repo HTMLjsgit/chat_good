@@ -43,7 +43,8 @@ import consumer from "./consumer"
         }
       }
       $(document).on('keypress submit click', '[data-behavior~=room_speaker]', function(event){
-
+          if(event.target.value == ''){
+          }
           function chatgo(){
              chatChannel.speak(event.target.value);
              event.target.value = '';
@@ -53,7 +54,7 @@ import consumer from "./consumer"
              if(event.keyCode === 13){
                 if(event.target.value != ''){
                   chatgo();
-                }else if(event.target.value == '' || event.target.length <= 1000){
+                }else if(event.target.value == '' || event.target.length <= 1000 ){
                   event.preventDefault();
                   event.target.value = event.target.value;
                 }
@@ -62,7 +63,7 @@ import consumer from "./consumer"
          $('#submit').click(function(){
             if(event.target.value != ''){
               chatgo();
-            }else if(event.target.value == '' || event.target.length <= 1000){
+            }else if(event.target.value == '' || event.target.length <= 1000 ){
               event.preventDefault();
             }
          });

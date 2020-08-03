@@ -29,12 +29,19 @@ class RoomChannel < ApplicationCable::Channel
       ActionCable.server.broadcast 'room_channel', room_id: params['room'].to_s, current_user: nil
 
     end
+
+    # message改行確かめ変数初期設定
+    nil_start_new_line = false
+
     # NGワード集
     ng_word = ENV['NG_WORD']
     ng_word2 = ng_word.split(',').map { |m| m.delete('[]"\\\\')}
     ng_word_params = ng_word2.map {|m| m.gsub(' ', "")}
 
     ip = self.connection.ip_addr
+    if data['message'].blank? && data['message'].match(/\R/)
+      nil_start_new_line = true
+    end
     # puts "==========================" + current_user.name
     # user_signed_in? = self.connection.signed_in
     now = Time.now
@@ -85,7 +92,7 @@ class RoomChannel < ApplicationCable::Channel
   	
     unless current_user.present?
       if messagesCount <= 5
-        unless data['message'].nil?
+        unless data['message'].blank? && nil_start_new_line #もしメッセージの中身があった場合　messageの中身が改行はスペースなどしかなかった場合じゃないとき　保存する
           if Usermanager.where(ip_id: ip, room_ban: false, message_limit: false, room_id: params['room'].to_s, login: false).exists?
              if data['message'].length <= 1000
           		 @message = Message.create! content: data['message'], room_id: params['room'].to_s,username: "名無し",ip_id: ip, login: false, youtube_id: url, user_id: nil
@@ -94,9 +101,8 @@ class RoomChannel < ApplicationCable::Channel
          end
       end
     else
-
       if messagesCount <= 5
-        unless data['message'].nil?
+        unless data['message'].blank? && nilstart_new_line#もしメッセージの中身があった場合　messageの中身が改行はスペースなどしかなかった場合じゃないとき　保存する
           if Usermanager.where(user_id: current_user.id, room_ban: false, room_id: params['room'].to_s,  message_limit: false, login: true).exists?
             if data['message'].length <= 1000
     		       @message = Message.create! content: data['message'], user_id: current_user.id, room_id: params['room'].to_s,username: current_user.name, ip_id: ip, login: true, youtube_id: url

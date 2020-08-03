@@ -18,10 +18,15 @@ class EditChannel < ApplicationCable::Channel
     ng_word2 = ng_word.split(',').map { |m| m.delete('[]"\\\\')}
     ng_word_params = ng_word2.map {|m| m.gsub(' ', "")}
     ip = self.connection.ip_addr
+    nil_start_new_line = false
+
     # puts "==========================" + current_user.name
     # user_signed_in? = self.connection.signed_in
-    if data['message'].nil?
+    if data['message'].blank?
       return false
+    end
+    if data['message'].blank? && data['message'].match(/\R/)
+      nil_start_new_line = true
     end
     now = Time.now
     secondsAgo = now - 10
@@ -36,7 +41,7 @@ class EditChannel < ApplicationCable::Channel
     end
     if current_user.present?
       if Usermanager.where(user_id: current_user.id, room_ban: false, room_id: params['room'].to_s, login: true, ng_word: true).exists?
-        unless data['message'].nil?
+        unless data['message'].blank?
           ng_word_params.each do |ng|
             if data['message'].include?(ng)
               return false
@@ -55,7 +60,7 @@ class EditChannel < ApplicationCable::Channel
     end
     if current_user.present?
   	  	message = Message.find_by(id: data['id'].delete("message-"), room_id: params['room'], user_id: current_user.id)
-  	  	if message.blank?
+  	  	if message.blank? || nil_start_new_line #もしメッセージの中身がなかった場合　messageの中身が改行はスペースなどしかなかった場合　はじく
           return false
         end
         if messagesCount <= 5
