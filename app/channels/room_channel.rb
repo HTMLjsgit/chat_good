@@ -29,7 +29,7 @@ class RoomChannel < ApplicationCable::Channel
       ActionCable.server.broadcast 'room_channel', room_id: params['room'].to_s, current_user: nil
 
     end
-
+    
     # message改行確かめ変数初期設定
     nil_start_new_line = false
 

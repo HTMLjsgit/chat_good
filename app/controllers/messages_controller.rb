@@ -17,7 +17,6 @@ class MessagesController < ApplicationController
 			end
 		end
 		if user_signed_in?
-			p "--ログイン---------------------------------------------"
 
 			if Usermanager.where(room_id: room_id, user_id: current_user.id, login: true).empty?
 				return false

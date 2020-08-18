@@ -32,8 +32,12 @@ class RoomsController < ApplicationController
       @current = current_user
     end
 
-
-
+    @m_find = @room.messages.search(params[:q])
+    @messages = @m_find.result
+    
+    if params[:all_display]
+      @messages = @room.messages
+    end 
     if @room.public
       if user_signed_in?
       	# もしUsermanagerの中にルームIDとcurrent_user.idがなかった場合は保存する。

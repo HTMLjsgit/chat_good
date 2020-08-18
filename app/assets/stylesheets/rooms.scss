@@ -562,6 +562,71 @@
 	transition:background-color ease 0.3s ;
 	background-color: #579AFB;
 }
+.message-find-text{
+	color: #ffffff;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-right: 10px;
+
+}
+.find-message-button{
+	padding-left: 20px;
+	/*padding-top: 10px;*/
+	border-radius: 10px;
+	border: 2px solid #fff;
+	background-color: #7DACF1;
+	margin-top: 20px;
+	display: flex;
+	justify-content: center;
+}
+.all-display-button{
+    background-color: #078CFF;
+	border-radius: 5px;
+	color: #ffffff;
+	margin-top: 10px;
+}
+.all-display-button:hover{
+	background-color: #579AFB;
+	transition:background-color ease 0.3s ;
+
+}
+.all-display-box{
+	justify-content: center;
+	display:none;
+}
+#q_content_cont{
+	width: 70%;
+	height: 30px;
+}
+.find-message-submit{
+	width: 20%;
+    border-radius: 5px;
+    background-color: #078CFF;
+    color: #fff;
+    box-shadow: 0.5px 0.5px 2px 0 #46494B;
+}
+.find-message-submit:hover{
+	transition: background-color 0.3s ease;
+    background-color: #4683B7;
+}
+.message_search{
+	display: flex;
+	justify-content: center;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	background-color: #eeeeee;
+	border-radius: 10px;
+}
+.find-message-button:hover{
+		transition:background-color ease 0.3s ;
+	background-color: #579AFB;
+	cursor: pointer;
+}
+.find-messages-box{
+	display: none;
+}
 #kyouyu{
 	margin-top: 10px;
 	text-align: center;
