@@ -85,11 +85,11 @@ class RoomsController < ApplicationController
 
       # 条件に当てはまるUsermanagerがなかった場合は保存!
       if user_signed_in?
-        if Usermanager.where(room_id: @room.id, user_id: current_user.id).empty?
+        if Usermanager.where(room_id: @room.id, user_id: current_user.id, login: true).empty?
            Usermanager.create(room_id: @room.id, user_id: current_user.id,login: true)
         end
       else
-        if Usermanager.where(room_id: @room.id, ip_id: request.ip).empty?
+        if Usermanager.where(room_id: @room.id, ip_id: request.ip, login: false).empty?
             Usermanager.create(room_id: @room.id,ip_id: request.ip,login: false)
         end
       end
@@ -181,7 +181,7 @@ class RoomsController < ApplicationController
   	@room = Room.find params[:id]
   end
   def create_params
-  	params.require(:room).permit(:title, :public, :password, :body)
+  	params.require(:room).permit(:title, :public, :password, :body, :bot)
   end
 
   def is_mine

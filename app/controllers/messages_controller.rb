@@ -5,17 +5,21 @@ class MessagesController < ApplicationController
 		# room_id = params[:room_id]
 		room_id = params[:room_id]
 		content = params[:content]
-
+		if image.blank? && room_id.blank? && content.blank?
+			image = params[:message][:image]
+			room_id = params[:message][:room_id]
+			content = params[:message][:content]
+		end
 		unless request.os == "PlayStation Vita"
-			if image.nil?
+			if image.blank?
 				return false
 			end
 		end
-		if image.nil?
-			if content.nil?
+		if image.blank? && content.blank?
 				return false
-			end
 		end
+ 		p "----------------------"
+
 		if user_signed_in?
 
 			if Usermanager.where(room_id: room_id, user_id: current_user.id, login: true).empty?
@@ -67,7 +71,6 @@ class MessagesController < ApplicationController
 	end
 
 	def update
-		p "-------------------------------"
 		image = params[:message][:image]
 		room_id = params[:message][:room_id]
 		content = params[:message][:content]

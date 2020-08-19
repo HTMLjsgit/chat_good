@@ -3,8 +3,11 @@
 		<div class="usernameAndTimeBox">
 			<% if message.user_id.present? %>
 				<%= link_to message.user.name, user_path(message.user_id),class: "message_username" %>
+			<% elsif message.bot == true %>
+				<p class="message_username">BOT</p>
 			<% else %>
 				<p class="message_username">名無し</p>
+
 			<% end %>
 			<div class="usettimeAndDeleteBox">
 				<p class="agomessage"><%= time_ago_in_words(message.created_at) + "前" %></p>
