@@ -97,7 +97,7 @@ class RoomChannel < ApplicationCable::Channel
         unless data['message'].blank? && nil_start_new_line #もしメッセージの中身があった場合　messageの中身が改行はスペースなどしかなかった場合じゃないとき　保存する
           if Usermanager.where(ip_id: ip, room_ban: false, message_limit: false, room_id: params['room'].to_s, login: false).exists?
              if data['message'].length <= 1000
-          		 @message = Message.create! content: data['message'], room_id: params['room'].to_s,username: "名無し",ip_id: ip, login: false, youtube_id: url, user_id: nil, bot: @room.bot
+          		 @message = Message.create! content: data['message'], room_id: params['room'].to_s,username: "名無し",ip_id: ip, login: false, youtube_id: url, user_id: nil, bot: false
         	   if @room.bot == true
                		timer(1) do 
                  	  bot(data['message'])
@@ -112,7 +112,7 @@ class RoomChannel < ApplicationCable::Channel
         unless data['message'].blank? && nilstart_new_line#もしメッセージの中身があった場合　messageの中身が改行はスペースなどしかなかった場合じゃないとき　保存する
           if Usermanager.where(user_id: current_user.id, room_ban: false, room_id: params['room'].to_s,  message_limit: false, login: true).exists?
             if data['message'].length <= 1000
-    		   @message = Message.create! content: data['message'], user_id: current_user.id, room_id: params['room'].to_s,username: current_user.name, ip_id: ip, login: true, youtube_id: url, bot: @room.bot
+    		   @message = Message.create! content: data['message'], user_id: current_user.id, room_id: params['room'].to_s,username: current_user.name, ip_id: ip, login: true, youtube_id: url, bot: false
                if @room.bot == true
                		timer(1) do 
                   		bot(data['message'])
