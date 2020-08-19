@@ -3,9 +3,11 @@
 		<div class="usernameAndTimeBox">
 			<% if message.user_id.present? %>
 				<%= link_to message.user.name, user_path(message.user_id),class: "message_username" %>
-			<% elsif message.bot == true %>
+			<% end %>
+			<% if message.bot == true && message.user_id.blank? %>
 				<p class="message_username">BOT</p>
-			<% else %>
+			<% end %>
+			<% if message.bot == false && message.user_id.blank? %>
 				<p class="message_username">名無し</p>
 
 			<% end %>
