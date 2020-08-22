@@ -9,6 +9,7 @@
     <%= javascript_pack_tag 'application' %>
     <%= javascript_include_tag 'application', media: 'all' %>
     <%= display_meta_tags(default_meta_tags) %>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/colorjoe@4.1.1/css/colorjoe.min.css" /> 
     <meta name="turbolinks-cache-control" content="no-cache">
     <meta name="viewport" content="width=device-width">
     <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -112,6 +113,7 @@
           </div>
         </div>
       <%= yield %>
+    <script src="https://cdn.jsdelivr.net/npm/colorjoe@4/dist/colorjoe.min.js"></script>
 
   </body>
 </html>

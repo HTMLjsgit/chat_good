@@ -403,10 +403,10 @@ class RoomChannel < ApplicationCable::Channel
 			elsif r == 20
 			  response = "人間と仲良くなりたいですね"
 			end          
-          end
-         if response == "" || response == nil
-         	response = "???"
-         end
+    end
+    if response == "" || response == nil
+      response = "???"
+    end
 		Message.create! content: response.to_s, room_id: params['room'], bot: true, user_id: nil  	
   end
 end
