@@ -156,7 +156,12 @@ class MessagesController < ApplicationController
 		plain = Base64.decode64(file)
 		name = 'message-' + message.id.to_s
 		file_name = "#{name}.jpeg"
-		Dir.mkdir("public/uploads/#{message.class.to_s.underscore}/#{message.id}")
-		File.open("public/uploads/#{message.class.to_s.underscore}/#{message.id}/#{file_name}", 'wb') { |f| f.write(plain)}
+		unless Dir.exists? "public/uploads/#{message.class.to_s.underscore}"
+			Dir.mkdir("public/uploads/#{message.class.to_s.underscore}")
+		end
+		if  Dir.exists? "public/uploads/#{message.class.to_s.underscore}"
+			Dir.mkdir("public/uploads/#{message.class.to_s.underscore}/#{message.id}")
+			File.open("public/uploads/#{message.class.to_s.underscore}/#{message.id}/#{file_name}", 'wb') { |f| f.write(plain)}
+		end
 	end
 end

@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
 	protect_from_forgery
 	# ApplicationController.render 'messages/message'
+	
 	before_action :search
 
 	before_action :configure_permitted_parameters, if: :devise_controller?
@@ -8,7 +9,6 @@ class ApplicationController < ActionController::Base
 	rescue_from ActiveRecord::RecordNotFound, with: :render_404
 	rescue_from ActionController::RoutingError, with: :render_404
 	rescue_from Exception, with: :render_500
-
 	def configure_permitted_parameters
 		devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
 	end
@@ -25,6 +25,10 @@ class ApplicationController < ActionController::Base
 			logger.info "Rendering 500 with exception: #{exception.message}"
 		end
 		render template: "errors/error_500", status: 500, layout: "application"
+	end
+
+	def make_folder
+		Dir.mkdir("public/uploads/#{message.class.to_s.underscore}")
 	end
 
 	def self.render_with_signed_in_user(user, *args)
