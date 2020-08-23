@@ -153,7 +153,7 @@ class MessagesController < ApplicationController
 		file = image.gsub('data:image/jpeg;base64,','')
 		plain = Base64.decode64(file)
 		name = 'message-' + message.id.to_s
-		File.open("public/uploads/draw/#{name}.jpeg", 'wb') { |f| f.write(plain)}
+		File.open("public/uploads/message/image/draw/#{name}.jpeg", 'wb') { |f| f.write(plain)}
 		file_name = "#{name}.jpeg"
 
 	end
