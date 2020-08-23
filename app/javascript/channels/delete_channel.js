@@ -12,7 +12,6 @@ $(function(){
 
 	  received(data) {
 	    // Called when there's incoming data on the websocket for this channel
-	    console.log(data);
 	    console.log($('#messages').data('current_user') )
 	    if($('#messages').data('current_user') == data['user_id']){
 	    	$("#message-" + data['id']).remove();

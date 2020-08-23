@@ -70,6 +70,7 @@
 		<% if message.image_draw == true %>
 			<%= image_tag "/uploads/#{message.class.to_s.underscore}/#{message.id}/message-#{message.id}.jpeg" %>
 		<% end %>
+		<p class="flash_message"></p>
 	</div>
 </div>
 
