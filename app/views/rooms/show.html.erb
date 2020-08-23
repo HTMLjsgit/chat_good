@@ -137,59 +137,41 @@
 			<%= f.submit "画像をアップロード" %>
 		<% end %>
 	</div>
-    <div id="all-container">
-      <span id="layerd-canvas-area">
-        <canvas
-          id="draw-area"
-          width="600px"
-          height="600px"
-          style="border: 1px solid #000000; position: absolute;"
-        ></canvas>
-        <canvas
-          id="line-width-indicator"
-          width="600px"
-          height="600px"
-          style="border: 1px solid #000000;"
-        ></canvas>
-      </span>
-      <div id="right">
-        <div>
-          <div>
-            <button id="clear-button" class="menu">全消し</button>
-          </div>
-          <div>
-            <button id="eraser-button" class="menu">消しゴムモード</button>
-          </div>
-          <button id="draw_picture_btn">お絵描きしたものを画像化する。</button>
-          <div>
-            FontWeight
-            <span id="line-width">5</span>
-          </div>
-          <input id="range-selector" type="range" alue="5" min="1"max="50"step="0.1"/>
+	<div id="draw_set_box">
+		<button id="draw_start_button">お絵描きセットを開く</button>
+	</div>
+	<div id="all-container-canvas">
+	    <div id="all-container">
+	      <span id="layerd-canvas-area">
+	      	<div id="draw-area-box">
+	        	<canvas id="draw-area" width="600px" height="600px"></canvas>
+	        </div>
+	        <canvas id="line-width-indicator" width="0" height="0"></canvas>
+	      </span>
+	      <div id="right">
+	        <div>
+	          <div>
+	            <button id="clear-button" class="menu">全消し</button>
+	          </div>
+	          <div>
+	            <button id="eraser-button" class="menu">消しゴムモード</button>
+	          </div>
+	          <button id="draw_picture_btn">お絵描きしたものをアップロード</button>
+	          <div>
+	            太さ
+	            <span id="line-width">5</span>
+	          </div>
+	          <input id="range-selector" type="range" alue="5" min="1"max="50"step="0.1"/>
 
-          <input id="line-width-number-field" type="number" value="5" min="1" max="50" step="0.1"/>
-        </div>
-        <div>
-          <span id="color-palette"></span>
-        </div>
-      </div>
-    </div>
-    <style>
-      #all-container {
-        display: flex;
-        flex-direction: row;
-      }
-      #right {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-      }
-      .menu {
-        margin-bottom: 20px;
-      }
-    </style>
-	<canvas id="draw-area" width="257" height="257" id="canvas"></canvas>
+	          <input id="line-width-number-field" type="number" value="5" min="1" max="50" step="0.1"/>
+	        </div>
+	        <div>
+	          <span id="color-palette"></span>
+	        </div>
+	      </div>
+	    </div>
+		<canvas id="draw-area" width="257" height="257" id="canvas"></canvas>
+	</div>
 	<p class="flash_message"></p>
 	<div class="formchat">
 		<% unless request.os == "PlayStation Vita" %>
@@ -212,6 +194,24 @@
 </div>
 <script>
 $(function(){
+	draw_start = false;
+	$("#draw_start_button").click(function(){
+		if(draw_start == false){
+			$('#draw_start_button').text("お絵描きセットを閉じる");
+			$('#draw_start_button').addClass('comeon');
+			$('#all-container-canvas').fadeIn('slow');
+			$('.formchat').fadeOut('slow');
+			draw_start = true;
+		}else{
+			$('#draw_start_button').text("お絵描きセットを開く");
+			$('#draw_start_button').removeClass('comeon');
+			$('.formchat').fadeIn('slow');
+
+			$('#all-container-canvas').fadeOut('slow');
+			$('.flash_message').fadeOut('slow');
+			draw_start = false;
+		}
+	});
 	 $("#messagenewLink").click(function(e){
 	    var submitscroll = $('#bottomGO').offset().top;
 	    $('html, body').animate({scrollTop:submitscroll});
@@ -515,7 +515,7 @@ window.addEventListener("load", () => {
     $.ajax({
     	type: 'post',
     	url: '/messages',
-    	data: {image: base64, room_id: $('#messages').data('room_id')}
+    	data: {draw_picture: base64, room_id: $('#messages').data('room_id')}
     });
   });
 

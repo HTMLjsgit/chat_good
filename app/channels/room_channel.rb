@@ -85,7 +85,7 @@ class RoomChannel < ApplicationCable::Channel
     end
 
 
-    if data['message'].include?("(https://www.youtube.com/watch?v=")
+    if data['message'].include?("https://www.youtube.com/watch?v=")
       urll = data['message'].gsub(/http.+v=/, "")
       url = urll.gsub(/&.+./, "")
     elsif data['message'].include?("(https://youtu.be/")

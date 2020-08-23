@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_19_050514) do
+ActiveRecord::Schema.define(version: 2020_08_22_070525) do
 
   create_table "action_text_rich_texts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
@@ -58,6 +58,7 @@ ActiveRecord::Schema.define(version: 2020_08_19_050514) do
     t.integer "usermanager_id"
     t.boolean "edit_right", default: false, null: false
     t.boolean "bot", default: false
+    t.boolean "image_draw", default: false
   end
 
   create_table "passwordmanagers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|

@@ -23,6 +23,28 @@
 	white-space: nowrap;
 	text-overflow: ellipsis;
 }
+#all-container-canvas{
+	display: none;
+}
+#all-container{
+	display: flex;
+	justify-content: center;
+	padding-top: 50px;
+}
+#draw-area-box{
+	display: flex;
+	justify-content: center;
+}
+#draw_start_button{
+	margin: 0 auto;
+	max-width: 500px;	
+}
+#right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 .room-catagoles-box{
 	display: flex;
 
@@ -30,6 +52,9 @@
 .radioBox2{
 	margin-top: 50px;
 	margin-bottom: 30px;
+}
+.all-container-canvas{
+
 }
 .botBox{
 	display: flex;
@@ -729,6 +754,7 @@
 	margin: 0 auto;
 	max-width: 600px;
 	display: flex;
+	justify-content: center;
 }
 #submit{
 	width: 100px;
@@ -854,10 +880,15 @@
 	color: #eee;
 	text-align: center;
 }
-/*.left_button_png{
-	display: none;
+#draw_start_button.comeon{
+	position: fixed;
+	top: 100px;
+	left: 0;
 }
-*/
+#draw_set_box{
+	text-align: center;
+	top: 10px;
+}
 @media screen and (max-width: 1200px){
 	.formchat{
 		max-width: 100%;
@@ -874,23 +905,32 @@
 	#submit{
 		width: 100px;
 	}
+
 	.bottomRoomBox{
 		padding: 0;
 	}
 }
 @media screen and (max-width: 980px){
-
+	#all-container{
+		display: block;
+	}
 }
 @media screen and (max-width: 745px){
 	.youtube-container{
 		max-width: 450px;
 		height: 300px;
 	}
+		#draw-area{
+		width: 100%;
+	}
+	#draw_start_button .comeon{
+	}
 }
 @media screen and (max-width: 480px){
 	.imguploader{
 		margin-left: 10px;
 	}
+
 	.password-form-rooms-box{
 		padding: 0;
 	}

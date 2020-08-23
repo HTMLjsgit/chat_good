@@ -30,7 +30,7 @@
 
 		</div>
 		<div id="message-<%= message.id %>-box">
-			<div id="message-content-<%= message.id %>">
+			<div id="message-content-<%= message.id %>" class="message-contents">
 				<%= raw Rinku.auto_link(simple_format(h(message.content), class: "message_content rinku-auto-link", id: "message-link-#{message.id}"), :all,'target="_blank"') %>
 			</div>
 			<% if user_signed_in? %>
@@ -51,8 +51,7 @@
 				<% end %>
 			<% end %>
 		</div>
-
-		<% unless message.youtube_id.nil? %>
+		<% if message.youtube_id.present? %>
 			<% iframe = content_tag(
 				:iframe,
 				'',
@@ -68,7 +67,9 @@
 		<% if message.image? %>
 			<%= image_tag message.image.url, class: "message-image" %>
 		<% end %>
-
+		<% if message.image_draw == true %>
+			<%= image_tag "/uploads/message/image/draw/message-#{message.id}.jpeg" %>
+		<% end %>
 	</div>
 </div>
 

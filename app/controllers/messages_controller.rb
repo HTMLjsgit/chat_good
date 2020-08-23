@@ -1,28 +1,30 @@
 class MessagesController < ApplicationController
 	def create
+		image_draw = false
 		image = params[:image]
 		# room_id = params[:room_id]
 		room_id = params[:room_id]
 		content = params[:content]
+		draw_picture = params[:draw_picture]
 		if image.blank? && room_id.blank? && content.blank?
 			image = params[:message][:image]
 			room_id = params[:message][:room_id]
 			content = params[:message][:content]
 		end
-
 		# image = Base64.decode64(params[:image])
-		# binding.pry
 		# File.binwrite("public/uploads/message/image/draw/test2.png", image)
 		unless request.os == "PlayStation Vita"
-			if image.blank?
-				return false
+			if draw_picture.blank?
+				if image.blank?
+					return false
+				end
 			end
 		end
-
-		if image.blank? && content.blank?
-				return false
+		if draw_picture.blank?
+			if image.blank? && content.blank?
+					return false
+			end
 		end
-		
 		if user_signed_in?
 			if Usermanager.where(room_id: room_id, user_id: current_user.id, login: true).empty?
 				return false
@@ -31,10 +33,20 @@ class MessagesController < ApplicationController
 				return false
 			end
 			@message = Message.new(image: image, room_id: room_id, ip_id: request.ip, user_id: current_user.id, username: current_user.name, login: true)
-			image_from_base64(image, @message)
-			
-			if image.present?
+			if draw_picture.present?
+				image_draw = true
+			end
+
+			@message.image_draw = image_draw
+			# if image.include?("data:image/jpeg;base64,")
+			# 	@message.image_draw = true
+			# end
+			if image.present? || draw_picture.present?
 				if @message.save!
+					if draw_picture.present?
+						image_go = image_from_base64(draw_picture, @message)
+					end
+
 					 flash = "画像のアップロードに成功しました。"
 				else
 					 flash = "画像のアップロードに失敗しました。 画像の容量は5MB未満にしてください。"
@@ -53,12 +65,17 @@ class MessagesController < ApplicationController
 			if Usermanager.where(room_id: room_id, room_ban: true, ip_id: request.ip, login: false).exists?
 				return false
 			end
-			if image.present?
-				@message = Message.new(image: image, room_id: room_id, ip_id: request.ip, username: "名無し", login: false)
-				
-				if @message.save!
-					image_from_base64(image, @message)
+			@message = Message.new(image: image, room_id: room_id, ip_id: request.ip, username: "名無し", login: false)
+			if draw_picture.present?
+				image_draw = true
+			end
+			@message.image_draw = image_draw
 
+			if image.present? || draw_picture.present?
+				if @message.save!
+					if draw_picture.present?
+						image_go = image_from_base64(draw_picture, @message)
+					end
 					flash =  "画像のアップロードに成功しました。 "
 				else
 					flash = "画像のアップロードに失敗しました。 画像の容量は5MB未満にしてください。"
@@ -67,7 +84,7 @@ class MessagesController < ApplicationController
 			if request.os == "PlayStation Vita"
 				if content.present?
 				 message = Message.create!(content: content, room_id: room_id, ip_id: request.ip, username: "名無し", login: false)
-				 flash[:image] = "メッセージの投稿に成功しました。"
+				 flash = "メッセージの投稿に成功しました。"
 				end
 			end
 		end
@@ -92,6 +109,7 @@ class MessagesController < ApplicationController
 				return false
 			end
 			@message = Message.find_by(id: params[:id], room_id: room_id)
+
 			@message.image = image
 			@message.edit_right = true
 			if @message.save
@@ -131,19 +149,12 @@ class MessagesController < ApplicationController
 		@messages = Message.all
 	end
 
-	def image_from_base64(b64, message)
-		# bin = Base64.decode64(b64)
-		# file = Tempfile.new('public/uploads/message')
-		# file.binmode
-		# file << bin
-		# file.rewind
-
-		b = b64.delete("data:image/jpeg;base64,")
-		File.open("#{Rails.root}/public/uploads/message/image/message-#{message.id}.png", "wb") {|f|
-			f.write Base64.encode64(b)
-			binding.pry
-
-		}
+	def image_from_base64(image, message)
+		file = image.gsub('data:image/jpeg;base64,','')
+		plain = Base64.decode64(file)
+		name = 'message-' + message.id.to_s
+		File.open("public/uploads/message/image/draw/#{name}.jpeg", 'wb') { |f| f.write(plain)}
+		file_name = "#{name}.jpeg"
 
 	end
 end
