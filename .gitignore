@@ -34,6 +34,6 @@
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
-/public/uploads/message
+/public/uploads
 /.env
 /config/master.key

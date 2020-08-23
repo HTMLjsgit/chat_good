@@ -1,4 +1,6 @@
 class MessagesController < ApplicationController
+	require "fileutils"
+
 	def create
 		image_draw = false
 		image = params[:image]
@@ -153,8 +155,8 @@ class MessagesController < ApplicationController
 		file = image.gsub('data:image/jpeg;base64,','')
 		plain = Base64.decode64(file)
 		name = 'message-' + message.id.to_s
-		File.open("public/uploads/message/image/draw/#{name}.jpeg", 'wb') { |f| f.write(plain)}
 		file_name = "#{name}.jpeg"
-
+		Dir.mkdir("public/uploads/#{message.class.to_s.underscore}/#{message.id}")
+		File.open("public/uploads/#{message.class.to_s.underscore}/#{message.id}/#{file_name}", 'wb') { |f| f.write(plain)}
 	end
 end

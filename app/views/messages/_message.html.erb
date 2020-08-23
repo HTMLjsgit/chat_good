@@ -68,7 +68,7 @@
 			<%= image_tag message.image.url, class: "message-image" %>
 		<% end %>
 		<% if message.image_draw == true %>
-			<%= image_tag "/uploads/message/image/draw/message-#{message.id}.jpeg" %>
+			<%= image_tag "/uploads/#{message.class.to_s.underscore}/#{message.id}/message-#{message.id}.jpeg" %>
 		<% end %>
 	</div>
 </div>
