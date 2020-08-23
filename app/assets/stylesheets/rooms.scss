@@ -23,28 +23,7 @@
 	white-space: nowrap;
 	text-overflow: ellipsis;
 }
-#all-container-canvas{
-	display: none;
-}
-#all-container{
-	display: flex;
-	justify-content: center;
-	padding-top: 50px;
-}
-#draw-area-box{
-	display: flex;
-	justify-content: center;
-}
-#draw_start_button{
-	margin: 0 auto;
-	max-width: 500px;	
-}
-#right {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
+
 .room-catagoles-box{
 	display: flex;
 
