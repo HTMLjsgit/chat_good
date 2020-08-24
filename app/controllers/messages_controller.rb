@@ -105,7 +105,6 @@ class MessagesController < ApplicationController
 			@message.image = image
 			@message.edit_right = true
 			if @message.save
-
 				flash =  "画像のアップロードに成功しました。 "
 			else
 				flash = "画像のアップロードに失敗しました。 画像の容量は5MB未満にしてください。"

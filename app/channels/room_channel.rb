@@ -2,22 +2,29 @@ class RoomChannel < ApplicationCable::Channel
 
   def subscribed
     ip = self.connection.ip_addr
+
     if current_user.present?
       if Usermanager.where(user_id: current_user.id, room_ban: true, room_id: params['room'], login: true).exists? || Usermanager.where(user_id: current_user.id, login: true, room_id: params['room']).empty?
         stream_from "room_channel_nil"
       else
-        stream_from "room_channel_#{params['room'].to_s}"
+        if params['room'].present?
+          stream_from "room_channel_#{params['room'].to_s}"
+        end
       end
     else
       if Usermanager.where(ip_id: ip, room_ban: true, room_id: params['room'], login: false).exists? || Usermanager.where(ip_id: ip, login: false, room_id: params['room']).empty?
         stream_from "room_channel_nil"
       else
-        stream_from "room_channel_#{params['room'].to_s}"
+        if params['room'].present?
+          stream_from "room_channel_#{params['room'].to_s}"
+        end
       end
     end
-    @room = Room.find params['room']
-    if @room.bot
-    	bot_timer()
+    if params['room'].present?
+      @room = Room.find params['room']
+      if @room.bot
+      	bot_timer()
+      end
     end
     
   end

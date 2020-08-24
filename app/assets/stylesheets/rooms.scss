@@ -23,7 +23,9 @@
 	white-space: nowrap;
 	text-overflow: ellipsis;
 }
-
+#img{
+	background-color: #ffffff;
+}
 .room-catagoles-box{
 	display: flex;
 
@@ -734,6 +736,11 @@
 	max-width: 600px;
 	display: flex;
 	justify-content: center;
+	background-color: #878787;
+	margin-bottom: 20px;
+	padding-bottom: 20px;
+	padding-top: 20px;
+	border-radius: 10px;
 }
 #submit{
 	width: 100px;

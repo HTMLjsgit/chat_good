@@ -130,7 +130,7 @@
 	<h3 class="textCount"></h3>
 	<div class="imguploader">
 		<%= form_with model: @message, local: false, url: messages_path do |f| %>
-			<%= f.file_field :image, id: "img img-value-form" %>
+			<%= f.file_field :image, id: "img-value-form" %>
 			<%= f.hidden_field :room_id, value: @room.id %>
 			<%= f.submit "画像をアップロード" %>
 		<% end %>
