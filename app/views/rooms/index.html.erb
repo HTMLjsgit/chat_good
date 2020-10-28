@@ -5,7 +5,6 @@
 			<div class="roomAtagBox">
 				<%= link_to room_path(room, :anchor => 'bottomGO') do %>
 					<div class="roomBox">
-
 						<h1><%= room.title.truncate(10) %></h1>
 						<div class="room-body-box">
 							<% if room.body.present? %>

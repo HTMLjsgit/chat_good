@@ -23,8 +23,22 @@
 	white-space: nowrap;
 	text-overflow: ellipsis;
 }
+.file-box{
+	display: flex;
+}
 #img{
 	background-color: #ffffff;
+}
+#img-form-button{
+	margin-right: 40px;
+	border: 1px solid #000;
+	background-color: #eeeeee;
+	cursor: pointer;
+	font-size: 13px;
+	padding: 5px;
+}
+#img-form-button:hover{
+	opacity: 0.8;
 }
 .room-catagoles-box{
 	display: flex;
@@ -547,6 +561,18 @@
 	padding-top: 3px;
 	padding-bottom: 3px;
 }
+#img-value-form{
+	visibility:hidden;
+	width: 0;
+	height: 0;
+}
+.file-name-box{
+	margin: 0 auto;
+	max-width: 400px;
+	text-align: center;
+	color: #ffffff;
+	padding-bottom: 10px;
+}
 .messageitiranBox:hover{
 	transition:background-color ease 0.3s ;
 	background-color: #579AFB;
@@ -741,6 +767,7 @@
 	padding-bottom: 20px;
 	padding-top: 20px;
 	border-radius: 10px;
+
 }
 #submit{
 	width: 100px;

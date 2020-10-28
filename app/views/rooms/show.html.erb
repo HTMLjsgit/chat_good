@@ -131,8 +131,15 @@
 	<div class="imguploader">
 		<%= form_with model: @message, local: false, url: messages_path do |f| %>
 			<%= f.file_field :image, id: "img-value-form" %>
-			<%= f.hidden_field :room_id, value: @room.id %>
-			<%= f.submit "画像をアップロード" %>
+			<div class="file-name-box">
+				<p id="file-name"></p>
+			</div>
+			<div class="file-box">
+				<span id="img-form-button">ファイルを選択</span>
+				<%= f.hidden_field :room_id, value: @room.id %>
+				<%= f.submit "画像をアップロード" %>
+			</div>
+
 		<% end %>
 	</div>
 	<p class="flash_message"></p>
@@ -193,6 +200,15 @@ $(function(){
 	 		kyo_click = false;
 	 	}
 	 })
+
+	 $("#img-form-button").click(function(){
+	 	$('#img-value-form').click();
+	 });
+
+	 $("#img-value-form").on('change', function(){
+	 	var img = document.getElementById("img-value-form").files[0];
+	 	$('#file-name').text(img.name);
+	 });
 	 var password_click = false;
 	 $('#password-button').click(function(){
 	 	if(password_click == false){

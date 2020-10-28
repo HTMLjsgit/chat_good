@@ -5,6 +5,7 @@
 			<p><%= raw Rinku.auto_link(simple_format(h(@user.profile), class: "user-profile-text rinku-auto-link"), :all,'target="_blank"') %></p>
 		</div>
 	<% end %>
+
 	<div class="edit_box_user">
 		<% if user_signed_in? %>
 			<% if current_user.id == @user.id %>
@@ -15,6 +16,9 @@
 			<% end %>
 		<% end %>
 	</div>
+
+
+
 	<% if @rooms_public.present? %>
 		<h1 class="publicText">作った公開ルーム一覧</h1>
 	<% end %>
@@ -22,7 +26,7 @@
 	<div class="roomsBox">
 
 		<% @rooms.each do |room| %>
-				<%= render 'public', room: room %>
+			<%= render 'public', room: room %>
 		<% end %>
 	</div>
 

@@ -9,7 +9,6 @@
 			<% end %>
 			<% if message.bot == false && message.user_id.blank? %>
 				<p class="message_username">名無し</p>
-
 			<% end %>
 			<div class="usettimeAndDeleteBox">
 				<p class="agomessage"><%= time_ago_in_words(message.created_at) + "前" %></p>
