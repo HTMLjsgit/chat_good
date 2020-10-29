@@ -568,6 +568,18 @@
 	width: 0;
 	height: 0;
 }
+.file-button-choose{
+	background-color: #eeeeee;
+	cursor: pointer;
+	font-size: 15px;
+	padding: 1px;
+	    box-sizing: border-box;
+
+}
+.file-button-choose:hover{
+	transition: 0.3s background-color ease;
+	background-color: #dddddd;
+}
 .img-value{
 	visibility:hidden;
 	width: 0;
@@ -594,6 +606,12 @@
 }
 .new-message-link-text{
 	padding-top: 10px;
+}
+.file-name-choose-message{
+	max-width: 100%;
+	text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow:hidden;
 }
 .in-room-user-all-text{
 	padding-top: 10px;
@@ -964,7 +982,9 @@
 	.imguploader{
 		margin-left: 10px;
 	}
-
+	.file-name-choose-message{
+		max-width: 200px;
+	}
 	.password-form-rooms-box{
 		padding: 0;
 	}

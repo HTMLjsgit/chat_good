@@ -39,9 +39,9 @@
 							<%= form_with model: Message.find(message.id), local: false do |f| %>
 								<%= f.file_field :image, id: "img-value-form-message-#{message.id}", class: "img-value" %>
 								<div class="file-name-box">
-									<p id="file-name-message-<%= message.id %>"></p>
+									<p id="file-name-message-<%= message.id %>" class="file-name-choose-message"><%= message_url(message.image.url, message.id) %></p>
 								</div>
-								<span id="img-form-button-message-<%= message.id %>">ファイルを選択</span>
+								<span id="img-form-button-message-<%= message.id %>" class="file-button-choose">ファイルを選択</span>
 
 								<%= f.hidden_field :room_id, value: message.room_id %>
 								<%= f.submit "画像をアップロード" %>
