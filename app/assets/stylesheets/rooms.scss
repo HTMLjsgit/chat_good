@@ -817,8 +817,12 @@
 }
 .error_box{
 	background-color: #eeeeee;
-	margin-top: 100px;
+	margin-top: 30px;
 	width: 90%;
+	border-radius: 10px;
+}
+.searchButton{
+	background-color: #dddddd;
 	border-radius: 10px;
 }
 .errorText{
@@ -957,6 +961,12 @@
 	}
 	.imguploader{
 		padding: 5px;
+	}
+	.new-room-text{
+		text-align: center;
+	}
+	.new_rooms_form_box{
+		margin-left: 30px;
 	}
 }
 @media screen and (max-width: 745px){
