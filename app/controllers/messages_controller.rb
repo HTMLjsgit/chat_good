@@ -32,7 +32,7 @@ class MessagesController < ApplicationController
 			# if image.include?("data:image/jpeg;base64,")
 			# 	@message.image_draw = true
 			# end
-			if @message.save!
+			if @message.save
 			   flash = "画像のアップロードに成功しました。"
 			else
 			   flash = "画像のアップロードに失敗しました。 画像の容量は5MB未満にしてください。"
@@ -51,7 +51,7 @@ class MessagesController < ApplicationController
 				return false
 			end
 			@message = Message.new(image: image, room_id: room_id, ip_id: request.ip, username: "名無し", login: false)
-			if @message.save!
+			if @message.save
 				flash =  "画像のアップロードに成功しました。 "
 			else
 				flash = "画像のアップロードに失敗しました。 画像の容量は5MB未満にしてください。"

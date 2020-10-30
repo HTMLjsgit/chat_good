@@ -78,13 +78,12 @@
 
 	var edit_click_<%= message.id %> = true
 	 $('#img-form-button-message-<%= message.id %>').click(function(){
-	 	console.log("----");
 	 	$('#img-value-form-message-<%= message.id %>').click();
 	 });
 
 	 $("#img-value-form-message-<%= message.id %>").on('change', function(){
-	 	var img = document.getElementById("img-value-form-message-<%=  message.id %>").files[0];
-	 	$('#file-name-message-<%= message.id %>').text(img.name);
+	 	var img_<%= message.id %> = document.getElementById("img-value-form-message-<%=  message.id %>").files[0];
+	 	$('#file-name-message-<%= message.id %>').text(img_<%= message.id %>.name);
 	 });
 	$("#edit_click-<%= message.id %>").click(function(){
 		if(edit_click_<%= message.id %> == true){
