@@ -762,8 +762,6 @@
 	margin: 0 auto;
 	max-width: 1000px;
 	color: #fff;
-	display: flex;
-	justify-content: space-around;
 }
 .sidebarBox{
 	position: -webkit-sticky;
@@ -803,7 +801,7 @@
 
 }
 #submit{
-	width: 60px;
+	width: 100px;
 	padding: 5px;
 	font-size: 15px;
 	border-radius: 10px;
@@ -936,15 +934,12 @@
 	margin-top: 10px;
 	margin-bottom: 10px;
 }
+.message{
+	min-width: 400px; 
+}
 @media screen and (max-width: 1200px){
 	.formchat{
-		max-width: 100%;
 		display: block;
-		margin: 0;
-	}
-
-	#submit{
-		width: 100px;
 	}
 
 	.bottomRoomBox{
@@ -981,6 +976,10 @@
 @media screen and (max-width: 480px){
 	.imguploader{
 		margin-left: 10px;
+	}
+	.message{
+		max-width: 100%;
+		min-width: 0;
 	}
 	.file-name-choose-message{
 		max-width: 200px;
