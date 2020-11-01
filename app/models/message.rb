@@ -9,13 +9,13 @@ class Message < ApplicationRecord
 	after_create_commit { MessageBroadcastJob.perform_later self}
 	after_create_commit { MessageAdminBroadcastJob.perform_later self}
 	validates :content, length: {maximum: 1000 }
-	mount_uploader :image, ImageUploader
-	validate :image_size
+	mount_uploader :file, FileUploader
+	validate :file_size
 	private
 
-	def image_size
-		if image.size > 5.megabytes
-			errors.add(:image, "容量が大きすぎます。5MB未満のファイルにしてください。")
-		end
+	def file_size
+		# if file.size > .megabytes
+			# errors.add(:file, "容量が大きすぎます。5MB未満のファイルにしてください。")
+		# end
 	end
 end

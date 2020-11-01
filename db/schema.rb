@@ -53,7 +53,7 @@ ActiveRecord::Schema.define(version: 2020_08_19_050514) do
     t.string "ip_id"
     t.boolean "login", default: false
     t.string "youtube_id"
-    t.string "image"
+    t.string "file"
     t.string "url"
     t.integer "usermanager_id"
     t.boolean "edit_right", default: false, null: false

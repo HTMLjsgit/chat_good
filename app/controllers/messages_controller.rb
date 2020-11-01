@@ -1,23 +1,23 @@
 class MessagesController < ApplicationController
 
 	def create
-		image = params[:image]
+		file = params[:file]
 		# room_id = params[:room_id]
 		room_id = params[:room_id]
 		content = params[:content]
-		if image.blank? && room_id.blank? && content.blank?
-			image = params[:message][:image]
+		if file.blank? && room_id.blank? && content.blank?
+			file = params[:message][:file]
 			room_id = params[:message][:room_id]
 			content = params[:message][:content]
 		end
 		# image = Base64.decode64(params[:image])
 		# File.binwrite("public/uploads/message/image/draw/test2.png", image)
 		unless request.os == "PlayStation Vita"
-			if image.blank?
+			if file.blank?
 				return false
 			end
 		end
-		if image.blank? && content.blank?
+		if file.blank? && content.blank?
 				return false
 		end
 		if user_signed_in?
@@ -27,12 +27,12 @@ class MessagesController < ApplicationController
 			if Usermanager.where(room_id: room_id, room_ban: true, user_id: current_user.id, login: true).exists?
 				return false
 			end
-			@message = Message.new(image: image, room_id: room_id, ip_id: request.ip, user_id: current_user.id, username: current_user.name, login: true)
+			@message = Message.new(file: file, room_id: room_id, ip_id: request.ip, user_id: current_user.id, username: current_user.name, login: true)
 
 			# if image.include?("data:image/jpeg;base64,")
 			# 	@message.image_draw = true
 			# end
-			if @message.save
+			if @message.save!
 			   flash = "画像のアップロードに成功しました。"
 			else
 			   flash = "画像のアップロードに失敗しました。 画像の容量は5MB未満にしてください。"
@@ -50,8 +50,8 @@ class MessagesController < ApplicationController
 			if Usermanager.where(room_id: room_id, room_ban: true, ip_id: request.ip, login: false).exists?
 				return false
 			end
-			@message = Message.new(image: image, room_id: room_id, ip_id: request.ip, username: "名無し", login: false)
-			if @message.save
+			@message = Message.new(file: file, room_id: room_id, ip_id: request.ip, username: "名無し", login: false)
+			if @message.save!
 				flash =  "画像のアップロードに成功しました。 "
 			else
 				flash = "画像のアップロードに失敗しました。 画像の容量は5MB未満にしてください。"
@@ -68,10 +68,10 @@ class MessagesController < ApplicationController
 	end
 
 	def update
-		image = params[:message][:image]
+		file = params[:message][:file]
 		room_id = params[:message][:room_id]
 		content = params[:message][:content]
-		if image.nil?
+		if file.nil?
 			return false
 		end
 		if user_signed_in?
@@ -83,7 +83,7 @@ class MessagesController < ApplicationController
 			end
 			@message = Message.find_by(id: params[:id], room_id: room_id)
 
-			@message.image = image
+			@message.file = file
 			@message.edit_right = true
 			if @message.save
 				 flash = "画像のアップロードに成功しました。"
@@ -91,7 +91,7 @@ class MessagesController < ApplicationController
 				 flash = "画像のアップロードに失敗しました。 画像の容量は5MB未満にしてください。"
 			end
 			if request.os == "PlayStation Vita"
-				Message.update(content: content, image: image, room_id: room_id, ip_id: request.op, user_id: current_user.id, username: current_user.name, login: true)
+				Message.update(content: content, file: file, room_id: room_id, ip_id: request.op, user_id: current_user.id, username: current_user.name, login: true)
 				flash = "メッセージの投稿に成功しました。"
 			end
 		else
@@ -102,7 +102,7 @@ class MessagesController < ApplicationController
 				return false
 			end
 			@message = Message.find_by(id: params[:id], room_id: room_id)
-			@message.image = image
+			@message.file = file
 			@message.edit_right = true
 			if @message.save
 				flash =  "画像のアップロードに成功しました。 "
@@ -110,12 +110,19 @@ class MessagesController < ApplicationController
 				flash = "画像のアップロードに失敗しました。 画像の容量は5MB未満にしてください。"
 			end
 			if request.os == "PlayStation Vita"
-				message = Message.update(content: content, image: image, ip_id: request.ip)
+				message = Message.update(content: content, file: file, ip_id: request.ip)
 				
-				flash[:image] = "メッセージの投稿に成功しました。"
+				flash[:file] = "メッセージの投稿に成功しました。"
 			end
 		end
 		@flash = flash
 		@messages = Message.all
+	end
+
+	def download
+		url = params[:url]
+		id = params[:id]
+		message = Message.find params[:id]
+		send_file "public/uploads/message/file/#{id}/#{url}"
 	end
 end

@@ -24,96 +24,95 @@
   </head>
 
   <body>
-        <div class="topBox contentupcBox">
-          <div class="contentupcBox">
-              <%= link_to rooms_path do %>
-                <%= image_tag "goodIcon.png", class: "top_img" %>
-              <% end %>
-              <div class="searchformBox">
-                <div class="formsearchGOBOx">
-                  <%= search_form_for @q do |f| %>
-                    <%= f.search_field :title_cont, class: "search_field" %>
-                    <div class="searchareaButton">
-                      <%= f.submit "検索", class: "submitsearcch" %>
-                    </div>
-                  <% end %>
-                </div>
-              </div>
-              <div class="room_a_box">  
-                <%= link_to new_room_path, class: "new_room" do %>
-                  <div class="roomNewBox">
-                    <h1 class="topText submenuText makingroom">
-                      ルーム作成
-                    </h1>
-                    <%= image_tag "プラスのアイコン素材.png", class: "plus-icon-room-new-png" %>
-                  </div>
-                <% end %>
-              </div>
-
-              <% if user_signed_in? %>
-                <h1 class="topText submenuText"><%= link_to "マイページ" , user_path(current_user.id)%></h1>
-                <h1 class="topText submenuText"><%= link_to "ログアウト",destroy_user_session_path, method: :delete %></h1>
-              <% else %>
-                <h1 class="topText submenuText"><%= link_to "ログイン" , new_user_session_path %></h1>
-                <h1 class="topText submenuText"><%= link_to "新規登録" , new_user_registration_path %></h1>
-              <% end %>
-          </div>
-        </div>
-        <div class="topBox contentsmartBox">
+    <div class="topBox contentupcBox">
+      <div class="contentupcBox">
           <%= link_to rooms_path do %>
-            <%= image_tag "goodIcon.png", class: "top_img" %>
+              <%= image_tag "goodIcon.png", class: "top_img" %>
           <% end %>
-          <div>
-          <div class="searchButton">
-            <%= image_tag "search.png" %>
-          </div>
           <div class="searchformBox">
             <div class="formsearchGOBOx">
               <%= search_form_for @q do |f| %>
-                  <%= f.search_field :title_cont, class: "search_field" %>
+                <%= f.search_field :title_cont, class: "search_field" %>
+                <div class="searchareaButton">
                   <%= f.submit "検索", class: "submitsearcch" %>
+                </div>
               <% end %>
             </div>
           </div>
-          <% if user_signed_in? %>
-            <div class="cp_offcm01">
-              <input type="checkbox" id="cp_toggle01">
-              <label for="cp_toggle01" id="home_label">
-                <span id="home_span"></span>
-              </label>
-              <div class="cp_menu">
-                <ul>
-                  <!-- スマホ用ハンバーガーメニュー(ログインしていた場合) -->
-                  <li><%= link_to "TOP",rooms_path %></li>
-                  <li><%= link_to "ルーム作成", new_room_path %></li>
-                  <li><%= link_to "マイページ",user_path(current_user) %></li>
-                  <li><%= link_to "ログアウト",destroy_user_session_path, method: :delete %> </li>
-                </ul>
+          <div class="room_a_box">  
+            <%= link_to new_room_path, class: "new_room" do %>
+              <div class="roomNewBox">
+                <h1 class="topText submenuText makingroom">
+                  ルーム作成
+                </h1>
+                <%= image_tag "プラスのアイコン素材.png", class: "plus-icon-room-new-png" %>
               </div>
-            </div>
-          <% end %>
-          <!-- スマホ版　ログインしていなかったら -->
-            <% unless user_signed_in? %>
-                <div class="cp_offcm01">
-                  <input type="checkbox" id="cp_toggle01">
-                  <label for="cp_toggle01" id="home_label">
-                    <span id="home_span"></span>
-                  </label>
+            <% end %>
+          </div>
 
-                  <div class="cp_menu">
-                      <ul>
-                       <li><%= link_to "TOP", rooms_path %></li>
-                       <li><%= link_to "ルーム作成",new_room_path %> </li>
-                       <li><%= link_to "ログイン",new_user_session_path %></li>
-                       <li><%= link_to "新規登録", new_user_registration_path %></li>
-                     </ul>
-                  </div>
-                </div>
-             <% end %>
+          <% if user_signed_in? %>
+            <h1 class="topText submenuText"><%= link_to "マイページ" , user_path(current_user.id)%></h1>
+            <h1 class="topText submenuText"><%= link_to "ログアウト",destroy_user_session_path, method: :delete %></h1>
+          <% else %>
+            <h1 class="topText submenuText"><%= link_to "ログイン" , new_user_session_path %></h1>
+            <h1 class="topText submenuText"><%= link_to "新規登録" , new_user_registration_path %></h1>
+          <% end %>
+        </div>
+    </div>
+    <div class="topBox contentsmartBox">
+      <%= link_to rooms_path do %>
+        <%= image_tag "goodIcon.png", class: "top_img" %>
+      <% end %>
+      <div>
+      <div class="searchButton">
+        <%= image_tag "search.png" %>
+      </div>
+      <div class="searchformBox">
+        <div class="formsearchGOBOx">
+          <%= search_form_for @q do |f| %>
+              <%= f.search_field :title_cont, class: "search_field" %>
+              <%= f.submit "検索", class: "submitsearcch" %>
+          <% end %>
+        </div>
+    </div>
+    <% if user_signed_in? %>
+      <div class="cp_offcm01">
+        <input type="checkbox" id="cp_toggle01">
+        <label for="cp_toggle01" id="home_label">
+          <span id="home_span"></span>
+        </label>
+        <div class="cp_menu">
+          <ul>
+            <!-- スマホ用ハンバーガーメニュー(ログインしていた場合) -->
+            <li><%= link_to "TOP",rooms_path %></li>
+            <li><%= link_to "ルーム作成", new_room_path %></li>
+            <li><%= link_to "マイページ",user_path(current_user) %></li>
+            <li><%= link_to "ログアウト",destroy_user_session_path, method: :delete %> </li>
+          </ul>
+        </div>
+      </div>
+    <% end %>
+        <!-- スマホ版　ログインしていなかったら -->
+    <% unless user_signed_in? %>
+        <div class="cp_offcm01">
+          <input type="checkbox" id="cp_toggle01">
+          <label for="cp_toggle01" id="home_label">
+            <span id="home_span"></span>
+          </label>
+          <div class="cp_menu">
+              <ul>
+               <li><%= link_to "TOP", rooms_path %></li>
+               <li><%= link_to "ルーム作成",new_room_path %> </li>
+               <li><%= link_to "ログイン",new_user_session_path %></li>
+               <li><%= link_to "新規登録", new_user_registration_path %></li>
+             </ul>
           </div>
         </div>
-      <%= yield %>
-    <script src="https://cdn.jsdelivr.net/npm/colorjoe@4/dist/colorjoe.min.js"></script>
+     <% end %>
+    </div>
+  </div>
+  <%= yield %>
+  <script src="https://cdn.jsdelivr.net/npm/colorjoe@4/dist/colorjoe.min.js"></script>
 
-  </body>
+</body>
 </html>

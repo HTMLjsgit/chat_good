@@ -6,21 +6,16 @@
 		</p>
 	</div>
 	<div class="usermanager_list_all_box">
-		<% @users.each do |user| %>
-
-			<% @managers.each do |manager| %>
-					<% if user.id == manager.user_id %>
-						<% if @room.id == manager.room_id %>
-							<div class="room-manager-user-box">
-								<%= link_to room_usermanager_path(@room, manager.id), class: "room_user_a" do %>
-									<div class="usermanager-box">
-										<h3 class="link_name_usermanager"><%= user.name %></h3>
-									</div>
-								<% end %>
-							</div>
-						<% end %>
+		<% @managers.each do |manager| %>
+			<div class="room-manager-user-box">
+				<% @users.each do |user| %>
+					<%= link_to room_usermanager_path(@room, manager.id), class: "room_user_a" do %>
+						<div class="usermanager-box">
+							<h3 class="link_name_usermanager"><%= user.name %></h3>
+						</div>
 					<% end %>
-			<% end %>
+				<% end %>
+			</div>
 		<% end %>
 		<% @managers.each do |manager| %>
 			<% unless manager.login %>
