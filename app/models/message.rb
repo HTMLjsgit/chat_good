@@ -14,8 +14,8 @@ class Message < ApplicationRecord
 	private
 
 	def file_size
-		# if file.size > .megabytes
-			# errors.add(:file, "容量が大きすぎます。5MB未満のファイルにしてください。")
-		# end
+		if file.size > 10000.megabytes
+			errors.add(:file, "容量が大きすぎます。5MB未満のファイルにしてください。")
+		end
 	end
 end
