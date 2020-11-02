@@ -193,6 +193,9 @@
 #message_image{
 	color: #fff;
 }
+.message{
+	margin-top: 20px;
+}
 .edit_form{
 	width: 100%;
 	height: 5em;
@@ -851,17 +854,21 @@
 .editBox{
 }
 .file_name_message{
-	color: white;
+	text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow:hidden;
+	color: #00D1FF;
 	font-size: 12px;
 	margin-bottom: 20px;
 }
 .file-box-message{
-	border: 1px solid #dddddd;
-	padding: 10px;
+	border: 1px solid #000000;
+	padding: 10px 10px 15px 10px;
+	background-color: #2F2F2F;
+	max-width: 400px;
+
 }
-.link_download{
-	padding: 5px;
-}
+
 .message img{
 	width: 100%;
 	max-width: 400px;
