@@ -34,11 +34,14 @@
 }
 #img-form-button{
 	margin-right: 40px;
-	border: 1px solid #000;
 	background-color: #eeeeee;
 	cursor: pointer;
 	font-size: 13px;
-	padding: 5px;
+	padding: 0px 5px;
+
+}
+.file-choose-text.file-choose-text-message{
+	padding-top: 6px;
 }
 #img-form-button:hover{
 	opacity: 0.8;
@@ -447,6 +450,12 @@
  	border-radius: 50%;
  	background-color: #eee;
  	opacity: 0.8;
+ 	width: 32px;
+ 	height: 32px;
+}
+.down-right-box img{
+	width: 100%;
+	height: 100%;
 }
 .down-right-box:hover{
 	cursor: pointer;
@@ -581,10 +590,15 @@
 .file-button-choose{
 	background-color: #eeeeee;
 	cursor: pointer;
-	font-size: 15px;
-	padding: 1px;
-	    box-sizing: border-box;
-
+	font-size: 13px;
+	padding: 0px 8px;
+	text-align: 4px;
+    margin-right: 20px;
+    height: 24px;
+    margin-top: 1px;
+}
+.file-option-box{
+	display: flex;
 }
 .file-button-choose:hover{
 	transition: 0.3s background-color ease;
@@ -936,8 +950,8 @@
 	z-index: 9;
 }
 .edit_smart_phone_button img{
-	width: 40px;
-	height: 40px;
+	width: 100%;
+	height: 100%;
 }
 .right_button_png{
 	display: none;
@@ -1010,6 +1024,14 @@
 @media screen and (max-width: 480px){
 	.imguploader{
 		margin-left: 10px;
+	}
+	.edit_smart_phone_button{
+		width: 30px;
+		height: 30px;
+	}
+	.operationBox{
+		width: 30px;
+		height: 30px;
 	}
 	.imguploader.edit_image_uploader{
 		width: 100%;

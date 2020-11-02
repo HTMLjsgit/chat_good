@@ -135,7 +135,9 @@
 				<p id="file-name"></p>
 			</div>
 			<div class="file-box">
-				<span id="img-form-button">ファイルを選択</span>
+				<span id="img-form-button">
+					<p class="file-choose-text file-choose-text-message">ファイルを選択</p>
+				</span>
 				<%= f.hidden_field :room_id, value: @room.id %>
 				<%= f.submit "ファイルをアップロード" %>
 			</div>

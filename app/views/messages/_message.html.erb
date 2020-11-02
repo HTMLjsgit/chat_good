@@ -41,10 +41,14 @@
 								<div class="file-name-box">
 										<p id="file-name-message-<%= message.id %>" class="file-name-choose-message"><%= message.file.identifier if message.file? %></p>
 								</div>
-								<span id="img-form-button-message-<%= message.id %>" class="file-button-choose">ファイルを選択</span>
+								<div class="file-option-box">
+									<span id="img-form-button-message-<%= message.id %>" class="file-button-choose">
+										<p class="file-choose-text">ファイルを選択</p>
+									</span>
 
-								<%= f.hidden_field :room_id, value: message.room_id %>
-								<%= f.submit "画像をアップロード" %>
+									<%= f.hidden_field :room_id, value: message.room_id %>
+									<%= f.submit "ファイルをアップロード" %>
+								</div>
 							<% end %>
 						</div>
 						<%= text_area_tag :content, message.content ,data: {behavior: "edit_speaker"},id: "message-#{message.id}", class: "edit_form" %>
