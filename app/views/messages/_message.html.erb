@@ -35,7 +35,7 @@
 			<% if user_signed_in? %>
 				<% if current_user.id == message.user_id %>
 					<div id="edit_form_box_<%= message.id %>" class="editform">
-						<div class="imguploader">
+						<div class="imguploader edit_image_uploader">
 							<%= form_with model: Message.find(message.id), local: false do |f| %>
 								<%= f.file_field :file, id: "img-value-form-message-#{message.id}", class: "img-value" %>
 								<div class="file-name-box">
@@ -70,7 +70,7 @@
 			<%= content_tag(:div, iframe, class: "youtube-container2") %>
 		<% end %>
 		<% if message.file? %>
-			<div class="file-box-message">
+			<div class="file-box-message" id="file-box-message-<%= message.id %>-box">
 				<p class="file_name_message"><%= message.file.identifier %></p>
 				<%= message_url(message.file.url,message.file.identifier,message.room.id, message.id) %>
 			</div>
@@ -93,12 +93,14 @@
 			$('#edit_form_box_<%= message.id %>').css('display', 'block');
 			$('#message-content-<%= message.id %>').css('display', 'none');
 			$('#message-image-<%= message.id %>').css('display', 'none');
+			$('#file-box-message-<%= message.id %>-box').css('display', 'none');
 			$('#youtube-container-<%= message.id %>').css('display', 'none');
 			edit_click_<%= message.id %> = false
 		}else if(edit_click_<%= message.id %> == false){
 			$('#edit_form_box_<%= message.id %>').css('display', 'none');
 			$('#message-content-<%= message.id %>').css('display', 'block');
 			$('#message-image-<%= message.id %>').css('display', 'block');
+			$('#file-box-message-<%= message.id %>-box').css('display', 'block');
 			$('#youtube-container-<%= message.id %>').css('display', 'block');
 			
 			edit_click_<%= message.id %> = true

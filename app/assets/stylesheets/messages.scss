@@ -13,7 +13,7 @@
 	outline: none;
 }
 .video_message{
-    width: 400px;
+    max-width: 400px;
 }
 .link_download{
     font-weight: bold;
@@ -30,9 +30,6 @@
 }
 .delete_btn:hover{
 	background-color:#F30000;
-}
-.message .img-message-box{
-    width: 400px;
 }
 .edit_submit:hover{
     transition: 0.3s background-color ease;
@@ -52,21 +49,22 @@
 	outline: none;
     border-style: none;
     border-radius: 10px;
-    margin-top: 25px;
-    margin-left: 50px;
+    margin-top: 15px;
+    /*margin-left: 50px;*/
     margin-bottom: 10px;
     outline: none;
     border-style: none;
     font-weight: bold;
     color: #fff;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
     padding-top: 5px;
     padding-bottom: 5px;
     font-family: "游ゴシック", sans-serif;
     background-color: #117ec6;
     box-shadow: 1px 1px 2px #000;
 }
+
 .edit_submit:hover{
 	background-color: #106dab;
 }
@@ -85,5 +83,11 @@
 @media screen and(max-width: 480px){
     .message{
         padding-top: 40px;
+    }
+    .video_message{
+        width: 100%;
+    }
+    .edit_submit{
+        margin-bottom: 30px;
     }
 }

@@ -184,6 +184,8 @@
 
 }
 .editform{
+	width: 100%;
+	max-width: 400px;
 	display: none;
 }
 .room_settings{
@@ -196,8 +198,13 @@
 .message{
 	margin-top: 20px;
 }
-.edit_form{
+.imguploader.edit_image_uploader{
+	margin: 0;
 	width: 100%;
+	margin-bottom: 20px;
+}
+.edit_form{
+	width: 400px;
 	height: 5em;
     background-color: #717070;
     border: 1px solid #d4d4d4;
@@ -901,11 +908,6 @@
 	padding-right: 10px;
 	font-weight: bold;
 }
-
-.submit-edit-box{
-	display: flex;
-	justify-content:space-around; 
-}
 .smart_phone_sidebarBox{
 	position: -webkit-sticky;
 	position: fixed;
@@ -959,6 +961,10 @@
 .message{
 	min-width: 400px; 
 }
+.submit-edit-box{
+	display: flex;
+	justify-content: center;
+}
 @media screen and (max-width: 1200px){
 	.formchat{
 		display: block;
@@ -1005,6 +1011,9 @@
 	.imguploader{
 		margin-left: 10px;
 	}
+	.imguploader.edit_image_uploader{
+		width: 100%;
+	}
 	.message{
 		max-width: 100%;
 		min-width: 0;
@@ -1038,10 +1047,7 @@
 		min-height: 270px;
 		max-height: 270px;
 	}
-	.edit_submit{
-		text-align: center;
-		margin-bottom: 30px;
-	}
+
 	#content{
 		width: 100%;
 	}
