@@ -419,8 +419,7 @@ class RoomChannel < ApplicationCable::Channel
   end
 
   def reply(data)
-  	binding.pry
-    message_find = MessageReply.find data["message_id"].to_i
+    message_find = Message.find data["message_id"].to_i
 
         # message改行確かめ変数初期設定
     nil_start_new_line = false
