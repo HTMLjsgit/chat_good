@@ -1,0 +1,20 @@
+<div class="loginBox">
+	<div class="loginkei_image">
+		<h2 class="loginText">ログイン</h2>
+		<%= image_tag "ログインアイコン3.png" %>
+	</div>
+	<div class="support-box-help">
+		<%= link_to user_google_omniauth_authorize_path do %>
+		  <div class="google_login_button">
+		    <%= image_tag "g-logo.png" %>
+		    <h1>Googleアカウントでログイン</h1>
+		  </div>
+		<% end %>
+	</div>
+</div>
+
+<style>
+	.loginBox{
+
+	}
+</style>

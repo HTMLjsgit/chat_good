@@ -1,0 +1,300 @@
+<div class="main_sidebar" id="main_show">
+	<div class="yieldBox roomShowBox">
+		<% if user_signed_in? %>
+			<div id="messages"  data-room_id="<%= @room.id %>" data-current_user="<%= current_user.id %>">
+				<%= render @messages %>
+			</div>
+		<% else %>
+			<div id="messages" data-room_id="<%= @room.id %>" data-current_user="<%= nil %>">
+				<%= render @messages %>
+			</div>
+		<% end %>
+		<div id="bottomGO"></div>
+	</div>
+	<div class="edit_smart_phone_button">
+		<%= image_tag "矢印ボタン_左2.png", class: "left_button_png" %>
+		<%= image_tag "矢印ボタン_右2.png", class: "right_button_png" %>
+	</div>
+	<div class="smart_phone_sidebarBox">
+		<%= link_to room_usermanagers_path(@room), class: "room-user-tags-a" do %>
+			<div class="roomuserLinkBox">
+				<h1 class="in-room-user-all-text">ルームに入ってるユーザー一覧</h1>
+				<%= image_tag "名刺・会員証のアイコン素材.png", class: "icon_png_user_all" %>
+			</div>
+		<% end %>
+		<div class="search_box">
+			<div class="find-message-button">
+				<h1 class="message-find-text">メッセージを検索</h1>
+				<%= image_tag "sho.png" %>
+			</div>
+			<div class="find-messages-box">
+				<%= search_form_for @m_find, remote: true, url: room_path(@room),id: "search_content_message" do |f| %>
+					<%= f.text_field :content_cont %><br>
+					<%= f.submit "検索", class: "find-message-submit" %>
+				<% end %>
+			</div>
+			<div class="all-display-box">
+				<%= form_tag room_path(@room), remote: true, method: :get do |f|  %>
+					<%= submit_tag "メッセージをすべて表示", name: 'all_display', class: "all-display-button" %>
+				<% end %> 
+			</div>
+		</div>
+		<div class="allurlgo-box" id="room-share-button">
+			<h1 class="room-share-button-text">ルームを共有する</h1>
+			<%= image_tag "共有アイコン2.png" %>
+		</div>
+		<div class="requestUrl"><%= request.url %></div>
+		<% if @room.public == false %>
+			<div id="password-button" class="allurlgo-box">
+				<h1 class="room-share-button-text">パスワード</h1>
+				<%= image_tag "鍵のアイコン8.png",class: "icon_png_user_all" %>
+			</div>
+			<div class="password-request-share">パスワード: <%= @room.password %></div>
+			<% if user_signed_in? %>
+				<% if current_user.id == @room.user_id %>
+					<%= link_to room_password_path(@room), class: "room-user-tags-a" do %>
+						<div id="password-button" class="allurlgo-box">
+							<h1 class="room-share-button-text">パスワードを編集</h1>
+							<%= image_tag "鍵のオープンアイコン素材.png" %>
+						</div>
+					<% end %>
+				<% end %>
+			<% end %>
+		<% end %>
+		
+		<% @room.usermanagers.each do |usermanager| %>
+			<% if user_signed_in? %>
+				<% if @room.user_id != current_user.id %>
+					<% if usermanager.user_id == current_user.id %>
+						<% if usermanager.login == true %>
+							<div class="room-delete-usermanager-box">
+								<h1 class="room-channsel-text">
+									<%= link_to "ルームを退会", room_usermanager_path(@room.id, usermanager.id), method: :delete,data: {confirm: "本当にルームを退会してもよろしいですか？(投稿されたメッセージは削除されません。)"}, class: "kyanseruAccount" %>
+								</h1>
+								<%= image_tag "人物シルエット_マイナス.png" %>
+							</div>
+						<% end %>
+					<% end %>
+				<% end %>
+			<% else %>
+				<% if usermanager.ip_id == request.ip %>
+					<% if usermanager.login == false %>
+						<div class="room-delete-usermanager-box">
+							<h1 class="room-channsel-text">
+								<%= link_to "ルームを退会", room_usermanager_path(@room.id, usermanager.id), method: :delete,data: {confirm: "本当にルームを退会してもよろしいですか？(投稿されたメッセージは削除されません。)"}, class: "kyanseruAccount" %>
+							</h1>
+							<%= image_tag "人物シルエット_マイナス.png" %>
+
+						</div>
+					<% end %>
+				<% end %>
+			<% end %>
+		<% end %>
+		<%= link_to room_explanation_path(@room), class: "kyanseruAccount" do %>
+			<div class="allurlgo-box">
+				<h1 class="room-share-button-text">ルームの詳細</h1>
+				<%= image_tag "はてなマークのアイコン.png" %>
+			</div>
+		<% end %>
+		<% if user_signed_in? %>
+			<% if current_user.id == @room.user_id %>
+				<%= link_to  edit_room_path(@room), class: "room_edit_link" do %>
+					<div class="room-edit-box-flex">
+						<p class="edit-room-text">
+							ルームを編集
+						</p>
+						<%= image_tag "設定の歯車アイコン　その2.png", id: "setting-img-room" %>
+					</div>
+				<% end %>
+			<% end %>
+		<% end %>
+		<div>
+			<%= link_to "", id: "messagenewLink"  do %>
+				<div class="messageitiranBox">
+					<h5 class="new-message-link-text">最新のメッセージ</h5>
+					<%= image_tag "下向きの矢印のアイコン素材.png",class: "down-arrow-room-png" %>
+				</div>
+			<% end %>
+		</div>
+	</div>
+</div>
+<div class="operationBox">
+	<div class="bottomDeleteBox down-right-box">
+		<%= image_tag "矢印アイコン_下4.png" %>
+	</div>
+	<div class="bottomOpenBox down-right-box">
+		<%= image_tag "矢印アイコン_上4.png" %>
+	</div>
+</div>
+<div class="bottomRoomBox">
+	<h3 class="textCount"></h3>
+	<div class="imguploader">
+		<%= form_with model: @message, local: false, url: messages_path do |f| %>
+			<%= f.file_field :file, id: "img-value-form" %>
+			<div class="file-name-box">
+				<p id="file-name"></p>
+			</div>
+			<div class="file-box">
+				<span id="img-form-button">
+					<p class="file-choose-text file-choose-text-message">ファイルを選択</p>
+				</span>
+				<%= f.hidden_field :room_id, value: @room.id %>
+				<%= f.submit "ファイルをアップロード" %>
+			</div>
+		<% end %>
+	</div>
+	<p class="flash_message"></p>
+	<div class="formchat">
+		<% unless request.os == "PlayStation Vita" %>
+			<%= text_area_tag :content, nil, data: {behavior: 'room_speaker'},class: "text_areachat" ,placeholder: "メッセージを送信(Shift + Enter または 送信ボタン)", id: "chat_area"%>
+			<div class="submitBox">
+				<%= submit_tag "送信", id: "submit" %>
+			</div>
+		<% end %>
+		<% if request.os == "PlayStation Vita" %>
+			<div class="submitBox">
+				<%= form_with model: @message, local: false, url: messages_path do |f| %>
+					<%= f.text_area :content ,id: "chat_area", class: "text_areachat"%>
+					<%= f.hidden_field :room_id, value: @room.id %>
+					<%= f.submit "送信", id: "submit" %>
+				<% end %>
+			</div>
+		<% end %>
+		<p class="flash_message"></p>
+
+	</div>
+</div>
+<script>
+$(function(){
+	draw_start = false;
+	$("#draw_start_button").click(function(){
+		if(draw_start == false){
+			$('#draw_start_button').text("お絵描きセットを閉じる");
+			$('#draw_start_button').addClass('comeon');
+			$('#all-container-canvas').fadeIn('slow');
+			$('.formchat').fadeOut('slow');
+			draw_start = true;
+		}else{
+			$('#draw_start_button').text("お絵描きセットを開く");
+			$('#draw_start_button').removeClass('comeon');
+			$('.formchat').fadeIn('slow');
+
+			$('#all-container-canvas').fadeOut('slow');
+			$('.flash_message').fadeOut('slow');
+			draw_start = false;
+		}
+	});
+	 $("#messagenewLink").click(function(e){
+	    var submitscroll = $('#bottomGO').offset().top;
+	    $('html, body').animate({scrollTop:submitscroll});
+	    return e.preventDefault();
+	 });
+	 var draw_area = document.getElementById("draw-area");
+	 
+	 var kyo_click = false;
+	 $('#room-share-button').click(function(){
+	 	if(kyo_click == false){
+	 		$('.requestUrl').fadeIn('slow');
+	 		kyo_click = true;
+	 	}else{
+	 		$('.requestUrl').fadeOut('slow');
+	 		kyo_click = false;
+	 	}
+	 })
+
+	 $("#img-form-button").click(function(){
+	 	$('#img-value-form').click();
+	 });
+
+	 $("#img-value-form").on('change', function(){
+	 	var img = document.getElementById("img-value-form").files[0];
+	 	$('#file-name').text(img.name);
+	 });
+	 var password_click = false;
+	 $('#password-button').click(function(){
+	 	if(password_click == false){
+	 		$('.password-request-share').fadeIn('slow');
+	 		password_click = true;
+
+	 	}else{
+	 		$('.password-request-share').fadeOut('slow');
+	 		password_click = false;
+	 	}
+	 });
+	  var text_max = 1000; // 最大入力値
+	  // $(".textCount").text(text_max - $(".text_chatarea").val().length);
+	 $("#chat_area").on("keydown keyup keypress change",function(){
+	      var text_length = $(this).val().length;
+	      var countdown = text_max - text_length;
+	      $(".textCount").text("残り" + String(countdown) + "文字");
+	      // CSSは任意で
+	      if(countdown < 0){
+	          $('.textCount').css({
+	              color:'#ff0000',
+	              fontWeight:'bold'
+	          });
+	      } else {
+	          $('.textCount').css({
+	              color:'#fff',
+	              fontWeight:'normal'
+	          });
+	      }
+	  });
+	 $('.bottomDeleteBox').click(function(){
+	 	$('.bottomOpenBox').css('display', 'block');
+	 	$('.bottomDeleteBox').css('display', 'none');
+	 	$('.bottomRoomBox').css('transform', 'TranslateY(100%)');
+	 	setTimeout(function(){
+	 		$('.bottomRoomBox').css('display', 'none');
+
+	 	}, 200);
+	 });
+	 $('.bottomOpenBox').click(function(){
+	 	$('.bottomOpenBox').css('display', 'none');
+	 	$('.bottomDeleteBox').css('display', 'block');
+	 	// $('.bottomRoomBox').animate2({transform: 'TranslateY(100%)'}, 100);
+	 	setTimeout(function(){
+	 		$('.bottomRoomBox').css('transform', 'TranslateY(100%)');
+	 	}, 1);
+	 	setTimeout(function(){
+	 		$('.bottomRoomBox').css('display', 'block');
+	 		$('.bottomRoomBox').animate2({transform: 'TranslateY(0%)'}, 100);
+
+
+	 	}, 100);
+	 });
+	 var click = false;
+
+	 $('.edit_smart_phone_button').click(function(){
+	 	if(click == true){
+	 		$('.smart_phone_sidebarBox').css('right', '-150%');
+	 		$('.left_button_png').css('display', 'block');
+	 		$('.right_button_png').css('display', 'none')
+	 		click = false;
+	 	}else if(click == false){
+	 		$('.smart_phone_sidebarBox').css('right', '8%');
+	 		$('.right_button_png').css('display', 'block');
+	 		$('.left_button_png').css('display', 'none');
+	 		click = true;
+	 	}
+	 });
+
+	 var message_find_click = false;
+
+	 $('.find-message-button').click(function(){
+	 	if(message_find_click){
+	 		$('.find-messages-box').fadeOut('slow');
+	 		$('.all-display-box').fadeOut('slow');
+	 		$('.all-display-box').css('display', 'none');
+	 		message_find_click = false;
+	 	}else if(!message_find_click){
+	 		$('.find-messages-box').fadeIn('slow');
+	 		$('.all-display-box').fadeIn('slow');
+	 		$('.all-display-box').css('display', 'flex');
+
+	 		message_find_click = true;
+
+	 	}
+	 });
+});
+</script>

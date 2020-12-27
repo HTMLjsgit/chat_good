@@ -1,0 +1,131 @@
+<div class="userallBox">
+
+	<% if @usermanager.login == true %>
+		<div class="userandAdmin">
+			<h3 class="username"><%= @user.name %></h3>
+			<% if @user.id == @room.user_id %>
+				<h3 class="username roomadmin">ルーム管理者</h3>
+			<% end %>
+		</div>
+		<div class="room-open-link-box">
+			<%= link_to "", id: "roomopen" do %>
+				<div class="room-open-box">
+					<h3><%= @user.name %>のメッセージを表示</h3>
+				</div>
+
+			<% end %>
+		</div>
+		<div class="roomshowBox">
+			<% @messages.each do |message| %>
+				<% if message.login == true %>
+					<% if message.user_id == @usermanager.user_id %>
+						<div class="message">
+							<div class="usettimeAndDeleteBox">
+								<p class="agomessage"><%= time_ago_in_words(message.created_at) + "前" %></p>
+								<% if message.edit_right == true %>
+									<p class="finished_editing">(編集済み)</p>
+								<% end %>
+							</div>
+							<div id="message-content-<%= message.id %>">
+
+								<%= raw Rinku.auto_link(simple_format(h(message.content), class: "message_content rinku-auto-link", id: "message-link-#{message.id}"), :all,'target="_blank"') %>
+							</div>
+							<% unless message.youtube_id.nil? %>
+								<% iframe = content_tag(
+									:iframe,
+									'',
+									width: 560,
+									height: 315,
+									src: "https://www.YouTube.com/embed/#{message.youtube_id}",
+									frameborder: 0,
+									allowfullscreen: true,
+									class: "youtube-container"
+								) %>
+								<%= content_tag(:div, iframe, class: "youtube-container2") %>
+							<% end %>
+							<% if message.file? %>
+								<div class="file-box-message" id="file-box-message-<%= message.id %>-box">
+									<p class="file_name_message"><%= message.file.identifier %></p>
+									<%= message_url(message.file.url,message.file.identifier,message.room.id, message.id) %>
+								</div>
+							<% end %>
+						</div>
+					<% end %>
+				<% end %>
+			<% end %>
+		</div>
+	<% end %>
+	<% if @usermanager.login == false %>
+		<h1 class="username">名無し</h1>
+		<div class="room-open-link-box">
+			<%= link_to "", id: "roomopen" do %>
+				<div class="room-open-box">
+					<h3>名無しのメッセージを表示</h3>
+				</div>
+
+			<% end %>
+		</div>
+		<div class="roomshowBox">
+			<% @messages.each do |message| %>
+				<% if message.login == false %>
+					<% if message.ip_id == @usermanager.ip_id %>
+						<%= simple_format message.content ,class: "messageText"%>
+					<% end %>
+				<% end %>
+			<% end %>
+		</div>
+	<% end %>
+	<% if user_signed_in? %>
+		<% if @room.user_id == current_user.id %>
+			<h1 class="usershousaiSettingText">ユーザーの詳細設定</h1>
+			<% if @usermanager.user_id != current_user.id %>
+				<%= form_with model: [@room, @usermanager], local: true do |f| %>
+					<%= f.label "メッセージ制限(メッセージの送信を拒否します。)", class: "messagelabelForm" %>
+					<%= f.check_box :message_limit %><br><br>
+					<%= f.label "メッセージ制限(不適切な発言を拒否します。)", class: "messagelabelForm"  %>
+					<%= f.check_box :ng_word %><br><br>
+					<%= f.label "BANする(後に解除できます。)", class: "messagelabelForm"  %>
+					<%= f.check_box :room_ban %><br><br>
+					<%= f.submit "送信", id: "submit_usermanager" %>
+				<% end %>
+			<% end %>
+		<% end %>
+	<% end %>
+	<br>
+
+</div>
+<style>
+	input[type="checkbox"]{
+		width: 20px;
+		height: 20px;
+		cursor: pointer;
+	}
+	.finished_editing{
+		font-size: 12px;
+		margin-top: 10px;
+	}
+	.usettimeAndDeleteBox{
+		padding-bottom: 10px;
+	}
+</style>
+
+<script>
+	var click = false;
+	$('#roomopen').click(function(e){
+		if(click == false){
+			$('.roomshowBox').fadeIn('slow');
+			$('.roomshowBox').css('transform', 'translateY(0px)');
+			$('.roomshowBox').css('transition', '1s');
+			
+			e.preventDefault();
+			click = true
+		}else{
+			$('.roomshowBox').fadeOut('slow');
+			$('.roomshowBox').css('transform', 'translateY(-300px)');
+			$('.roomshowBox').css('transition', '1s');
+			e.preventDefault();
+			click = false
+		}
+	});
+
+</script>

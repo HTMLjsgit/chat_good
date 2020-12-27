@@ -1,0 +1,144 @@
+// Place all the styles related to the messages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+.delete_btn{
+	background-color: #FF2300;
+	border-style: none;
+	border-radius: 5px;
+	box-shadow: 1px 1px 3px #555454;
+	color: #fff;
+	margin-top: 7px;
+	margin-left: 20px;
+	outline: none;
+}
+.file-choose-text{
+    color: #000000;
+}
+.file-box-message img{
+    width: 100%;
+}
+.message_reply{
+    padding-bottom: 20px;
+    padding-left: 40px;
+    padding-top: 20px;
+    color: #fff;
+    word-break: break-all;
+}
+.formchat-reply{
+    display: none;
+    
+}
+.message_reply_username{
+    color: #32cd32;
+    font-size: 15px;
+    text-decoration: none;
+}
+.agomessage_reply{
+        margin-top: 10px;
+    font-size: 13px; 
+        color: #d3d3d3;
+
+}
+.message_reply_content{
+        font-size: 13px;
+    
+}
+.message_reply-contents{
+    word-break: break-all;
+    max-width: 350px;
+}
+.user_name-go{
+    color: #ffffffff;
+}
+.message-content-go{
+    color: #ffffff;
+    padding-bottom: 20px;
+}
+.video_message{
+    max-width: 400px;
+}
+.link_download{
+    font-weight: bold;
+    font-size: 12px;
+    padding: 5px;
+    border-radius: 5px;
+    margin-bottom: 5pc;
+    color: #000000;
+    border: 1px solid #eeeeeeee;
+    background-color: #dddddddd;
+}
+#messages{
+    padding: 10px;
+}
+.delete_btn:hover{
+	background-color:#F30000;
+}
+.edit_submit:hover{
+    transition: 0.3s background-color ease;
+    /*background-color: #F50101;*/
+  
+}
+.message-contents{
+    word-break: break-all;
+}
+.edit_click:hover{
+	background-color: #ddd;
+}
+.edit_click{
+	outline: none;
+}
+.edit_submit{
+	outline: none;
+    border-style: none;
+    border-radius: 10px;
+    margin-top: 15px;
+    /*margin-left: 50px;*/
+    margin-bottom: 10px;
+    outline: none;
+    border-style: none;
+    font-weight: bold;
+    color: #fff;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-family: "游ゴシック", sans-serif;
+    background-color: #117ec6;
+    box-shadow: 1px 1px 2px #000;
+}
+.file-choose-text{
+    padding-top: 5px;
+}
+
+.edit_submit:hover{
+	background-color: #106dab;
+}
+.deleteBtnImage{
+
+}
+.usettimeAndDeleteBox{
+	display: flex;
+    padding-bottom: 10px;
+}
+
+.finished_editing{
+	margin-left: 20px;
+	color: #dddddd;
+	font-size: 13px;
+}
+@media screen and(max-width: 480px){
+    .message{
+        padding-top: 40px;
+    }
+    .video_message{
+        width: 100%;
+    }
+    .edit_submit{
+        margin-bottom: 30px;
+    }
+    .message_reply{
+        max-width: 100%;
+        padding-left: 20px;
+    }
+}

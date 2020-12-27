@@ -1,0 +1,21 @@
+<div class="loginBox">
+  <div class="loginkei_image">
+    <h2 class="loginText">新規登録</h2>
+    <%= image_tag "登録アイコン.png" %>
+  </div>
+  <div class="support-box-help">
+    <%= link_to user_google_omniauth_authorize_path do %>
+      <div class="google_login_button">
+        <%= image_tag "g-logo.png" %>
+        <h1>Googleアカウントで新規登録</h1>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<style>
+  .loginkei_image img{
+    width: 70px;
+    height: 60px;
+  }
+</style>

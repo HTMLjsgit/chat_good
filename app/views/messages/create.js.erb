@@ -1,0 +1,18 @@
+setTimeout(function(){
+	var submitscroll = $('#bottomGO').offset().top;
+	var score = 10;
+	document.getElementById('file-name').textContent =  '';
+	$('html, body').scrollTop(submitscroll);
+},100);
+
+document.getElementsByClassName('flash_message')[0].textContent = "<%= @flash %>";
+document.getElementsByClassName('flash_message')[0].style.color = '#fff';
+document.getElementsByClassName('flash_message')[0].style.marginBottom = '10px';
+document.getElementsByClassName('flash_message')[0].style.textAlign = 'center';
+setTimeout(function(){
+	$('.flash_message').fadeOut('slow');
+	setTimeout(function(){
+		document.getElementsByClassName('flash_message')[0].textContent = '';
+		$('.flash_message').css('display', 'block');
+	}, 1000)
+}, 1000)

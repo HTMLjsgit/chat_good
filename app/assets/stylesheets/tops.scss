@@ -1,0 +1,136 @@
+// Place all the styles related to the tops controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+.backBox{
+  background-image: url("backpack-1149462_1920.jpg");
+  height: 700px;
+  background-size: cover;
+  position: relative;
+}
+.backBox::before{
+	content: ' ';
+	position: absolute;
+	background-color: #000;
+	opacity: 0.3;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+}
+.image{
+	width: 300px;
+	height: 200px;
+	margin-bottom: 10px;
+	border-radius: 5px;
+}
+
+#centerText{
+	line-height: 400px;
+	font-size: 50px;
+	color: #fff;
+	text-align: center;
+	z-index: 2;
+	position: relative;
+}
+.setumeiImage{
+	display: flex;
+	justify-content: space-around;
+}
+.centerBox{
+	margin: 0 auto;
+	max-width: 1300px;
+}
+#messageTextsetumei{
+	padding-top: 30px;
+	padding-bottom: 30px;
+	font-size: 25px;
+	text-align: center;
+
+}
+.setumeiBox p{
+	text-align: center;
+	padding-top: 2px;
+	font-size: 17px;
+	padding-bottom: 2px;
+	font-weight: bold;
+}
+.setumeiBox{
+	margin-left: 10px;
+	margin-right: 10px;
+	margin-bottom: 30px;
+}
+.borderBottom{
+	border-bottom: 2px solid #000;
+	height: 2px;
+	width: 100%;
+}
+.new_user_button{
+	background-color: #5A5151;
+	color: #fff;
+	text-align: center;
+	border-radius: 10px;
+}
+.new_user_button:hover{
+	opacity: 0.8;
+}
+.new_user_button h1{
+	padding-top: 20px;
+	padding-bottom: 20px;
+	padding-left: 100px;
+	padding-right: 100px;
+	font-size: 20px;
+}
+.it_sStarted{
+	text-align: center; 
+	font-size: 30px;
+	padding-top: 50px;
+	padding-bottom: 20px;
+
+}
+.link_button{
+	display: flex;
+	justify-content: center;
+	margin-bottom: 30px;
+}
+.link_button a{
+	text-decoration: none;
+}
+@media screen and (max-width: 960px){
+	#centerText{
+		font-size: 30px;
+	}
+	.setumeiImage{
+		display: block;
+		justify-content: flex-start;
+	}	
+	.image{
+		margin-left: 0;
+		margin-right: 0;
+		width: 100%;
+		height: auto;
+	}
+	.setumeiBox p{
+		font-size: 23px;
+
+	}
+}
+@media screen and (max-width: 480px){
+	#centerText{
+		line-height: 200px;
+		font-size: 20px;
+	}
+	.new_user_button h1{
+		padding: 25px;
+	}
+	.backBox{
+		height: 300px;
+	}
+	.messageTextsetumei{
+		font-size: 20px;
+	}
+	.setumeiBox p{
+		font-size: 18px;
+
+	}
+}

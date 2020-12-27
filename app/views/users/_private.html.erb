@@ -1,0 +1,8 @@
+<%= link_to room_path(room, :anchor => 'bottomGO') ,data: {"data-turbolinks" => false} do %>
+	<div class="roomBox">
+		<h1><%= room.title %></h1>
+		<div class="room-body-box">
+			<p class="rooms-body"><%= room.body.truncate(100) %></p>
+		</div>
+	</div>
+<% end %>

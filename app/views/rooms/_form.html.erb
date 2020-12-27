@@ -1,0 +1,65 @@
+<div class="new_rooms_form_box">
+	<%= form_with model: @room, local: true do |f| %>
+		<%= render 'layouts/error', model: f.object %>
+		<%= f.text_field :title, class: "room_text_field", placeholder: "ルーム名を入力" %><br>
+		<%= f.text_area :body, class: "room_text_field room_text_area", placeholder: "ルームの詳細内容を入力(例: ゲーム用。)" %>
+		<div class="radioBox">
+			<div class="privateBox" id="private-box-1">
+				<%= f.label :public, value: "非公開", class: "public_Text"%>
+				<%= f.radio_button :public, false ,id: "public-radio-button-1", class: "radio_public_button"%>
+			</div>
+			<div class="publicBox" id="public-box-1">
+				<%= f.label :public, value: "公開", class: "public_Text" %>
+				<%= f.radio_button :public, true, id: "public-radio-button-2",class: "radio_public_button" %><br>
+			</div>
+		</div>
+		<div class="radioBox2">
+			<div class="botBox" id="bot-box-1">
+				<div id="bot-boxes-1">
+					<%= f.label :bot, value: "BOTを無効", class: "public_Text" %>
+					<%= f.radio_button :bot, false, id: "bot-radio-button1" %>
+				</div>
+				<div id="bot-boxes-2">
+					<%= f.label :bot, value: "BOTを有効",class: "public_Text" %>
+					<%= f.radio_button :bot, true, id: "bot-radio-button2" %>
+				</div>
+			</div>
+		</div>
+		<div class="submit_area_box">
+			<%= f.submit "送信",  class: "room_submit" %>
+		</div>
+	<% end %>
+</div>
+
+<style>
+	input[type="radio"]{
+		width: 20px;
+	    height: 20px;
+	    cursor: pointer;
+	    margin-bottom: 10px;
+	}
+	.public_Text:hover{
+		cursor: pointer;
+	}
+	.privateBox:hover{
+		cursor: pointer;
+	}
+	.publicBox:hover{
+		cursor: pointer;
+	}
+</style>
+
+<script>
+	$('#private-box-1').click(function(){
+		document.getElementById('public-radio-button-1').click();
+	});
+	$('#public-box-1').click(function(){
+		document.getElementById('public-radio-button-2').click();
+	});
+	$('#bot-boxes-1').click(function(){
+		document.getElementById('bot-radio-button1').click();
+	});
+	$('#bot-boxes-2').click(function(){
+		document.getElementById('bot-radio-button2').click();
+	});
+</script>

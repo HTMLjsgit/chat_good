@@ -1,0 +1,56 @@
+<% if user_signed_in? %>
+	<% if message.login? %>
+		<button id="message-form-<%= message.id %>-button">返信</button>
+	<% end %>
+	<div class="formchat-reply" id="formchat-reply-<%= message.id %>">
+		<div class="imguploader">
+			<%= form_with model: MessageReply.new, local: false do |f| %>
+				<%= f.file_field :file, id: "img-value-form-message-#{message.id}-go", class: "img-value" %>
+				<%= f.hidden_field :message_id, value: message.id %>
+				<div class="file-name-box">
+					<p id="file-name-message-<%= message.id %>-go" class="file-name-choose-message"><%#= %></p>
+				</div>
+				<div class="file-option-box">
+					<span id="img-form-button-message-<%= message.id %>-go" class="file-button-choose">
+						<p class="file-choose-text">ファイルを選択</p>
+					</span>
+
+					<%= f.hidden_field :room_id, value: message.room_id %>
+					<%= f.submit "ファイルをアップロード" %>
+				</div>
+			<% end %>
+		</div>
+		<%= text_area_tag :content, nil, data: {behavior: 'message_reply_speaker'},class: "text_areachat-reply" ,placeholder: "メッセージを送信(Shift + Enter または 送信ボタン)", id: "chat_area-#{message.id}" %>
+		<div class="submitBox">
+			<%= submit_tag "送信", id: "submit" %>
+		</div>
+		<p class="flash_message"></p>
+	</div>
+<% end %>
+
+<script>
+	var formchat_click_<%= message.id %> = false;
+		$('#img-form-button-message-<%= message.id %>-go').click(function(){
+		console.log("aaaaaaaaaaaaaaaaaaaaaaaaaa");
+	 	$('#img-value-form-message-<%= message.id %>-go').click();
+	});
+	 $("#img-value-form-message-<%= message.id %>-go").on('change', function(){
+	 	var img_<%= message.id %> = document.getElementById("img-value-form-message-<%= message.id %>-go").files[0];
+	 	$('#file-name-message-<%= message.id %>-go').text(img_<%= message.id %>.name);
+	 });
+	$('#message-form-<%= message.id %>-button').click(function(){
+		if(formchat_click_<%= message.id %> == false){
+			$("#formchat-reply-<%= message.id %>").css('display', 'block');
+			formchat_click_<%= message.id %> = true;
+		}else{
+			$("#formchat-reply-<%= message.id %>").css('display', 'none');
+			formchat_click_<%= message.id %> = false;
+
+		}
+	});
+		console.log("aaaaaaaaaaaaaaaaaaaaaaaaaa");
+
+
+	 
+
+</script>

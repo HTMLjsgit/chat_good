@@ -1,0 +1,4 @@
+	<% if notification.action == "message" %>
+		<p class="user_name-go"><%= notification.message.user.name %></p><br>
+		<p class="message-content-go"><%= notification.message.content %></p>
+	<% end %>

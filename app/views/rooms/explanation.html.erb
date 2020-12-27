@@ -1,0 +1,8 @@
+<div class="room-explanation-box">
+	<h1 class="room-explanation-text">Roomの詳細</h1>
+	<div class="room-explanation-all-rooms-box">
+		<p class="room-explanation-title"><%= @room.title %></p>
+		<%= raw Rinku.auto_link(simple_format(h(@room.body), class: "explanation-body rinku-auto-link"), :all,'target="_blank"') %>
+		<p class="room-open-gone-user-alls">ルームに入ってるユーザー数: <%= link_to @room.usermanagers.count, room_usermanagers_path(@room.id), class: "room-usermanagers-exlanaption-all" %></p>	
+	</div>
+</div>

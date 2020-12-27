@@ -1,0 +1,43 @@
+<div class="backBox">
+  <h1 id="centerText">今すぐ、みんなと気軽に繋がろう。</h1>
+</div>
+
+<div class="centerBox">
+  <h1 id="messageTextsetumei">GoodChatとはなにができるか</h1>
+  
+  <div class="setumeiImage">
+  	<div class="setumeiBox">
+    	<%= image_tag "hands-1167625_640.jpg",class: "image" %>
+    	<p>世界中のみんなと繋がろう</p>
+    </div>
+    <div class="setumeiBox">
+      <%= image_tag "feedback-2044701_640.png", class: "image" %>
+ 	  <div class="setumeiText">
+ 	  	<p>友達集めて、ルーム内で楽しもう</p>
+ 	  </div>
+    </div>
+    <div class="setumeiBox">
+      <%= image_tag "thumb-3150404_640.jpg",class: "image"  %>
+      <div class="setumeiText">
+ 	  	<p>コミュニケーションを楽しくとろう</p>
+ 	  </div>
+    </div>
+  </div>
+  <div class="borderBottom"></div>
+
+  <h1 class="it_sStarted">さぁはじめよう！</h1>
+
+  	<div class="link_button">
+	  	<%= link_to rooms_path do %>
+	  		<div class="new_user_button">
+	  			<h1>チャットを始める</h1>
+	  		</div>
+	  	<% end %>
+	  </div>
+</div>
+<style>
+	body{
+		background-color: #eee;
+	}
+
+</style>

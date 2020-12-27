@@ -1,0 +1,8 @@
+<% if model.errors.any? %>
+	<div class="error_box">
+		<% model.errors.full_messages.each do |error| %>
+			<h3 class="errorText">エラーが発生しました。</h3>
+			<li class="error_messages"><%= error %></li>
+		<% end %>
+	</div>
+<% end %>

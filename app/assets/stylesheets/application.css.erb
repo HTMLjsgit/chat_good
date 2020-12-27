@@ -1,0 +1,346 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+
+button{
+	cursor: pointer;
+}
+input[type="submit"]{
+	cursor: pointer;
+}
+input{
+    font-family: -apple-system, BlinkMacSystemFont, Roboto, "Segoe UI semibold", "Helvetica Neue", HelveticaNeue, YuGothic, "Yu Gothic", "Segoe UI", Verdana, Meiryo, sans-serif;
+}
+.notification-all-box{
+	position: absolute;
+	max-width: 600px;
+	min-width: 600px;
+	min-height: 500px;
+	max-height: 500px;
+	top: 7em;
+	right: 7em;
+	background-color: #2F2F2F;
+	border: 1px solid #000000;
+	overflow:scroll;
+	display: none;
+}
+.notification_count-menu{
+	text-align: center;
+	background-color: red;
+	border-radius: 100%;
+	width: 20px;
+	height: 20px;
+	line-height: 20px;
+	font-size: 13px;
+	position: absolute;
+}
+#notice-button-open{
+	margin-top: 23px;
+
+}
+.rinku-auto-link a{
+	color: #00D1FF;
+	text-decoration: none;
+}
+.rinku-auto-link a:hover{
+	text-decoration: underline;
+
+}
+.submenuText{
+	font-size: 18px;
+}
+.submitsearcch{
+	height: 28px;
+    font-family: -apple-system, BlinkMacSystemFont, Roboto, "Segoe UI semibold", "Helvetica Neue", HelveticaNeue, YuGothic, "Yu Gothic", "Segoe UI", Verdana, Meiryo, sans-serif;
+	font-weight: bold;
+	width: 60px;
+	border-radius: 5px;
+	background-color: #078CFF;
+	color: #fff;
+	/*border: 1.2px solid #ffff;*/
+	box-shadow: 0.5px 0.5px 2px 0  #46494B;
+}
+.submitsearcch:focus{
+	outline: none;
+}
+.submitsearcch:hover{
+	transition: background-color 0.3s ease;
+	background-color: #4683B7;
+}
+#home_label{
+	z-index: 100;
+	background-color: #eeeeee;
+	border-radius: 50%;
+}
+.topBox{
+	color: #fff;
+	background-color: #535558;
+	position: sticky;
+	top: 0;
+	z-index: 10;
+
+}
+
+.topBox.hide{
+	transition: 0.3s;
+	transform: translateY(-100%);
+}
+.making_room{
+	color: #fff;
+	margin-top: 20px;
+	text-decoration: none;
+}
+
+body {
+	font-family: -apple-system, BlinkMacSystemFont, Roboto, "Segoe UI semibold", "Helvetica Neue", HelveticaNeue, YuGothic, "Yu Gothic", "Segoe UI", Verdana, Meiryo, sans-serif;
+	background-color:#36393f;
+}
+
+
+.topText{
+	padding-top: 20px;
+	padding-bottom: 20px;
+	font-size: 25px;
+}
+.topText a{
+	text-decoration: none;
+}
+.submenuText a{
+	color: #fff;
+	text-decoration: none;
+	font-size: 16px;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+.submenuText a:hover{
+	text-decoration: underline;
+}
+.search_field{
+	width: 300px;
+	border-radius: 5px;
+	height: 28px;
+	color:#696969;
+	font-family: -apple-system, BlinkMacSystemFont, Roboto, "Segoe UI semibold", "Helvetica Neue", HelveticaNeue, YuGothic, "Yu Gothic", "Segoe UI", Verdana, Meiryo, sans-serif;
+
+}
+.plus-icon-room-new-png{
+	width: 40px;
+}
+.room_a_box{
+	margin-top: 15px;
+}
+.roomNewBox:hover{
+	transition: background-color 0.3s ease;
+	background-color: #4A9F3C;
+}
+.new_room{
+	text-decoration: none;
+	font-size: 18px;
+	padding-top: 20px;
+}
+.roomNewBox{
+	background-color: #0fab41;
+	border-radius: 5px;
+	border: 1px solid #ddd;
+	display: flex;
+}
+.roomNewBox h1{
+	font-size: 18px;
+	padding-left: 10px;
+	padding-right: 10px;
+	color: #fff;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+.search_field:focus{
+	outline: none;
+}
+.searchformBox{
+	display: flex;
+	padding-top: 20px;
+}
+.contentsmartBox{
+	display: none;
+}
+.topBox .contentupcBox{
+	display: flex;
+	justify-content: space-around;
+}
+.topText a{
+	color: #fff;
+}
+.searchareaButton{
+	display: inline-block;
+}
+.searchButton{
+	display: none;
+	cursor: pointer;
+	margin-top: 5px;
+	margin-left: 2em;
+	background-color: #A4A4A4;
+	border-radius: 10px;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+@media screen and (max-width: 480px){
+	.topText a{
+		font-size: 20px;
+	}
+	input.search_field{
+		width: 100%;
+	}
+	.searchButton{
+		display: block;
+	}
+	.formsearchGOBOx{
+		display: none;
+		top: 50px;
+	}
+	.searchformBox{
+		position: absolute;
+		display: flex;
+		left: 5em;
+		top: 60px;
+	}
+	.room_search{
+		display: flex;
+	}
+}
+@media screen and (max-width: 960px){
+	.contentupcBox{
+		display: none;
+	}
+	.contentsmartBox{
+		display: flex;
+	}
+	.smartsearchFormBox{
+		padding-left: 10px;
+	}
+	.search_field{
+		width: 170px;
+	}
+	ol, ul {
+
+	  list-style: none;
+	}
+	a {
+
+	  /*text-decoration: none;*/
+	  color: inherit;
+	}
+	.cp_cont {
+	  height: 65vh;
+	}
+	.cp_offcm01 {
+	  position: absolute;
+	  top: 15px;
+	  right: 20px;
+	  display: inline-block;
+	}
+	/* menu */
+	.cp_offcm01 .cp_menu {
+	  position: fixed;
+	  top: 0;
+	  right: -100vw;
+	  z-index: 10;
+	  width: 250px;
+	  height: 100%;
+	  cursor: pointer;
+	  -webkit-transition: 0.53s transform;
+	  transition: 0.53s transform;
+	  -webkit-transition-timing-function: cubic-bezier(.38,.52,.23,.99);
+	  transition-timing-function: cubic-bezier(.38,.52,.23,.99);
+	  background-color: #A4C6FF;
+	  opacity: 0.9;
+	}
+	.cp_offcm01 .cp_menu ul {
+
+	  margin: 0;
+	  padding: 0;
+	}
+	.cp_offcm01 .cp_menu li {
+
+	  list-style: none;
+	}
+	.cp_offcm01 .cp_menu li a {
+
+	  display: block;
+	  padding: 20px;
+	  text-decoration: none;
+	  color: #ffffff;
+	  font-size: 23px;
+	  border-bottom: 1px solid #ffffff;
+
+	}
+
+	.cp_offcm01 #cp_toggle01 {
+	  position: absolute;
+	  display: none;
+	  opacity: 0;
+	}
+	.cp_offcm01 #cp_toggle01:checked ~ .cp_menu {
+	  -webkit-transform: translateX(-100vw);
+	  transform: translateX(-100vw);
+	}
+	/* menu toggle */
+	.cp_offcm01 #cp_toggle01 ~ label {
+	  background-image: url(<%= asset_path "menu.png" %>);
+	  background-size: cover;
+	  width: 30px;
+	  height: 30px;
+	  display: block;
+	  padding: 0.5em;
+	  cursor: pointer;
+	  -webkit-transition: 0.5s transform;
+	  transition: 0.5s transform;
+	  -webkit-transition-timing-function: cubic-bezier(.61,-0.38,.37,1.27);
+	  transition-timing-function: cubic-bezier(.61,-0.38,.37,1.27);
+	  text-align: center;
+	  color: #fff;
+	}
+	.cp_offcm01 #cp_toggle01:checked ~ label {
+
+	  -webkit-transform: translateX(-250px);
+	  transform: translateX(-250px);
+	}
+	.cp_offcm01 #cp_toggle01 ~ label::before {
+
+	  border-bottom: 3px solid white;
+	  font-family: 'FontAwesome';
+	  font-family: serif;
+	  /*content: '\f0c9';*/
+	  font-size: 2em
+
+	}
+	.cp_offcm01 #cp_toggle01:checked ~ label::before {
+	  /*content: '\f00d';*/
+	}
+	/* contents */
+	.cp_contents {
+	  color: #333333;
+	  text-align: center;
+	}
+	.topText{
+		padding-left: 1em;
+	}
+	.top_img{
+		width: 150px;
+		padding-bottom: 20px;
+	}
+}

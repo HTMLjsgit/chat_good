@@ -1,0 +1,10 @@
+<h1 class="new-room-text">ルームの編集</h1>
+<%= render 'form' %>
+<div class="edit-delete-room-box">
+	<%= link_to  room_path(@room), method: :delete, data: {confirm: "本当に削除しますか?(※すべてのメッセージが削除され、ルームも削除されます。)"}, class: "room-delete-link" do %>
+		<div class="room-delete-box">
+			<h2>ルームを削除</h2>
+			<%= image_tag "ゴミ箱のアイコン素材.png", id: "delete-icon-png" %>
+		</div>
+	<% end %>
+</div>

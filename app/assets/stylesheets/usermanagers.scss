@@ -1,0 +1,155 @@
+// Place all the styles related to the usermanagers controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+.messagelabelForm{
+	color: #fff;
+}
+
+#submit_usermanager{
+	width: 100px;
+	height: 35px;
+	font-size: 18px;
+	border-radius: 10px;
+	outline: none;
+	border-style: none;
+	font-weight: bold;
+    color: #fff;
+    font-family: "游ゴシック", sans-serif;
+    background-color: #117ec6;
+    box-shadow: 1px 1px 2px #000;
+
+}
+#submit_usermanager:hover{
+	transition: 0.3s background-color ease;
+	background-color: #106dab;
+}
+.userallBox{
+	margin: 0 auto;
+	max-width: 1200px;
+	min-height: 500px;
+	background-color: #2D5274;
+	border-radius: 10px;
+	padding: 30px;
+	margin-top: 30px;
+	box-shadow: 3px 3px 3px #3D5C78;
+}
+
+.room-manager-user-box{
+	margin: 20px;
+}
+.room_user_a{
+	text-decoration: none;
+}
+.room_user_a:hover{
+	text-decoration: none;
+
+}
+.usermanager-box{
+	background-color: #ddd;
+	border: 1px solid #000;
+	border-radius: 10px;
+	/*margin: 10px;*/
+}
+.usermanager-box:hover{
+	transition: 0.3s ease background-color;
+	background-color: #C1C0C0;
+}
+.messageText{
+	max-width: 100%;
+	word-break: break-word;
+}
+.usershousaiSettingText{
+	font-size: 23px;
+	font-family: 游ゴシック, sans-serif;
+	color: #fff;
+	padding-top: 50px;
+	padding-bottom: 50px;
+}
+.usermanager_list_all_box{
+	border: 3px solid #fff;
+	border-radius: 10px;
+	display:flex;
+	justify-content: space-around;
+	flex-wrap: wrap;
+}
+.room_usermanagers_count_text{
+	padding-top: 40px;
+	padding-bottom: 40px;
+	font-size: 23px;
+	padding-left: 20px;
+}
+.roomusermanager_all_box{
+	margin: 0 auto;
+	max-width: 1200px;
+}
+.roomuser{
+	padding-top: 40px;
+	padding-bottom: 40px;
+	padding-left: 20px;
+	font-size: 25px;
+
+}
+.link_name_usermanager{
+	padding: 30px;
+	text-align: center;
+	font-size: 17px;
+	color: #000;
+}
+.username{
+	color: #fff;
+	font-size: 20px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+#roomopen{
+	color: #fff;
+	text-decoration: none;
+}
+.room-open-box{
+	font-size: 18px;
+	border-radius: 10px;
+	outline: none;
+	border-style: none;
+	font-weight: bold;
+    color: #fff;
+    font-family: "游ゴシック", sans-serif;
+    background-color: #117ec6;
+    box-shadow: 1px 1px 2px #000;
+    padding: 20px;
+    text-align: center;
+    max-width: 100%;
+}
+.room-open-link-box{
+    width:30em;
+
+}
+.room-open-box:hover{
+	transition: 0.3s background-color ease;
+	background-color: #106dab;
+}
+.roomadmin{
+	border-left: 1px solid #fff;
+}
+.userandAdmin{
+	display: flex;
+	margin-bottom: 30px;
+	margin-top: 30px;
+}
+
+@media screen and (max-width: 480px){
+	.messagelabelForm{
+		font-size: 13px;
+	}
+	.userallBox{
+		padding: 10px;
+	}
+	#roomopen{
+		padding-left: 10px;
+
+	}
+	.room-open-link-box{
+		width:100%;
+	}
+}

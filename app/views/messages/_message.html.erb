@@ -1,0 +1,113 @@
+<div class="message-support" id="message-support-<%= message.id %>">
+	<div class="message" id="message-<%= message.id %>">
+		<div class="usernameAndTimeBox">
+			<% if message.user_id.present? %>
+				<%= link_to message.user.name, user_path(message.user_id),class: "message_username" %>
+			<% end %>
+			<% if message.bot == true && message.user_id.blank? %>
+				<p class="message_username">BOT</p>
+			<% end %>
+			<% if message.bot == false && message.user_id.blank? %>
+				<p class="message_username">名無し</p>
+			<% end %>
+			<div class="usettimeAndDeleteBox">
+				<p class="agomessage"><%= time_ago_in_words(message.created_at) + "前" %></p>
+				<% if user_signed_in? %>
+					<% if message.user_id == current_user.id %>
+						<button id="<%= message.id %>" class="delete_btn">
+							<%= image_tag "ゴミ箱のアイコン素材.png", class: "deleteBtnImage", id: "#{message.id}" %>
+						</button>
+						<button id="edit_click-<%= message.id %>" class="edit_click">
+							<%= image_tag "鉛筆のアイコン素材.png"%>
+						</button>
+					<% end %>
+				<% end %>
+				<% if message.edit_right == true %>
+					<p class="finished_editing">(編集済み)</p>
+				<% end %>
+			</div>
+
+		</div>
+		<div id="message-<%= message.id %>-box">
+			<div id="edit_form_box_<%= message.id %>" class="editform">
+				<div class="imguploader edit_image_uploader">
+					<%= form_with model: message, local: false do |f| %>
+						<%= f.file_field :file, id: "img-value-form-message-#{message.id}", class: "img-value" %>
+						<div class="file-name-box">
+							<% if message.file? %>
+									<p id="file-name-message-<%= message.id %>" class="file-name-choose-message"><%= message.file.identifier %></p>
+							<% end %>
+						</div>
+						<div class="file-option-box">
+							<span id="img-form-button-message-<%= message.id %>" class="file-button-choose">
+								<p class="file-choose-text">ファイルを選択</p>
+							</span>
+
+							<%= f.hidden_field :room_id, value: message.room_id %>
+							<%= f.submit "ファイルをアップロード" %>
+						</div>
+					<% end %>
+				</div>
+				<%= text_area_tag :content, message.content ,data: {behavior: "edit_speaker"},id: "message_edit_#{message.id}", class: "edit_form" %>
+				<div class="submit-edit-box">
+					<%= submit_tag "送信", class: "edit_submit", id: "send-edit-submit-#{message.id}" %>
+				</div>
+			</div>
+			<div id="message-content-<%= message.id %>" class="message-contents">
+				<%= raw Rinku.auto_link(simple_format(h(message.content), class: "message_content rinku-auto-link", id: "message-link-#{message.id}"), :all,'target="_blank"') %>
+			</div>
+			<div class="message_render_create_reply" id="message-reply-create-<%= message.id %>">
+				<%= render partial: "message_replies/message_reply_create", locals: {message: message} %>
+			</div>
+		</div>
+		<% if message.youtube_id.present? %>
+			<% iframe = content_tag(
+				:iframe,
+				'',
+				width: 560,
+				height: 315,
+				src: "https://www.YouTube.com/embed/#{message.youtube_id}",
+				frameborder: 0,
+				allowfullscreen: true,
+				class: "youtube-container",
+				id: "youtube-container-#{message.id}"
+			) %>
+			<%= content_tag(:div, iframe, class: "youtube-container2") %>
+		<% end %>
+		<% if message.file? %>
+			<div class="file-box-message" id="file-box-message-<%= message.id %>-box">
+				<p class="file_name_message"><%= message.file.identifier %></p>
+				<%= message_url(message.file.url,message.file.identifier,message.room.id, message.id) %>
+			</div>
+		<% end %>
+
+	</div>
+
+	<%= render message.message_replies %>
+<script>
+	var edit_click_<%= message.id %> = true
+
+	$("#edit_click-<%= message.id %>").click(function(){
+		if(edit_click_<%= message.id %> == true){
+			$('#edit_form_box_<%= message.id %>').css('display', 'block');
+			$('#message-content-<%= message.id %>').css('display', 'none');
+			$('#message-image-<%= message.id %>').css('display', 'none');
+			$('#file-box-message-<%= message.id %>-box').css('display', 'none');
+			$('#youtube-container-<%= message.id %>').css('display', 'none');
+			edit_click_<%= message.id %> = false
+		}else if(edit_click_<%= message.id %> == false){
+			$('#edit_form_box_<%= message.id %>').css('display', 'none');
+			$('#message-content-<%= message.id %>').css('display', 'block');
+			$('#message-image-<%= message.id %>').css('display', 'block');
+			$('#file-box-message-<%= message.id %>-box').css('display', 'block');
+			$('#youtube-container-<%= message.id %>').css('display', 'block');
+			
+			edit_click_<%= message.id %> = true
+		}
+	});
+
+</script>
+
+</div>
+
+
