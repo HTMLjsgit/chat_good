@@ -483,7 +483,7 @@ class RoomChannel < ApplicationCable::Channel
         unless data['message'].blank? && nilstart_new_line#もしメッセージの中身があった場合　messageの中身が改行はスペースなどしかなかった場合じゃないとき　保存する
           if Usermanager.where(user_id: current_user.id, room_ban: false, room_id: params['room'].to_s,  message_limit: false, login: true).exists?
             if data['message'].length <= 1000
-               @message = MessageReply.create! content: data['message'], message_id: message_find.message_id,user_id: current_user.id, room_id: params['room'].to_s,username: current_user.name, ip_id: ip, login: true, youtube_id: url, bot: false
+               @message = MessageReply.create! content: data['message'], message_id: message_find.id,user_id: current_user.id, room_id: params['room'].to_s,username: current_user.name, ip_id: ip, login: true, youtube_id: url, bot: false
             end
           end
         end
