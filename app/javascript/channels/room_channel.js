@@ -75,11 +75,9 @@ import consumer from "./consumer"
         if($("#messages").data('current_user') != user_id || user_id == null){
           if(bot == true){
             $('#chat_area-' + id).val('');
-            $(`#message-form-${id}-button`).click();
             return $(`#message-support-${id}`).append(message);
           }else{
             $('#chat_area-' + id).val('');
-            $(`#message-form-${id}-button`).click();
             return $(`#message-support-${id}`).append(message);
           }
         }
