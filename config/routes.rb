@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   root 'tops#index'
   get 'rooms/:id/password' => 'rooms#password_edit', as: "room_password"
   get 'rooms/:room_id/messages/:id/download' => 'messages#download', as: "message_file_download"
+  get 'rooms/:room_id/messages/:id/messages_replies/download' => 'message_replies#download', as: "message_reply_download"
   put 'rooms/:id/passwords' => 'rooms#password_update', as: "room_password_update"
   get 'rooms/:id/password_certification' => 'rooms#room_certification', as: "room_certification"
   post 'rooms/:id/password_certifications' => 'rooms#room_certification_create', as: "room_certifications"

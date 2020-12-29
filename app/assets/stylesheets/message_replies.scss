@@ -12,3 +12,14 @@
     margin-left: 20px;
     outline: none;
 }
+.reply-message-on{
+    border-style: none;
+    border-radius: 5px;
+    box-shadow: 1px 1px 3px #555454;
+    margin-top: 7px;
+    margin-left: 15px;
+    outline: none;
+}
+.reply-message-on:hover{
+	background-color: #ddd;
+}

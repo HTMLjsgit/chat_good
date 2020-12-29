@@ -76,7 +76,7 @@
 		<% if message_reply.file? %>
 			<div class="file-box-message" id="file-box-message_reply-<%= message_reply.id %>-box">
 				<p class="file_name_message"><%= message_reply.file.identifier %></p>
-				<%= message_url(message_reply.file.url,message_reply.file.identifier,message_reply.room.id, message_reply.id) %>
+				<%= message_reply_url(message_reply.file.url,message_reply.file.identifier,message_reply.room.id, message_reply.id) %>
 			</div>
 		<% end %>
 	</div>

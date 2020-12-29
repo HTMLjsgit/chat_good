@@ -51,6 +51,12 @@ class MessageRepliesController < ApplicationController
 		@flash = flash
 		@messages = MessageReply.all
 	end
+
+	def download
+		url = params[:url]
+		id = params[:id]
+		send_file "public/uploads/message_reply/file/#{id}/#{url}"
+	end
 	private
 
 	def create_params

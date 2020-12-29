@@ -453,7 +453,7 @@
 .message a{
 	text-decoration: none;
 }
-.message a:hover{
+.message_content a:hover{
 	text-decoration: underline;
 }
 .bottomRoomBox{
@@ -910,9 +910,11 @@
 	padding: 10px 10px 15px 10px;
 	background-color: #2F2F2F;
 	max-width: 400px;
-
+	margin-top: 30px;
 }
-
+.link_download{
+	text-decoration: none;
+}
 .message img{
 	width: 100%;
 	max-width: 400px;
