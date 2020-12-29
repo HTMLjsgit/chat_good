@@ -20,6 +20,20 @@
     margin-left: 15px;
     outline: none;
 }
+.against-message-show-box{
+	color: #fff;
+	justify-content: center;
+	padding-bottom: 20px;
+	font-size: 15px;
+	display: flex;
+}
 .reply-message-on:hover{
 	background-color: #ddd;
+}
+.message-against-show-user-name{
+	    color: #32cd32;
+    font-size: 15px;
+}
+.formchat-reply{
+	padding-left: 20px;
 }

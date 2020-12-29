@@ -35,6 +35,9 @@
 			<% if user_signed_in? %>
 				<% if current_user.id == message_reply.user_id %>
  					<div id="edit_form_box_<%= message_reply.id %>" class="editform">
+ 						<% if message_reply.login? %>
+							<div class="against-message-show-box">編集</div>
+						<% end %>
 						<div class="imguploader edit_image_uploader">
 							<%= form_with model: message_reply, local: false do |f| %>
 								<%= f.file_field :file, id: "img-value-form-message_reply-#{message_reply.id}", class: "img-value" %>
@@ -86,18 +89,9 @@
 	$("#edit_click-reply-<%= message_reply.id %>").click(function(){
 		if(edit_click_<%= message_reply.id %> == true){
 			$('#edit_form_box_<%= message_reply.id %>').css('display', 'block');
-			$('#message_reply-content-<%= message_reply.id %>').css('display', 'none');
-			$('#message_reply-image-<%= message_reply.id %>').css('display', 'none');
-			$('#file-box-message_reply-<%= message_reply.id %>-box').css('display', 'none');
-			$('#youtube-container-<%= message_reply.id %>').css('display', 'none');
 			edit_click_<%= message_reply.id %> = false
 		}else if(edit_click_<%= message_reply.id %> == false){
 			$('#edit_form_box_<%= message_reply.id %>').css('display', 'none');
-			$('#message_reply-content-<%= message_reply.id %>').css('display', 'block');
-			$('#message_reply-image-<%= message_reply.id %>').css('display', 'block');
-			$('#file-box-message_reply-<%= message_reply.id %>-box').css('display', 'block');
-			$('#youtube-container-<%= message_reply.id %>').css('display', 'block');
-			
 			edit_click_<%= message_reply.id %> = true
 		}
 	});

@@ -30,9 +30,36 @@
 					<% end %>
 				</div>
 			</div>
-
+		<% if message.youtube_id.present? %>
+			<% iframe = content_tag(
+				:iframe,
+				'',
+				width: 560,
+				height: 315,
+				src: "https://www.YouTube.com/embed/#{message.youtube_id}",
+				frameborder: 0,
+				allowfullscreen: true,
+				class: "youtube-container",
+				id: "youtube-container-#{message.id}"
+			) %>
+			<%= content_tag(:div, iframe, class: "youtube-container2") %>
+		<% end %>
+		<% if message.file? %>
+			<div class="file-box-message" id="file-box-message-<%= message.id %>-box">
+				<p class="file_name_message"><%= message.file.identifier %></p>
+				<%= message_url(message.file.url,message.file.identifier,message.room.id, message.id) %>
+			</div>
+		<% end %>
+		<% if message.content.present? %>
+			<div id="message-content-<%= message.id %>" class="message-contents">
+				<%= raw Rinku.auto_link(simple_format(h(message.content), class: "message_content rinku-auto-link", id: "message-link-#{message.id}"), :all,'target="_blank"') %>
+			</div>
+		<% end %>
 		<div id="message-<%= message.id %>-box">
 			<div id="edit_form_box_<%= message.id %>" class="editform">
+				<% if message.login? %>
+					<div class="against-message-show-box">編集</div>
+				<% end %>
 				<div class="imguploader edit_image_uploader">
 					<%= form_with model: message, local: false do |f| %>
 						<%= f.file_field :file, id: "img-value-form-message-#{message.id}", class: "img-value" %>
@@ -56,35 +83,12 @@
 					<%= submit_tag "送信", class: "edit_submit", id: "send-edit-submit-#{message.id}" %>
 				</div>
 			</div>
-			<% if message.content.present? %>
-				<div id="message-content-<%= message.id %>" class="message-contents">
-					<%= raw Rinku.auto_link(simple_format(h(message.content), class: "message_content rinku-auto-link", id: "message-link-#{message.id}"), :all,'target="_blank"') %>
-				</div>
-			<% end %>
 		</div>
-		<% if message.youtube_id.present? %>
-			<% iframe = content_tag(
-				:iframe,
-				'',
-				width: 560,
-				height: 315,
-				src: "https://www.YouTube.com/embed/#{message.youtube_id}",
-				frameborder: 0,
-				allowfullscreen: true,
-				class: "youtube-container",
-				id: "youtube-container-#{message.id}"
-			) %>
-			<%= content_tag(:div, iframe, class: "youtube-container2") %>
-		<% end %>
-		<% if message.file? %>
-			<div class="file-box-message" id="file-box-message-<%= message.id %>-box">
-				<p class="file_name_message"><%= message.file.identifier %></p>
-				<%= message_url(message.file.url,message.file.identifier,message.room.id, message.id) %>
-			</div>
-		<% end %>
-
 	</div>
 	<div class="formchat-reply" id="formchat-reply-<%= message.id %>">
+		<% if message.login? %>
+			<div class="against-message-show-box"><p class="message-against-show-user-name"><%= message.user.name %></p>に返信</div>
+		<% end %>
 		<div class="imguploader">
 			<%= form_with model: MessageReply.new, local: false do |f| %>
 				<%= f.file_field :file, id: "img-value-form-message-#{message.id}-go", class: "img-value" %>
@@ -114,10 +118,6 @@
 	$("#edit_click-<%= message.id %>").click(function(){
 		if(edit_click_<%= message.id %> == true){
 			$('#edit_form_box_<%= message.id %>').css('display', 'block');
-			$('#message-content-<%= message.id %>').css('display', 'none');
-			$('#message-image-<%= message.id %>').css('display', 'none');
-			$('#file-box-message-<%= message.id %>-box').css('display', 'none');
-			$('#youtube-container-<%= message.id %>').css('display', 'none');
 			edit_click_<%= message.id %> = false;
 			var reply_form_chat = document.getElementById("formchat-reply-<%= message.id %>");
 			var button_go = document.getElementById("message-form-<%= message.id %>-button");
@@ -126,11 +126,6 @@
 			}
 		}else if(edit_click_<%= message.id %> == false){
 			$('#edit_form_box_<%= message.id %>').css('display', 'none');
-			$('#message-content-<%= message.id %>').css('display', 'block');
-			$('#message-image-<%= message.id %>').css('display', 'block');
-			$('#file-box-message-<%= message.id %>-box').css('display', 'block');
-			$('#youtube-container-<%= message.id %>').css('display', 'block');
-			
 			edit_click_<%= message.id %> = true;
 		}
 	});
