@@ -1,9 +1,14 @@
 class UsermanagersController < ApplicationController
 	before_action :room_find
-	before_action :usermanager_find, only: [:update, :show]
+	before_action :usermanager_find, only: [:update, :show, :message_notification_update]
 	before_action :usermanager_room_ban
 	def update
 		@usermanager.update(update_params)
+		redirect_to room_usermanager_path(@usermanager.room_id, @usermanager.id)
+	end
+
+	def message_notification_update
+		@usermanager.update!(message_notification: params[:message_notification])
 		redirect_to room_usermanager_path(@usermanager.room_id, @usermanager.id)
 	end
 
@@ -46,7 +51,7 @@ class UsermanagersController < ApplicationController
 		end
 
 		def update_params
-			params.require(:usermanager).permit(:room_ban, :message_limit, :url_limit, :ng_word)
+			params.require(:usermanager).permit(:message_notification,:room_ban, :message_limit, :url_limit, :ng_word)
 		end
 		
 		def usermanager_room_ban

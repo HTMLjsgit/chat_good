@@ -20,13 +20,16 @@ class Message < ApplicationRecord
 				usermanagers = Usermanager.where(room_id: room_id)
 				usermanagers.each do |user_manager|
 					if user_manager.login
-						notification = current_user.active_notifications.new(
-							message_id: id,
-							visited_id: user_manager.user_id,
-							action: 'message'
-						)
-						if current_user.id != user_manager.user_id
-							notification.save!
+						if user_manager.message_notification
+
+							notification = current_user.active_notifications.new(
+								message_id: id,
+								visited_id: user_manager.user_id,
+								action: 'message'
+							)
+							if current_user.id != user_manager.user_id
+								notification.save!
+							end
 						end
 					end
 				end

@@ -61,7 +61,6 @@
 				<% end %>
 			<% end %>
 		<% end %>
-		
 		<% @room.usermanagers.each do |usermanager| %>
 			<% if user_signed_in? %>
 				<% if @room.user_id != current_user.id %>
@@ -73,6 +72,15 @@
 								</h1>
 								<%= image_tag "人物シルエット_マイナス.png" %>
 							</div>
+						<% end %>
+					<% end %>
+				<% end %>
+				<% if usermanager.user_id == current_user.id %>
+					<% if usermanager.login %>			
+						<% if !usermanager.message_notification %>
+							<%= link_to "メッセージの通知をON",room_message_notification_update_path(room_id: @room.id, id: usermanager.id,message_notification: true) ,method: :put %>
+						<% else %>
+							<%= link_to "メッセージの通知をOFF",room_message_notification_update_path(room_id: @room.id, id: usermanager.id,message_notification: false) ,method: :put  %>
 						<% end %>
 					<% end %>
 				<% end %>

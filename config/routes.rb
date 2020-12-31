@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   get 'rooms/:id/explanation' => 'rooms#explanation', as: "room_explanation"
   resources :rooms do
     resources :usermanagers
+    put "usermanagers/:id/message_notification_update" => "usermanagers#message_notification_update", as: "message_notification_update"
   end
   resources :messages
   resources :message_replies
