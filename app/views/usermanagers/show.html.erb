@@ -12,7 +12,6 @@
 				<div class="room-open-box">
 					<h3><%= @user.name %>のメッセージを表示</h3>
 				</div>
-
 			<% end %>
 		</div>
 		<div class="roomshowBox">
@@ -27,7 +26,6 @@
 								<% end %>
 							</div>
 							<div id="message-content-<%= message.id %>">
-
 								<%= raw Rinku.auto_link(simple_format(h(message.content), class: "message_content rinku-auto-link", id: "message-link-#{message.id}"), :all,'target="_blank"') %>
 							</div>
 							<% unless message.youtube_id.nil? %>

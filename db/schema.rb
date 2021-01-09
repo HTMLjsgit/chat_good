@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_31_230603) do
+ActiveRecord::Schema.define(version: 2021_01_09_144409) do
 
   create_table "action_text_rich_texts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
@@ -126,6 +126,7 @@ ActiveRecord::Schema.define(version: 2020_12_31_230603) do
     t.boolean "url_limit", default: false
     t.boolean "ng_word", default: false
     t.boolean "message_notification", default: false
+    t.boolean "message_push_notification"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|

@@ -83,7 +83,7 @@ group :development, :test do
   gem 'spring-commands-rspec'
 end
 gem 'rack-attack'
-
+gem 'httparty'
 # gem 'backport_new_renderer'
 # gem 'nokogiri'
 # gem 'open-uri'

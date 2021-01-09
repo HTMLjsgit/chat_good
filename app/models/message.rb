@@ -1,3 +1,5 @@
+	require('./app/service/create_notification.rb')
+
 class Message < ApplicationRecord
 	belongs_to :user, optional: true
 	belongs_to :room
@@ -21,7 +23,7 @@ class Message < ApplicationRecord
 				usermanagers.each do |user_manager|
 					if user_manager.login
 						if user_manager.message_notification
-
+							
 							notification = current_user.active_notifications.new(
 								message_id: id,
 								visited_id: user_manager.user_id,
@@ -30,11 +32,25 @@ class Message < ApplicationRecord
 							if current_user.id != user_manager.user_id
 								notification.save!
 							end
+							if message.login?
+								CreateNotification.call(
+									contents: { 'en' => content, 'ja' => content},
+									type: 'posts#create',
+									headings: {'en' => "MessageCreatedBy#{current_user.name}",'ja' => "#{current_user.name}が新たなメッセージを送信しました。"},
+									tags: [{'key': 'id','relation': '=',"value": "#{user_manager.user_id.to_s}"}]
+								)
+							else
+								CreateNotification.call(
+									contents: { 'en' => content, 'ja' => content},
+									type: 'posts#create',
+									headings: {'en' => "MessageCreatedBy名無し",'ja' => "名無しさんが新たなメッセージを送信しました。"},
+									tags: [{'key': 'id','relation': '=',"value": "#{user_manager.user_id.to_s}"}]
+								)
+							end
 						end
 					end
 				end
 			end
-
 	end
 	private
 

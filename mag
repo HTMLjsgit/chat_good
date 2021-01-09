@@ -1,0 +1,33 @@
+
+[1mFrom:[0m /home/vagrant/chatapp/app/models/message.rb:35 Message#create_message_notice:
+
+    [1;34m19[0m: [32mdef[0m [1;34mcreate_message_notice[0m(current_user)
+    [1;34m20[0m: 	temp = [1;34;4mNotification[0m.where([31m[1;31m"[0m[31mvisited_id = ? and visitor_id = ? and message_id = ? and action = ?[1;31m"[0m[31m[0m, user_id, current_user.id, id, [31m[1;31m"[0m[31mmessage[1;31m"[0m[31m[0m)
+    [1;34m21[0m: 		[32mif[0m temp.blank?
+    [1;34m22[0m: 			usermanagers = [1;34;4mUsermanager[0m.where([35mroom_id[0m: room_id)
+    [1;34m23[0m: 			usermanagers.each [32mdo[0m |user_manager|
+    [1;34m24[0m: 				[32mif[0m user_manager.login
+    [1;34m25[0m: 					[32mif[0m user_manager.message_notification
+    [1;34m26[0m: 						
+    [1;34m27[0m: 						notification = current_user.active_notifications.new(
+    [1;34m28[0m: 							[35mmessage_id[0m: id,
+    [1;34m29[0m: 							[35mvisited_id[0m: user_manager.user_id,
+    [1;34m30[0m: 							[35maction[0m: [31m[1;31m'[0m[31mmessage[1;31m'[0m[31m[0m
+    [1;34m31[0m: 						)
+    [1;34m32[0m: 						[32mif[0m current_user.id != user_manager.user_id
+    [1;34m33[0m: 							notification.save!
+    [1;34m34[0m: 						[32mend[0m
+ => [1;34m35[0m: 						binding.pry
+    [1;34m36[0m: 						
+    [1;34m37[0m: 						[1;34;4mCreateNotification[0m.call(
+    [1;34m38[0m: 							[35mcontents[0m: { [31m[1;31m'[0m[31men[1;31m'[0m[31m[0m => content, [31m[1;31m'[0m[31mja[1;31m'[0m[31m[0m => content},
+    [1;34m39[0m: 							[35mtype[0m: [31m[1;31m'[0m[31mposts#create[1;31m'[0m[31m[0m,
+    [1;34m40[0m: 							[35mheadings[0m: {[31m[1;31m'[0m[31men[1;31m'[0m[31m[0m => [31m[1;31m"[0m[31mMessageCreatedBy#{current_user.name}[0m[31m[1;31m"[0m[31m[0m,[31m[1;31m'[0m[31mja[1;31m'[0m[31m[0m => [31m[1;31m"[0m[31m#{current_user.name}[0m[31mが新たなメッセージを送信しました。[1;31m"[0m[31m[0m},
+    [1;34m41[0m: 							[35mtags[0m: [{[35m[1;35m'[0m[35mkey[1;35m'[0m[35m[0m: [31m[1;31m'[0m[31mid[1;31m'[0m[31m[0m,[35m[1;35m'[0m[35mrelation[1;35m'[0m[35m[0m: [31m[1;31m'[0m[31m=[1;31m'[0m[31m[0m,[35m[1;35m"[0m[35mvalue[1;35m"[0m[35m[0m: [31m[1;31m"[0m[31m#{usermanager.user_id.to_s}[0m[31m[1;31m"[0m[31m[0m}]
+    [1;34m42[0m: 						)
+    [1;34m43[0m: 					[32mend[0m
+    [1;34m44[0m: 				[32mend[0m
+    [1;34m45[0m: 			[32mend[0m
+    [1;34m46[0m: 		[32mend[0m
+    [1;34m47[0m: [32mend[0m
+
