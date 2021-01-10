@@ -72,7 +72,7 @@ class Message < ApplicationRecord
 			end
 		end
 	end
-	end
+end
 	private
 
 	def file_size

@@ -22,28 +22,54 @@
       gtag('config', 'UA-145417786-9');
     </script>
     <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
-    <% if user_signed_in? %>
-      <script>
-        window.OneSignal = window.OneSignal || [];
-        OneSignal.push(function() {
-          OneSignal.init({
-            appId: "28926728-c005-4dbf-b15d-4a00e3a861a1",
+    <% if Rails.env.development? %>
+      <% if user_signed_in? %>
+        <script>
+          window.OneSignal = window.OneSignal || [];
+          OneSignal.push(function() {
+            OneSignal.init({
+              appId: "28926728-c005-4dbf-b15d-4a00e3a861a1",
+            });
           });
-        });
-        OneSignal.push(['sendTag', 'id', "<%= current_user.id.to_s %>", function(tagsSent) {
-        }]);
-      </script>
+          OneSignal.push(['sendTag', 'id', "<%= current_user.id.to_s %>", function(tagsSent) {
+          }]);
+        </script>
+      <% else %>
+        <script>
+          window.OneSignal = window.OneSignal || [];
+          OneSignal.push(function() {
+            OneSignal.init({
+              appId: "28926728-c005-4dbf-b15d-4a00e3a861a1",
+            });
+          });
+          OneSignal.push(['sendTag', 'id', "", function(tagsSent) {
+          }]);
+        </script>
+      <% end %>
     <% else %>
-      <script>
-        window.OneSignal = window.OneSignal || [];
-        OneSignal.push(function() {
-          OneSignal.init({
-            appId: "28926728-c005-4dbf-b15d-4a00e3a861a1",
+      <% if user_signed_in %>
+        <script>
+          window.OneSignal = window.OneSignal || [];
+          OneSignal.push(function() {
+            OneSignal.init({
+              appId: "c9723ea6-2ff7-43ec-a72b-57935c0758cf",
+            });
           });
-        });
-        OneSignal.push(['sendTag', 'id', "", function(tagsSent) {
-        }]);
-      </script>
+          OneSignal.push(['sendTag', 'id', "<%= current_user.id.to_s %>", function(tagsSent) {
+          }]);
+        </script>
+      <% else %>
+        <script>
+          window.OneSignal = window.OneSignal || [];
+          OneSignal.push(function() {
+            OneSignal.init({
+              appId: "c9723ea6-2ff7-43ec-a72b-57935c0758cf",
+            });
+          });
+          OneSignal.push(['sendTag', 'id', "", function(tagsSent) {
+          }]);
+        </script>
+      <% end %>
     <% end %>
   </head>
 
