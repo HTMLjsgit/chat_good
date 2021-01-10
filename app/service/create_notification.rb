@@ -7,12 +7,13 @@ class CreateNotification
   		new(*args).call
   	end
 
-  	def initialize(contents:, type:, headings:, tags:)
+  	def initialize(contents:, type:, headings:, tags:, url:)
 
   		@contents = contents
   		@type = type
       @tags = tags
       @headings = headings
+      @url = url
   	end
 
   	def call
@@ -21,7 +22,7 @@ class CreateNotification
 
   	private
 
-  	attr_reader :contents, :type, :headings, :tags
+  	attr_reader :contents, :type, :headings, :tags, :url
 
   	def headers
   		{
@@ -33,7 +34,7 @@ class CreateNotification
   	def body
   		{
   			'app_id' => ENV["ONEAPIKEY"],
-  			'url' => 'localhost:3000',
+  			'url' => url.to_s,
   			'data' => { 'type': type},
   			'included_segments' => ['All'],
   			'contents' => contents,

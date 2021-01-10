@@ -1,5 +1,4 @@
-	require('./app/service/create_notification.rb')
-
+require('./app/service/create_notification.rb')
 class Message < ApplicationRecord
 	belongs_to :user, optional: true
 	belongs_to :room
@@ -18,39 +17,61 @@ class Message < ApplicationRecord
 	has_many :message_replies, class_name: "MessageReply", foreign_key: "message_id"
 	def create_message_notice(current_user)
 		temp = Notification.where("visited_id = ? and visitor_id = ? and message_id = ? and action = ?", user_id, current_user.id, id, "message")
-			if temp.blank?
-				usermanagers = Usermanager.where(room_id: room_id)
-				usermanagers.each do |user_manager|
-					if user_manager.login
-						if user_manager.message_notification
-							
-							notification = current_user.active_notifications.new(
-								message_id: id,
-								visited_id: user_manager.user_id,
-								action: 'message'
-							)
-							if current_user.id != user_manager.user_id
-								notification.save!
-							end
-							if message.login?
+		if temp.blank?
+			usermanagers = Usermanager.where(room_id: room_id)
+			usermanagers.each do |user_manager|
+			if user_manager.login
+				if user_manager.message_notification
+					
+					notification = current_user.active_notifications.new(
+						message_id: id,
+						visited_id: user_manager.user_id,
+						action: 'message'
+					)
+					if current_user.id != user_manager.user_id
+						notification.save!
+						if login
+							if Rails.env.development?
 								CreateNotification.call(
 									contents: { 'en' => content, 'ja' => content},
 									type: 'posts#create',
 									headings: {'en' => "MessageCreatedBy#{current_user.name}",'ja' => "#{current_user.name}が新たなメッセージを送信しました。"},
-									tags: [{'key': 'id','relation': '=',"value": "#{user_manager.user_id.to_s}"}]
+									tags: [{'key': 'id','relation': '=',"value": "#{user_manager.user_id.to_s}"}],
+									url: "localhost:3000"
 								)
 							else
 								CreateNotification.call(
 									contents: { 'en' => content, 'ja' => content},
 									type: 'posts#create',
-									headings: {'en' => "MessageCreatedBy名無し",'ja' => "名無しさんが新たなメッセージを送信しました。"},
-									tags: [{'key': 'id','relation': '=',"value": "#{user_manager.user_id.to_s}"}]
+									headings: {'en' => "MessageCreatedBy#{current_user.name}",'ja' => "#{current_user.name}が新たなメッセージを送信しました。"},
+									tags: [{'key': 'id','relation': '=',"value": "#{user_manager.user_id.to_s}"}],
+									url: "https://good-chat.herokuapp.com"
+								)
+							end
+						else
+							if Rails.env.development?
+								CreateNotification.call(
+									contents: { 'en' => content, 'ja' => content},
+									type: 'posts#create',
+									headings: {'en' => "MessageCreatedBy#{current_user.name}",'ja' => "#{current_user.name}が新たなメッセージを送信しました。"},
+									tags: [{'key': 'id','relation': '=',"value": "#{user_manager.user_id.to_s}"}],
+									url: "localhost:3000"
+								)
+							else
+								CreateNotification.call(
+									contents: { 'en' => content, 'ja' => content},
+									type: 'posts#create',
+									headings: {'en' => "MessageCreatedBy#{current_user.name}",'ja' => "#{current_user.name}が新たなメッセージを送信しました。"},
+									tags: [{'key': 'id','relation': '=',"value": "#{user_manager.user_id.to_s}"}],
+									url: "https://good-chat.herokuapp.com"
 								)
 							end
 						end
 					end
 				end
 			end
+		end
+	end
 	end
 	private
 
