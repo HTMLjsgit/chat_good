@@ -47,7 +47,7 @@
         </script>
       <% end %>
     <% else %>
-      <% if user_signed_in %>
+      <% if user_signed_in? %>
         <script>
           window.OneSignal = window.OneSignal || [];
           OneSignal.push(function() {
