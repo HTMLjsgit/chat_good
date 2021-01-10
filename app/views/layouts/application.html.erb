@@ -22,6 +22,7 @@
       gtag('config', 'UA-145417786-9');
     </script>
     <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+    <% p "------------------" + Rails.env.development?.to_s %>
     <% if Rails.env.development? %>
       <% if user_signed_in? %>
         <script>
@@ -55,7 +56,7 @@
               appId: "c9723ea6-2ff7-43ec-a72b-57935c0758cf",
             });
           });
-          OneSignal.push(['sendTag', 'id', "<%#= current_user.id.to_s %>", function(tagsSent) {
+          OneSignal.push(['sendTag', 'id', "<%= current_user.id.to_s %>", function(tagsSent) {
           }]);
         </script>
       <% else %>
@@ -68,7 +69,7 @@
           });
           OneSignal.push(['sendTag', 'id', "", function(tagsSent) {
           }]);
-        </script> -->
+        </script>
       <% end %>
     <% end %>
   </head>

@@ -37,7 +37,7 @@ class Message < ApplicationRecord
 									type: 'posts#create',
 									headings: {'en' => "MessageCreatedBy#{current_user.name}",'ja' => "#{current_user.name}が新たなメッセージを送信しました。"},
 									tags: [{'key': 'id','relation': '=',"value": "#{user_manager.user_id.to_s}"}],
-									url: "localhost:3000"
+									url: "localhost:3000/rooms/#{room_id.to_s}"
 								)
 							else
 								CreateNotification.call(
@@ -45,7 +45,7 @@ class Message < ApplicationRecord
 									type: 'posts#create',
 									headings: {'en' => "MessageCreatedBy#{current_user.name}",'ja' => "#{current_user.name}が新たなメッセージを送信しました。"},
 									tags: [{'key': 'id','relation': '=',"value": "#{user_manager.user_id.to_s}"}],
-									url: "https://good-chat.herokuapp.com"
+									url: "https://good-chat.herokuapp.com/rooms/#{room_id.to_s}"
 								)
 							end
 						else
@@ -55,7 +55,7 @@ class Message < ApplicationRecord
 									type: 'posts#create',
 									headings: {'en' => "MessageCreatedBy#{current_user.name}",'ja' => "#{current_user.name}が新たなメッセージを送信しました。"},
 									tags: [{'key': 'id','relation': '=',"value": "#{user_manager.user_id.to_s}"}],
-									url: "localhost:3000"
+									url: "localhost:3000/rooms/#{room_id.to_s}"
 								)
 							else
 								CreateNotification.call(
@@ -63,7 +63,7 @@ class Message < ApplicationRecord
 									type: 'posts#create',
 									headings: {'en' => "MessageCreatedBy#{current_user.name}",'ja' => "#{current_user.name}が新たなメッセージを送信しました。"},
 									tags: [{'key': 'id','relation': '=',"value": "#{user_manager.user_id.to_s}"}],
-									url: "https://good-chat.herokuapp.com"
+									url: "https://good-chat.herokuapp.com/rooms/#{room_id.to_s}"
 								)
 							end
 						end
