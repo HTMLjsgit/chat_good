@@ -1,4 +1,3 @@
-require('./app/service/create_notification.rb')
 class Message < ApplicationRecord
 	belongs_to :user, optional: true
 	belongs_to :room
@@ -30,43 +29,6 @@ class Message < ApplicationRecord
 					)
 					if current_user.id != user_manager.user_id
 						notification.save!
-						if login
-							if Rails.env.development?
-								CreateNotification.call(
-									contents: { 'en' => content, 'ja' => content},
-									type: 'posts#create',
-									headings: {'en' => "MessageCreatedBy#{current_user.name}",'ja' => "#{current_user.name}が新たなメッセージを送信しました。"},
-									tags: [{'key': 'id','relation': '=',"value": "#{user_manager.user_id.to_s}"}],
-									url: "localhost:3000/rooms/#{room_id.to_s}"
-								)
-							else
-								CreateNotification.call(
-									contents: { 'en' => content, 'ja' => content},
-									type: 'posts#create',
-									headings: {'en' => "MessageCreatedBy#{current_user.name}",'ja' => "#{current_user.name}が新たなメッセージを送信しました。"},
-									tags: [{'key': 'id','relation': '=',"value": "#{user_manager.user_id.to_s}"}],
-									url: "https://good-chat.herokuapp.com/rooms/#{room_id.to_s}"
-								)
-							end
-						else
-							if Rails.env.development?
-								CreateNotification.call(
-									contents: { 'en' => content, 'ja' => content},
-									type: 'posts#create',
-									headings: {'en' => "MessageCreatedBy#{current_user.name}",'ja' => "#{current_user.name}が新たなメッセージを送信しました。"},
-									tags: [{'key': 'id','relation': '=',"value": "#{user_manager.user_id.to_s}"}],
-									url: "localhost:3000/rooms/#{room_id.to_s}"
-								)
-							else
-								CreateNotification.call(
-									contents: { 'en' => content, 'ja' => content},
-									type: 'posts#create',
-									headings: {'en' => "MessageCreatedBy#{current_user.name}",'ja' => "#{current_user.name}が新たなメッセージを送信しました。"},
-									tags: [{'key': 'id','relation': '=',"value": "#{user_manager.user_id.to_s}"}],
-									url: "https://good-chat.herokuapp.com/rooms/#{room_id.to_s}"
-								)
-							end
-						end
 					end
 				end
 			end
