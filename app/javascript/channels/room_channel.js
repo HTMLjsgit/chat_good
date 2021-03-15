@@ -85,36 +85,38 @@ import consumer from "./consumer"
 
 
 
+      var value = null;
 
-
-
+      function chatgo(value){
+         chatChannel.speak(value);
+         value = '';
+         return event.preventDefault();
+      }
       $(document).on('keypress submit click', '[data-behavior~=room_speaker]', function(event){
-          if(event.target.value == ''){
-          }
-          function chatgo(){
-             chatChannel.speak(event.target.value);
-             event.target.value = '';
-             return event.preventDefault();
-          }
+      	value = event.target.value;
+
           if(event.shiftKey){
              if(event.keyCode === 13){
                 if(event.target.value != ''){
-                  chatgo();
+                  chatgo(event.target.value);
+                  event.target.value = "";
                 }else if(event.target.value == '' || event.target.length <= 1000 ){
                   event.preventDefault();
                   event.target.value = event.target.value;
                 }
              }
            }
-         $('#submit').click(function(){
-            if(event.target.value != ''){
-              chatgo();
-            }else if(event.target.value == '' || event.target.length <= 1000 ){
-              event.preventDefault();
-            }
-         });
       });  
-      $(document).on('keypress submit click', '[data-behavior~=message_reply_speaker]', function(event){
+     $('.submit-message').click(function(){
+        if(value != ""){
+          chatgo(value);
+          value = "";
+          $("#chat_area").val('');
+        }else if(value == '' || value.length <= 1000 ){
+          return false;
+        }
+     });
+      $(document).on('', '[data-behavior~=message_reply_speaker]', function(event){
         if(event.shiftKey){
           if(event.keyCode === 13){
             var id_go = event.target.id.replace("chat_area-", "");

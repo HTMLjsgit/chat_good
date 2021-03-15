@@ -153,21 +153,10 @@
 	</div>
 	<p class="flash_message"></p>
 	<div class="formchat">
-		<% unless request.os == "PlayStation Vita" %>
-			<%= text_area_tag :content, nil, data: {behavior: 'room_speaker'},class: "text_areachat" ,placeholder: "メッセージを送信(Shift + Enter または 送信ボタン)", id: "chat_area"%>
-			<div class="submitBox">
-				<%= submit_tag "送信", id: "submit" %>
-			</div>
-		<% end %>
-		<% if request.os == "PlayStation Vita" %>
-			<div class="submitBox">
-				<%= form_with model: @message, local: false, url: messages_path do |f| %>
-					<%= f.text_area :content ,id: "chat_area", class: "text_areachat"%>
-					<%= f.hidden_field :room_id, value: @room.id %>
-					<%= f.submit "送信", id: "submit" %>
-				<% end %>
-			</div>
-		<% end %>
+		<%= text_area_tag :content, nil, data: {behavior: 'room_speaker'},class: "text_areachat" ,placeholder: "メッセージを送信(Shift + Enter または 送信ボタン)", id: "chat_area"%>
+		<div class="submitBox">
+			<%= submit_tag "送信", id: "submit", class: "submit-message" %>
+		</div>
 		<p class="flash_message"></p>
 
 	</div>
