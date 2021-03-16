@@ -16,14 +16,23 @@ import consumer from "./consumer"
           // console.log($('#messages').data('current_user'));
           message_go(data['message'], data['message_user_id']);
           message_nil_go(data['message_nil'], data['message_user_id_nil']);
-          message_reply_create(data['message_create_id'], data['create_reply'])
+          message_reply_create(data['message_create_id'], data['create_reply']);
           reply_message_go(data['render_message_admin'], data['bot'], data['message_id'], data['user_id']);
           reply_message_nil_go(data['message_reply_nil'], data['bot'], data['message_id'], data['user_id']);
-          setTimeout(function(){
-            var submitscroll = $('#bottomGO').offset().top;
-            document.getElementById('chat_area').value = '';
-            $('html, body').scrollTop(submitscroll);
-          },10);
+	      if(data['message_id'] == null){
+	          setTimeout(function(){
+	            var submitscroll = $('#bottomGO').offset().top;
+	            document.getElementById('chat_area').value = '';
+	            $('html, body').scrollTop(submitscroll);
+	          },10);
+	      }else if(data["message_id"] != null){
+	      	  setTimeout(function(){
+	            var submitscroll = $(`#message_reply-${data['message_id']}`).offset();
+	            document.getElementById('chat_area').value = '';
+	            $('html, body').scrollTop(submitscroll);
+	          },10);
+	      }
+
           // Called when there's incoming data on the websocket for this channel
         },
 
@@ -83,6 +92,9 @@ import consumer from "./consumer"
         }
       }
 
+      function reply_create_button(id, message_reply){
+
+      }
 
 
       var value = null;
@@ -107,16 +119,17 @@ import consumer from "./consumer"
              }
            }
       });  
-     $('.submit-message').click(function(){
+     $(document).on('click', '.submit-message', function(event){
         if(value != ""){
           chatgo(value);
           value = "";
           $("#chat_area").val('');
         }else if(value == '' || value.length <= 1000 ){
           return false;
-        }
+        }   	
      });
-      $(document).on('', '[data-behavior~=message_reply_speaker]', function(event){
+
+      $(document).on('keypress submit click', '[data-behavior~=message_reply_speaker]', function(event){
         if(event.shiftKey){
           if(event.keyCode === 13){
             var id_go = event.target.id.replace("chat_area-", "");
@@ -124,5 +137,9 @@ import consumer from "./consumer"
           }
         }
       });
-
+      $(document).on('click', '.submit-reply', function(event){
+      	  var id = event.target.dataset.id;
+		  var message_reply = document.getElementById("chat_area-" + id);
+          chatChannel.reply(message_reply.value, id);
+      });
   });

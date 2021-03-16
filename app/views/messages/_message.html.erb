@@ -107,7 +107,7 @@
 		</div>
 		<%= text_area_tag :content, nil, data: {behavior: 'message_reply_speaker'},class: "text_areachat-reply" ,placeholder: "メッセージを送信(Shift + Enter または 送信ボタン)", id: "chat_area-#{message.id}" %>
 		<div class="submitBox">
-			<%= submit_tag "送信", id: "submit" %>
+			<%= submit_tag "送信", id: "submit",data: {id: message.id}, class: "submit-reply" %>
 		</div>
 		<p class="flash_message"></p>
 	</div>

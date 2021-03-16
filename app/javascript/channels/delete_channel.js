@@ -41,7 +41,7 @@ $(function(){
 	});
 	$(document).on('click', '.delete_btn_reply', function(event){
 		if(window.confirm("本当に削除しますか？")){
-			chat.delete_reply(event.target.id);
+			chat.delete_reply(event.target.dataset.id);
 		}else{
 			return false;
 		}

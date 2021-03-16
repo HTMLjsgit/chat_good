@@ -14,7 +14,7 @@
 				<p class="agomessage_reply"><%= time_ago_in_words(message_reply.created_at) + "前" %></p>
 				<% if user_signed_in? %>
 					<% if message_reply.user_id == current_user.id %>
-						<button id="<%= message_reply.id %>" class="delete_btn_reply">
+						<button id="reply-delete-button-<%= message_reply.id %>" class="delete_btn_reply" data-id="<%= message_reply.id %>">
 							<%= image_tag "ゴミ箱のアイコン素材.png", class: "deleteBtnImage", id: "#{message_reply.id}" %>
 						</button>
 						<button id="edit_click-reply-<%= message_reply.id %>" class="edit_click">
@@ -34,7 +34,7 @@
 			</div>
 			<% if user_signed_in? %>
 				<% if current_user.id == message_reply.user_id %>
- 					<div id="edit_form_box_<%= message_reply.id %>" class="editform">
+ 					<div id="edit_form_box_reply_<%= message_reply.id %>" class="editform">
  						<% if message_reply.login? %>
 							<div class="against-message-show-box">編集</div>
 						<% end %>
@@ -56,7 +56,7 @@
 						</div>
 						<%= text_area_tag :content, message_reply.content ,data: {behavior: "edit_reply_speaker"},id: "message_edit_reply-#{message_reply.id}", class: "edit_form" %>
 						<div class="submit-edit-box">
-							<%= submit_tag "送信", class: "edit_submit", id: "send-edit-submit-#{message_reply.id}" %>
+							<%= submit_tag "送信", class: "edit_submit reply-edit-submit", id: "send-edit-submit-#{message_reply.id}",data: {id: message_reply.id} %>
 						</div>
 					</div>
 				<% end %>
@@ -85,14 +85,14 @@
 	</div>
 <script>
 
-	var edit_click_<%= message_reply.id %> = true
+	var edit_reply_click_<%= message_reply.id %> = true
 	$("#edit_click-reply-<%= message_reply.id %>").click(function(){
-		if(edit_click_<%= message_reply.id %> == true){
-			$('#edit_form_box_<%= message_reply.id %>').css('display', 'block');
-			edit_click_<%= message_reply.id %> = false
-		}else if(edit_click_<%= message_reply.id %> == false){
-			$('#edit_form_box_<%= message_reply.id %>').css('display', 'none');
-			edit_click_<%= message_reply.id %> = true
+		if(edit_reply_click_<%= message_reply.id %> == true){
+			$('#edit_form_box_reply_<%= message_reply.id %>').css('display', 'block');
+			edit_reply_click_<%= message_reply.id %> = false
+		}else if(edit_reply_click_<%= message_reply.id %> == false){
+			$('#edit_form_box_reply_<%= message_reply.id %>').css('display', 'none');
+			edit_reply_click_<%= message_reply.id %> = true
 		}
 	});
 	$('#img-form-button-message_reply-<%= message_reply.id %>').click(function(){

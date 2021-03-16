@@ -62,8 +62,9 @@ $(function(){
 
       	}
       }
-
+    var value_edit = "";
 	$(document).on('keypress', '[data-behavior~=edit_speaker]', function(event){
+		value_edit = event.target.value;
 	  if(event.shiftKey){
 	    if(event.keyCode === 13){
 	      if(event.target.value == '' || event.target.id == ''){
@@ -75,6 +76,7 @@ $(function(){
 	  }
 	});
 	$(document).on('keypress', '[data-behavior~=edit_reply_speaker]', function(event){
+		value_edit = event.target.value;
 	  if(event.shiftKey){
 	    if(event.keyCode === 13){
 	      if(event.target.value == '' || event.target.id == ''){
@@ -85,4 +87,16 @@ $(function(){
 		}
 	  }
 	});
+	$(document).on('click', '.edit_submit.reply-edit-submit', function(event){
+      	var id = event.target.dataset.id;
+      	debugger;
+		var message_reply = document.getElementById("message_edit_reply-" + id);
+        chat.reply_edit(id, message_reply.value);
+    });
+	$(document).on('click', '.edit_submit', function(event){
+		var id = event.target.id.replace("send-edit-submit-", "");
+		var message_edit = document.getElementById("message_edit_" + id);
+		chat.edit(id, message_edit.value);
+	});
+
 });

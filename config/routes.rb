@@ -20,9 +20,10 @@ Rails.application.routes.draw do
   resources :messages
   resources :message_replies
   resources :users, only: [:show, :edit, :update]
+
+  post 'notifications/check_save' => 'notifications#check_save', as: "check_save_notice"
   get '*path', to: 'application#render_404'
   get '*path', to: 'application#render_500'
-  post 'notifications/check_save' => 'notifications#check_save', as: "check_save_notice"
   # get '*path'は　最後の行じゃないと、バグが起こるから注意しよう
   
   # get 'rooms/:id/usermanagers/:id/messages' => 'rooms#usermessages', as: "room_user_messages"
